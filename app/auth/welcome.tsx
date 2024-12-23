@@ -5,7 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import tw from "twrnc";
 import Button from "../../assets/components/Button";
 
-export default function Index() {
+const Welcome = () => {
   const { themeTextStyle, themeViewStyle } = useTheme();
   const navigation = useNavigation();
 
@@ -29,3 +29,5 @@ export default function Index() {
     </SafeAreaView>
   );
 }
+
+export default Welcome;

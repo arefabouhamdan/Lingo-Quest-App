@@ -5,7 +5,7 @@ import Navigation from './navigation';
 
 export default function Index() {
   const {statusBarBackgroundColor } = useTheme();
-
+  
   return (
     <>
     <StatusBar

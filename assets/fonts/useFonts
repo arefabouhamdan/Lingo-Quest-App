@@ -1,0 +1,12 @@
+import * as Font from 'expo-font';
+import { useFonts as useGoogleFonts, Poppins_400Regular, Poppins_500Medium, Poppins_700Bold } from '@expo-google-fonts/poppins';
+
+export default function useFonts() {
+  const [fontsLoaded] = useGoogleFonts({
+    Poppins_400Regular,
+    Poppins_500Medium,
+    Poppins_700Bold
+  });
+
+  return fontsLoaded;
+}
