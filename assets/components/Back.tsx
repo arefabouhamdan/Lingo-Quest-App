@@ -21,7 +21,7 @@ const Back = () => {
   ):(
     <TouchableOpacity
       onPress={() => navigation.goBack()}
-      style={tw`absolute top-5 left-5 z-10`}
+      style={tw`absolute top-5 left-5 z-10 p-3`}
     >
       <Image
         source={require("../../assets/images/icons/back-white.png")}
