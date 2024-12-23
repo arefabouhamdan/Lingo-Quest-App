@@ -6,9 +6,14 @@ import { useTheme } from '../assets/utils/useTheme';
 import Navigation from './navigation';
 
 export default function Index() {
-  const { themeViewStyle, statusBarBackgroundColor } = useTheme();
+  const {statusBarBackgroundColor } = useTheme();
 
   return (
+    <>
+    <StatusBar
+        backgroundColor={statusBarBackgroundColor}
+      />
     <Navigation />
+    </>
   );
 }

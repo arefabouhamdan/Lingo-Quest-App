@@ -7,16 +7,13 @@ import { useNavigation } from "@react-navigation/native";
 import Button from "../../assets/components/Button";
 
 export default function Index() {
-  const { themeTextStyle, themeViewStyle, statusBarStyle, statusBarBackgroundColor } = useTheme();
+  const { themeTextStyle, themeViewStyle } = useTheme();
   const navigation = useNavigation();
 
   return (
     <SafeAreaView
       style={tw`${themeViewStyle} flex-1 items-center justify-center`}
     >
-      <StatusBar
-        backgroundColor={statusBarBackgroundColor}
-      />
       <View style={tw`flex flex-col items-center my-auto gap-20`}>
         <Image
           source={require('../../assets/images/game/guide-hello.png')}
