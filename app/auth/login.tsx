@@ -43,7 +43,7 @@ const Login = () => {
         </View>
       </View>
       <Text style={tw`${themeTextStyle} my-auto`}>
-        Forgot your <Text style={tw`text-sky-400 font-bold`}>password ?</Text>
+        Forgot your <Text style={tw`text-sky-400 font-bold`}>password?</Text>
       </Text>
     </SafeAreaView>
   );
