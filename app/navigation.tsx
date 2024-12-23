@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Welcome from "./auth/welcome";
 import Login from "./auth/login";
 import Choose from "./auth/choose";
+import Student from "./auth/student";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -31,6 +32,10 @@ const Navigation = () => {
         <Stack.Screen
           name="Choose"
           component={Choose}
+        />
+        <Stack.Screen
+          name="Student"
+          component={Student}
         />
       </Stack.Navigator>
     )}
