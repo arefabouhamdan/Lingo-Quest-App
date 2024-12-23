@@ -3,10 +3,12 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 import tw from "twrnc";
 import { useTheme } from "../../assets/utils/useTheme";
+import { useNavigation } from "@react-navigation/native";
 import Button from "../../assets/components/Button";
 
 export default function Index() {
   const { themeTextStyle, themeViewStyle, statusBarStyle, statusBarBackgroundColor } = useTheme();
+  const navigation = useNavigation();
 
   return (
     <SafeAreaView
@@ -21,7 +23,7 @@ export default function Index() {
           style={tw`w-48 h-60 mb-5`}
         />
         <View>
-          <Button text="Login"/>
+          <Button text="Login" press="Login"/>
           <Button image text="Login with Google"/>
         </View>
       </View>
