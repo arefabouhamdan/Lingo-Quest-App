@@ -3,7 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Welcome from "./auth/welcome";
 import Login from "./auth/login";
-import SignUp from "./auth/signup";
+import Choose from "./auth/choose";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -29,8 +29,8 @@ const Navigation = () => {
           component={Login}
         />
         <Stack.Screen
-          name="SignUp"
-          component={SignUp}
+          name="Choose"
+          component={Choose}
         />
       </Stack.Navigator>
     )}

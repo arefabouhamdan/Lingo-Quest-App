@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, Image, SafeAreaView, TextInput } from "react-native";
 import { useTheme } from "../../assets/utils/useTheme";
 import Button from "../../assets/components/Button";
+import Back from "../../assets/components/Back";
 import tw from "twrnc";
 
 const Login = () => {
@@ -10,6 +11,7 @@ const Login = () => {
     <SafeAreaView
       style={tw`${themeViewStyle} flex-1 items-center justify-center`}
     >
+      <Back />
       <View style={tw`flex flex-col items-center my-30`}>
         <Image
           source={require("../../assets/images/game/guide.png")}
