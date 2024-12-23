@@ -1,4 +1,3 @@
-import React from "react";
 import { Text, useColorScheme, Image, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
@@ -24,7 +23,7 @@ export default function Index() {
       <View style={tw`flex flex-col items-center my-auto gap-20`}>
         <Image
           source={require('../assets/images/game/guide-hello.png')}
-          style={tw`w-40 h-52 mb-5`}
+          style={tw`w-48 h-60 mb-5`}
         />
         <View>
           <Button text="Login"/>
