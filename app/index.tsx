@@ -1,7 +1,5 @@
 import React from 'react';
-import { SafeAreaView, StatusBar, Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import tw from 'twrnc';
+import { StatusBar } from 'react-native';
 import { useTheme } from '../assets/utils/useTheme';
 import Navigation from './navigation';
 

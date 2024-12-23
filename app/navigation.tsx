@@ -1,5 +1,5 @@
 import React from "react";
-import { createStackNavigator, TransitionSpecs, CardStyleInterpolators } from "@react-navigation/stack";
+import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Welcome from "./auth/welcome";
 import Login from "./auth/login";
@@ -18,22 +18,14 @@ const Navigation = () => {
       </Tab.Navigator>
     ):(
 
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen
           name="Welcome"
           component={Welcome}
-          options={{
-            title: "Welcome",
-            
-          }}
         />
         <Stack.Screen
           name="Login"
           component={Login}
-          options={{
-            title: "Login",
-            
-          }}
         />
       </Stack.Navigator>
     )}
