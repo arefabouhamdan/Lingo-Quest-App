@@ -1,21 +1,14 @@
-import { Text, useColorScheme, Image, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { StatusBar } from "expo-status-bar";
-import tw from "twrnc";
-import { useTheme } from "../assets/utils/useTheme";
-import Button from "../assets/components/Button";
+import React from 'react';
+import { SafeAreaView, StatusBar, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import tw from 'twrnc';
+import { useTheme } from '../assets/utils/useTheme';
+import Navigation from './navigation';
 
 export default function Index() {
-  const { themeTextStyle, themeViewStyle, statusBarStyle, statusBarBackgroundColor } = useTheme();
+  const { themeViewStyle, statusBarBackgroundColor } = useTheme();
 
   return (
-    <SafeAreaView
-      style={tw`${themeViewStyle} flex-1 items-center justify-center`}
-    >
-      <StatusBar
-        backgroundColor={statusBarBackgroundColor}
-      />
-      
-    </SafeAreaView>
+    <Navigation />
   );
 }

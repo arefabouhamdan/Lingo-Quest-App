@@ -1,0 +1,33 @@
+import { Text, useColorScheme, Image, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { StatusBar } from "expo-status-bar";
+import tw from "twrnc";
+import { useTheme } from "../../assets/utils/useTheme";
+import Button from "../../assets/components/Button";
+
+export default function Index() {
+  const { themeTextStyle, themeViewStyle, statusBarStyle, statusBarBackgroundColor } = useTheme();
+
+  return (
+    <SafeAreaView
+      style={tw`${themeViewStyle} flex-1 items-center justify-center`}
+    >
+      <StatusBar
+        backgroundColor={statusBarBackgroundColor}
+      />
+      <View style={tw`flex flex-col items-center my-auto gap-20`}>
+        <Image
+          source={require('../../assets/images/game/guide-hello.png')}
+          style={tw`w-48 h-60 mb-5`}
+        />
+        <View>
+          <Button text="Login"/>
+          <Button image text="Login with Google"/>
+        </View>
+      </View>
+      <Text style={tw`${themeTextStyle} my-auto`}>
+        Don't have an account? <Text style={tw`text-sky-400 font-bold`}>Sign up</Text>
+      </Text>
+    </SafeAreaView>
+  );
+}
