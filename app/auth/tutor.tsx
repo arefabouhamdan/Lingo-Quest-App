@@ -6,7 +6,7 @@ import Back from "@/assets/components/Back";
 import tw from "twrnc";
 import Input from "@/assets/components/Input";
 
-const Student = () => {
+const Tutor = () => {
   const { themeViewStyle, themeTextStyle } = useTheme();
   return (
     <SafeAreaView
@@ -16,7 +16,7 @@ const Student = () => {
       <View style={tw`flex flex-col items-center my-30`}>
         <Image
           source={require("@/assets/images/game/guide-no-student.png")}
-          style={tw`w-48 h-68 mb-5`}
+          style={tw`w-32 h-50 mb-5`}
         />
         <View style={tw`flex items-center gap-5`}>
           <View>
@@ -33,6 +33,12 @@ const Student = () => {
           </View>
           <View>
             <Text style={tw`${themeTextStyle} text-xl font-bold`}>
+              Phone Number
+            </Text>
+            <Input placeholder="Enter your phone number" />
+          </View>
+          <View>
+            <Text style={tw`${themeTextStyle} text-xl font-bold`}>
               Password
             </Text>
             <Input placeholder="Enter your password" />
@@ -44,4 +50,4 @@ const Student = () => {
   );
 };
 
-export default Student;
+export default Tutor;
