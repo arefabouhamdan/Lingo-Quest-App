@@ -10,10 +10,7 @@ const Login = () => {
     <SafeAreaView
       style={tw`${themeViewStyle} flex-1 items-center justify-center`}
     >
-      <View style={tw`absolute top-5 left-5 z-10 w-5 h-5`}>
-        <Image source={require("../../assets/images/icons/back.png")} style={tw`invert`}/>
-      </View>
-      <View style={tw`flex flex-col items-center my-auto`}>
+      <View style={tw`flex flex-col items-center my-30`}>
         <Image
           source={require("../../assets/images/game/guide.png")}
           style={tw`w-48 h-60 mb-5`}
