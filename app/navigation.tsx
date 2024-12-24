@@ -6,18 +6,24 @@ import Login from "./auth/login";
 import Choose from "./auth/choose";
 import Student from "./auth/student";
 import Tutor from "./auth/tutor";
+import Home from "./student/home"
+import Levels from "./student/levels"
+import Leaderboard from "./student/leaderboard";
+import Profile from "./student/profile";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
-const loggedIn = false;
+const loggedIn = true;
 
 const Navigation = () => {
   return (
     <>
     {loggedIn ? (
-      <Tab.Navigator>
-        <Tab.Screen name="Welcome" component={Welcome} />
-        <Tab.Screen name="Login" component={Login} />
+      <Tab.Navigator screenOptions={{ headerShown: false }}>
+        <Tab.Screen name="Home" component={Home} />
+        <Tab.Screen name="Levels" component={Levels} />
+        <Tab.Screen name="Leaderboard" component={Leaderboard} />
+        <Tab.Screen name="Profile" component={Profile} />
       </Tab.Navigator>
     ):(
 
