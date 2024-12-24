@@ -15,7 +15,7 @@ const Tutor = () => {
       <Back />
       <View style={tw`flex flex-col items-center my-30`}>
         <Image
-          source={require("@/assets/images/game/guide-no-student.png")}
+          source={require("@/assets/images/game/guide-no-tutor.png")}
           style={tw`w-32 h-50 mb-5`}
         />
         <View style={tw`flex items-center gap-5`}>

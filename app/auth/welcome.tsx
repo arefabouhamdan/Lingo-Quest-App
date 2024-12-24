@@ -15,7 +15,7 @@ const Welcome = () => {
     >
       <View style={tw`flex flex-col items-center my-auto gap-20`}>
         <Image
-          source={require('../../assets/images/game/guide-hello.png')}
+          source={require('../../assets/images/game/guide-no-hello.png')}
           style={tw`w-48 h-60 mb-5`}
         />
         <View>
