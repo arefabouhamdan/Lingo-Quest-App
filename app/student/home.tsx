@@ -11,11 +11,14 @@ const Home = () => {
   const name = "Aref";
   const language = "German";
   const level = "A1";
+  const rank = "Silver";
   return (
     <SafeAreaView
       style={tw`${themeViewStyle} flex-1 items-center justify-center`}
     >
-      <Text style={tw`${themeTextStyle} text-2xl font-bold absolute top-15 z-11`}>
+      <Text
+        style={tw`${themeTextStyle} text-2xl font-bold absolute top-15 z-11`}
+      >
         Welcome back {name}!
       </Text>
       <Image
@@ -32,18 +35,28 @@ const Home = () => {
       <View
         style={tw`${themeViewStyle}flex flex-row items-center p-5 justify-center gap-5 mt-10 rounded-lg w-11/12 h-22 border border-gray-200`}
       >
-        <Image source={require("@/assets/images/flags/German.png")}/>
+        <Image source={require("@/assets/images/flags/German.png")} />
         <Text style={tw`${themeTextStyle} text-2xl font-bold `}>
           {language} {level}
         </Text>
       </View>
       <View style={tw`flex flex-row justify-center items-center gap-5 w-11/12`}>
         <View
-          style={tw`${themeViewStyle}flex flex-col items-start p-5 justify-center mt-10 rounded-lg w-9/19 h-22 border border-gray-200`}
-        ></View>
+          style={tw`${themeViewStyle}flex items-center p-5 flex-row gap-2 justify-center mt-10 rounded-lg w-9/19 h-22 border border-gray-200`}
+        >
+          <Image source={require('@/assets/images/icons/book-white.png')}/>
+          <Text style={tw`${themeTextStyle} text-xl font-bold `}>
+            Vocab List
+          </Text>
+        </View>
         <View
-          style={tw`${themeViewStyle}flex flex-col items-start p-5 justify-center mt-10 rounded-lg w-9/19 h-22 border border-gray-200`}
-        ></View>
+          style={tw`${themeViewStyle}flex p-5 flex-row gap-2 items-center justify-center mt-10 rounded-lg w-9/19 h-22 border border-gray-200`}
+        >
+          <Image source={require('@/assets/images/icons/shield-white.png')}/>
+          <Text style={tw`${themeTextStyle} text-xl font-bold `}>
+            {rank} League
+          </Text>
+        </View>
       </View>
     </SafeAreaView>
   );
