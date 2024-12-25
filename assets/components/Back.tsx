@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Image, TouchableOpacity } from "react-native";
+import { Image, TouchableOpacity } from "react-native";
 import tw from "twrnc";
 import { useNavigation } from "@react-navigation/native";
 import { useColorScheme } from "react-native";

@@ -1,4 +1,4 @@
-import { Text, useColorScheme, Image, View } from "react-native";
+import { Text, Image, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useTheme } from "../../assets/utils/useTheme";
 import { useNavigation } from "@react-navigation/native";
