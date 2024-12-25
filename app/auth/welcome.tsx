@@ -4,6 +4,7 @@ import { useTheme } from "../../assets/utils/useTheme";
 import { useNavigation } from "@react-navigation/native";
 import tw from "twrnc";
 import Button from "../../assets/components/Button";
+import Navigation from "../navigation";
 
 const Welcome = () => {
   const { themeTextStyle, themeViewStyle } = useTheme();

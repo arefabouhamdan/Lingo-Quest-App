@@ -1,5 +1,11 @@
 import React from "react";
-import { View, Text, Image, SafeAreaView } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  SafeAreaView,
+  TouchableOpacity,
+} from "react-native";
 import { useTheme } from "@/assets/utils/useTheme";
 import tw from "twrnc";
 import { useColorScheme } from "react-native";
@@ -32,13 +38,13 @@ const Home = () => {
       <View
         style={tw`${themeViewStyle} flex flex-row items-start p-5 justify-center gap-5 mt-95 rounded-lg w-11/12 h-22 border border-gray-200`}
       >
-        <Streak letter={'S'} played/>
-        <Streak letter={'M'} />
-        <Streak letter={'T'} played/>
-        <Streak letter={'W'} />
-        <Streak letter={'Th'} />
-        <Streak letter={'F'} />
-        <Streak letter={'St'} played/>
+        <Streak letter={"S"} played />
+        <Streak letter={"M"} />
+        <Streak letter={"T"} played />
+        <Streak letter={"W"} />
+        <Streak letter={"Th"} />
+        <Streak letter={"F"} />
+        <Streak letter={"St"} played />
       </View>
       <View
         style={tw`${themeViewStyle}flex flex-row items-center p-5 justify-center gap-5 mt-10 rounded-lg w-11/12 h-22 border border-gray-200`}
@@ -49,19 +55,22 @@ const Home = () => {
         </Text>
       </View>
       <View style={tw`flex flex-row justify-center items-center gap-5 w-11/12`}>
-        <View
+        <TouchableOpacity
           style={tw`${themeViewStyle}flex items-center p-5 flex-row gap-2 justify-center mt-10 rounded-lg w-9/19 h-22 border border-gray-200`}
+          onPress={() => {
+            console.log("Working");
+          }}
         >
           {colorScheme === "light" ? (
             <Image source={require("@/assets/images/icons/book-black.png")} />
           ) : (
             <Image source={require("@/assets/images/icons/book-white.png")} />
           )}
-          <Text style={tw`${themeTextStyle} text-xl font-bold `}>
+          <Text style={tw`${themeTextStyle} text-xl font-bold`}>
             Vocab List
           </Text>
-        </View>
-        <View
+        </TouchableOpacity>
+        <TouchableOpacity
           style={tw`${themeViewStyle}flex p-5 flex-row gap-2 items-center justify-center mt-10 rounded-lg w-9/19 h-22 border border-gray-200`}
         >
           {colorScheme === "light" ? (
@@ -72,7 +81,7 @@ const Home = () => {
           <Text style={tw`${themeTextStyle} text-xl font-bold `}>
             {rank} League
           </Text>
-        </View>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
