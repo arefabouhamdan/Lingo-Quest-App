@@ -15,7 +15,7 @@ const Home = () => {
     <SafeAreaView
       style={tw`${themeViewStyle} flex-1 items-center justify-center`}
     >
-      <Text style={tw`text-black text-2xl font-bold absolute top-15 z-11`}>
+      <Text style={tw`${themeTextStyle} text-2xl font-bold absolute top-15 z-11`}>
         Welcome back {name}!
       </Text>
       <Image
@@ -27,22 +27,22 @@ const Home = () => {
         style={tw`w-48 h-60 mb-5 z-10 absolute top-45`}
       />
       <View
-        style={tw`flex flex-col items-start p-5 justify-center gap-5 mt-95 bg-white rounded-lg w-11/12 h-22 border border-gray-200`}
+        style={tw`${themeViewStyle} flex flex-col items-start p-5 justify-center gap-5 mt-95 rounded-lg w-11/12 h-22 border border-gray-200`}
       ></View>
       <View
-        style={tw`flex flex-row items-center p-5 justify-center gap-5 mt-10 bg-white rounded-lg w-11/12 h-22 border border-gray-200`}
+        style={tw`${themeViewStyle}flex flex-row items-center p-5 justify-center gap-5 mt-10 rounded-lg w-11/12 h-22 border border-gray-200`}
       >
         <Image source={require("@/assets/images/flags/German.png")}/>
-        <Text style={tw`text-2xl font-bold `}>
+        <Text style={tw`${themeTextStyle} text-2xl font-bold `}>
           {language} {level}
         </Text>
       </View>
       <View style={tw`flex flex-row justify-center items-center gap-5 w-11/12`}>
         <View
-          style={tw`flex flex-col items-start p-5 justify-center mt-10 bg-white rounded-lg w-9/19 h-22 border border-gray-200`}
+          style={tw`${themeViewStyle}flex flex-col items-start p-5 justify-center mt-10 rounded-lg w-9/19 h-22 border border-gray-200`}
         ></View>
         <View
-          style={tw`flex flex-col items-start p-5 justify-center mt-10 bg-white rounded-lg w-9/19 h-22 border border-gray-200`}
+          style={tw`${themeViewStyle}flex flex-col items-start p-5 justify-center mt-10 rounded-lg w-9/19 h-22 border border-gray-200`}
         ></View>
       </View>
     </SafeAreaView>
