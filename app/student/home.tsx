@@ -1,13 +1,12 @@
 import React from "react";
-import { View, Text, Image, SafeAreaView, TextInput } from "react-native";
+import { View, Text, Image, SafeAreaView } from "react-native";
 import { useTheme } from "@/assets/utils/useTheme";
-import Button from "@/assets/components/Button";
-import Back from "@/assets/components/Back";
 import tw from "twrnc";
-import Input from "@/assets/components/Input";
+import { useColorScheme } from "react-native";
 
 const Home = () => {
   const { themeViewStyle, themeTextStyle } = useTheme();
+  const colorScheme = useColorScheme();
   const name = "Aref";
   const language = "German";
   const level = "A1";
@@ -44,7 +43,11 @@ const Home = () => {
         <View
           style={tw`${themeViewStyle}flex items-center p-5 flex-row gap-2 justify-center mt-10 rounded-lg w-9/19 h-22 border border-gray-200`}
         >
-          <Image source={require('@/assets/images/icons/book-white.png')}/>
+          {colorScheme === "light" ? (
+            <Image source={require("@/assets/images/icons/book-black.png")} />
+          ) : (
+            <Image source={require("@/assets/images/icons/book-white.png")} />
+          )}
           <Text style={tw`${themeTextStyle} text-xl font-bold `}>
             Vocab List
           </Text>
@@ -52,7 +55,11 @@ const Home = () => {
         <View
           style={tw`${themeViewStyle}flex p-5 flex-row gap-2 items-center justify-center mt-10 rounded-lg w-9/19 h-22 border border-gray-200`}
         >
-          <Image source={require('@/assets/images/icons/shield-white.png')}/>
+          {colorScheme === "light" ? (
+            <Image source={require("@/assets/images/icons/shield-black.png")} />
+          ) : (
+            <Image source={require("@/assets/images/icons/shield-white.png")} />
+          )}
           <Text style={tw`${themeTextStyle} text-xl font-bold `}>
             {rank} League
           </Text>
