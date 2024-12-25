@@ -3,6 +3,7 @@ import { View, Text, Image, SafeAreaView } from "react-native";
 import { useTheme } from "@/assets/utils/useTheme";
 import tw from "twrnc";
 import { useColorScheme } from "react-native";
+import Streak from "@/assets/components/streak";
 
 const Home = () => {
   const { themeViewStyle, themeTextStyle } = useTheme();
@@ -29,8 +30,16 @@ const Home = () => {
         style={tw`w-48 h-60 mb-5 z-10 absolute top-45`}
       />
       <View
-        style={tw`${themeViewStyle} flex flex-col items-start p-5 justify-center gap-5 mt-95 rounded-lg w-11/12 h-22 border border-gray-200`}
-      ></View>
+        style={tw`${themeViewStyle} flex flex-row items-start p-5 justify-center gap-5 mt-95 rounded-lg w-11/12 h-22 border border-gray-200`}
+      >
+        <Streak letter={'S'} played/>
+        <Streak letter={'M'} />
+        <Streak letter={'T'} played/>
+        <Streak letter={'W'} />
+        <Streak letter={'Th'} />
+        <Streak letter={'F'} />
+        <Streak letter={'St'} played/>
+      </View>
       <View
         style={tw`${themeViewStyle}flex flex-row items-center p-5 justify-center gap-5 mt-10 rounded-lg w-11/12 h-22 border border-gray-200`}
       >
