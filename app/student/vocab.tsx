@@ -11,7 +11,7 @@ const vocab = () => {
     <SafeAreaView
       style={tw`${themeViewStyle} flex-1 items-center justify-center`}
     >
-      <Back/>
+      <Back text='Vocab List'/>
       <Word word={'Spielen'}/>
     </SafeAreaView>
   )
