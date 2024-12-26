@@ -1,38 +1,34 @@
 import React from "react";
 import { Image, TouchableOpacity, Text, View } from "react-native";
-import tw from "twrnc";
 import { useNavigation } from "@react-navigation/native";
 import { useColorScheme } from "react-native";
-import { useTheme } from "../utils/useTheme"
+import { useTheme } from "../utils/useTheme";
+import Icon from "react-native-vector-icons/Ionicons";
+import tw from "twrnc";
 
-const Back = ({text = ''}) => {
+const Back = ({ text = "" }) => {
   const navigation = useNavigation();
   const colorScheme = useColorScheme();
-  const {themeTextStyle} = useTheme();
+  const { themeTextStyle } = useTheme();
 
-  return (colorScheme === "light" ? (
-    <TouchableOpacity
-      onPress={() => navigation.goBack()}
-      style={tw`top-5 right-40 z-10 p-3`}
-    >
-      <Image
-        source={require("../../assets/images/icons/back.png")}
-      />
-      <Text>{text}</Text>
-    </TouchableOpacity>
-  ):(
-    <View style={tw`flex justify-start items-start w-full`}>
+  return (
+    <>
       <TouchableOpacity
         onPress={() => navigation.goBack()}
-        style={tw`top-5 z-10 p-3 flex-row justify-between items-center w-full`}
+        style={tw`flex-row p-2 w-full absolute top-0`}
       >
-        <Image
-          source={require("../../assets/images/icons/back-white.png")}
+        <Icon
+          name="chevron-back-outline"
+          color={colorScheme === "light" ? "#000" : "#fff"}
+          size={26}
+          style={tw`justify-self-start`}
         />
-        <Text style={tw`text-xl text-white justify-self-center`}>{text}</Text>
       </TouchableOpacity>
-    </View>
-  ) )
+      <Text style={tw`${themeTextStyle} text-xl font-medium text-center p-2`}>
+        {text}
+      </Text>
+    </>
+  );
 };
 
 export default Back;
