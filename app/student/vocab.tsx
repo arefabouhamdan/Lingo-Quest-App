@@ -3,7 +3,7 @@ import React from 'react'
 import { SafeAreaView } from 'react-native'
 import tw from 'twrnc'
 import { useTheme } from "@/assets/utils/useTheme";
-import Search from '@/assets/components/Search';
+import Word from '@/assets/components/word';
 
 const vocab = () => {
   const {themeViewStyle} = useTheme();
@@ -12,7 +12,7 @@ const vocab = () => {
       style={tw`${themeViewStyle} flex-1 items-center justify-center`}
     >
       <Back/>
-      <Search text={"Search for a word"}/>
+      <Word word={'Spielen'}/>
     </SafeAreaView>
   )
 }
