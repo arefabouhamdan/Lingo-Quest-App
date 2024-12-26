@@ -11,7 +11,6 @@ type SearchProps = {
 
 const Search = ({ text } : SearchProps) => {
   const { themeViewStyle } = useTheme();
-  const colorScheme = useColorScheme();
 
   return (
     <View

@@ -3,7 +3,12 @@ import { View, Text, Image } from "react-native";
 import { useTheme } from "@/assets/utils/useTheme";
 import tw from "twrnc";
 
-const Streak = ({ letter = "", played = false }) => {
+type StreakProps = {
+  letter: string;
+  played: boolean;
+};
+
+const Streak = ({ letter, played } : StreakProps) => {
   const { themeTextStyle } = useTheme();
   return (
     <View style={tw`flex items-center justify-center`}>
