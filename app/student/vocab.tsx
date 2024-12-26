@@ -1,20 +1,36 @@
-import Back from '@/assets/components/Back'
-import React from 'react'
-import { SafeAreaView } from 'react-native'
-import tw from 'twrnc'
+import Back from "@/assets/components/Back";
+import React from "react";
+import { SafeAreaView, FlatList, View } from "react-native";
+import tw from "twrnc";
 import { useTheme } from "@/assets/utils/useTheme";
-import Word from '@/assets/components/word';
+import Word from "@/assets/components/word";
 
 const vocab = () => {
-  const {themeViewStyle} = useTheme();
+  const { themeViewStyle } = useTheme();
   return (
     <SafeAreaView
       style={tw`${themeViewStyle} flex-1 items-center justify-center`}
     >
-      <Back text='Vocab List'/>
-      <Word word={'Spielen'}/>
-    </SafeAreaView>
-  )
-}
+      <Back text="Vocab List" />
 
-export default vocab
+      <FlatList
+        data={[
+          { key: "Devin" },
+          { key: "Dan" },
+          { key: "Dominic" },
+          { key: "Jackson" },
+          { key: "James" },
+          { key: "Joel" },
+          { key: "John" },
+          { key: "Jillian" },
+          { key: "Jimmy" },
+          { key: "Julie" },
+        ]}
+        style={tw`w-full mt-5`}
+        renderItem={({ item }) => <Word word={item.key} />}
+      />
+    </SafeAreaView>
+  );
+};
+
+export default vocab;

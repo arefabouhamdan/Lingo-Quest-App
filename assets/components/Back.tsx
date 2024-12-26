@@ -12,7 +12,7 @@ const Back = ({ text = "" }) => {
   const { themeTextStyle } = useTheme();
 
   return (
-    <>
+    <View style={tw`w-full items-center justify-center absolute top-0 z-10`}>
       <TouchableOpacity
         onPress={() => navigation.goBack()}
         style={tw`flex-row p-2 w-full absolute top-0`}
@@ -27,7 +27,7 @@ const Back = ({ text = "" }) => {
       <Text style={tw`${themeTextStyle} text-xl font-medium text-center p-2`}>
         {text}
       </Text>
-    </>
+    </View>
   );
 };
 
