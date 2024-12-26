@@ -7,6 +7,14 @@ import Word from "@/assets/components/word";
 
 const vocab = () => {
   const { themeViewStyle } = useTheme();
+  const words = [
+    { word: "Katze", translation: "cat" },
+    { word: "Hund", translation: "dog" },
+    { word: "Haus", translation: "house" },
+    { word: "Baum", translation: "tree" },
+    { word: "Buch", translation: "book" },
+  ];
+
   return (
     <SafeAreaView
       style={tw`${themeViewStyle} flex-1 items-center justify-center`}
@@ -14,20 +22,14 @@ const vocab = () => {
       <Back text="Vocab List" />
 
       <FlatList
-        data={[
-          { key: "Devin" },
-          { key: "Dan" },
-          { key: "Dominic" },
-          { key: "Jackson" },
-          { key: "James" },
-          { key: "Joel" },
-          { key: "John" },
-          { key: "Jillian" },
-          { key: "Jimmy" },
-          { key: "Julie" },
-        ]}
+        data={words}
         style={tw`w-full mt-5`}
-        renderItem={({ item }) => <View style={tw`items-center`}><Word word={item.key} /></View>}
+        renderItem={({ item }) => (
+          <View style={tw`items-center`}>
+            {" "}
+            <Word word={item.word} translation={item.translation} />{" "}
+          </View>
+        )}
       />
     </SafeAreaView>
   );
