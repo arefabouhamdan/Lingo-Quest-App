@@ -5,7 +5,11 @@ import { useTheme } from "../utils/useTheme";
 import { useColorScheme } from "react-native";
 import tw from "twrnc";
 
-const Search = ({ text = "" }) => {
+type SearchProps = {
+  text: string;
+};
+
+const Search = ({ text } : SearchProps) => {
   const { themeViewStyle } = useTheme();
   const colorScheme = useColorScheme();
 
