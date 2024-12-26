@@ -27,7 +27,7 @@ const vocab = () => {
           { key: "Julie" },
         ]}
         style={tw`w-full mt-5`}
-        renderItem={({ item }) => <Word word={item.key} />}
+        renderItem={({ item }) => <View style={tw`items-center`}><Word word={item.key} /></View>}
       />
     </SafeAreaView>
   );
