@@ -10,9 +10,11 @@ import { useTheme } from "@/assets/utils/useTheme";
 import tw from "twrnc";
 import { useColorScheme } from "react-native";
 import Streak from "@/assets/components/streak";
+import { useNavigation } from "expo-router";
 
 const Home = () => {
   const { themeViewStyle, themeTextStyle } = useTheme();
+  const navigation = useNavigation();
   const colorScheme = useColorScheme();
   const name = "Aref";
   const language = "German";
@@ -58,7 +60,7 @@ const Home = () => {
         <TouchableOpacity
           style={tw`${themeViewStyle}flex items-center p-5 flex-row gap-2 justify-center mt-10 rounded-lg w-9/19 h-22 border border-gray-200`}
           onPress={() => {
-            console.log("Working");
+            navigation.navigate('Vocab' as never)
           }}
         >
           {colorScheme === "light" ? (

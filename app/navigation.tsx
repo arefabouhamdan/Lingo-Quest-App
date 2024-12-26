@@ -11,10 +11,20 @@ import Home from "./student/home";
 import Levels from "./student/levels";
 import Leaderboard from "./student/leaderboard";
 import Profile from "./student/profile";
+import Vocab from "./student/vocab";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 const loggedIn = true;
+
+const HomeStack = createStackNavigator();
+
+const HomeStackScreen = () => (
+  <HomeStack.Navigator screenOptions={{ headerShown: false }}>
+    <HomeStack.Screen name="Home" component={Home} />
+    <HomeStack.Screen name="Vocab" component={Vocab} />
+  </HomeStack.Navigator>
+);
 
 const Navigation = () => {
   return (
@@ -45,7 +55,7 @@ const Navigation = () => {
         >
           <Tab.Screen
             name="Home"
-            component={Home}
+            component={HomeStackScreen}
             options={{
               tabBarIcon: ({focused}) => (
                 <Icon
