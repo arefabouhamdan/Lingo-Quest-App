@@ -3,7 +3,12 @@ import { Text, TouchableOpacity, View } from "react-native";
 import { useTheme } from "../utils/useTheme";
 import tw from "twrnc";
 
-const Word = ({ word = "" , translation = ""}) => {
+type WordProps = {
+  word: string;
+  translation: string;
+};
+
+const Word = ({ word , translation } : WordProps) => {
   const { themeViewStyle, themeTextStyle } = useTheme();
 
   return (
