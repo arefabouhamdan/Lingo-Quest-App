@@ -6,7 +6,11 @@ import { useTheme } from "../utils/useTheme";
 import Icon from "react-native-vector-icons/Ionicons";
 import tw from "twrnc";
 
-const Back = ({ text = "" }) => {
+type BackProps = {
+  text?: string;
+};
+
+const Back = ({ text } : BackProps) => {
   const navigation = useNavigation();
   const colorScheme = useColorScheme();
   const { themeTextStyle } = useTheme();
