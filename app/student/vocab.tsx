@@ -26,8 +26,7 @@ const vocab = () => {
         style={tw`w-full mt-5`}
         renderItem={({ item }) => (
           <View style={tw`items-center`}>
-            {" "}
-            <Word word={item.word} translation={item.translation} />{" "}
+            <Word word={item.word} translation={item.translation} />
           </View>
         )}
       />
