@@ -18,7 +18,6 @@ const Home = () => {
   const { themeViewStyle, themeTextStyle } = useTheme();
   const navigation = useNavigation();
   const colorScheme = useColorScheme();
-  const borderStyle = tw`${themeViewStyle} flex flex-row items-center p-5 justify-center gap-5 rounded-lg w-11/12 h-22 border border-gray-200`;
   const name = "Aref";
   const rank = "Silver";
   return (
