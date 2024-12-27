@@ -5,7 +5,7 @@ import tw from "twrnc";
 import { useTheme } from "@/assets/utils/useTheme";
 import Word from "@/assets/components/word";
 
-const vocab = () => {
+const Vocab = () => {
   const { themeViewStyle } = useTheme();
   const words = [
     { word: "Katze", translation: "cat" },
@@ -34,4 +34,4 @@ const vocab = () => {
   );
 };
 
-export default vocab;
+export default Vocab;

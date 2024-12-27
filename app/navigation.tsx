@@ -21,7 +21,7 @@ const HomeStack = createStackNavigator();
 
 const HomeStackScreen = () => (
   <HomeStack.Navigator screenOptions={{ headerShown: false }}>
-    <HomeStack.Screen name="Home" component={Home} />
+    <HomeStack.Screen name="HomeMain" component={Home} />
     <HomeStack.Screen name="Vocab" component={Vocab} />
   </HomeStack.Navigator>
 );
