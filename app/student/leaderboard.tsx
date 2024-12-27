@@ -2,6 +2,7 @@ import React from "react";
 import { Text, SafeAreaView, View, Image } from "react-native";
 import { useTheme } from "@/assets/utils/useTheme";
 import { useColorScheme } from "react-native";
+import Rank from "@/assets/components/rank";
 import tw from "twrnc";
 
 const Leaderboard = () => {
@@ -31,7 +32,7 @@ const Leaderboard = () => {
           {rank} League
         </Text>
       </View>
-      
+      <Rank/>
       
     </SafeAreaView>
   );
