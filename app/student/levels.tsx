@@ -6,27 +6,18 @@ import tw from "twrnc";
 
 const Levels = () => {
   const { themeViewStyle } = useTheme();
+  
   const levelsData = [
-    { level: "1", status: "active" },
-    { level: "2", status: "active" },
-    { level: "3", status: "active" },
-    { level: "4", status: "inactive" },
-    { level: "5", status: "inactive" },
-    { level: "6", status: "inactive" },
-    { level: "7", status: "inactive" },
-    { level: "8", status: "inactive" },
-    { level: "9", status: "inactive" },
-    { level: "10", status: "inactive" },
-    { level: "11", status: "inactive" },
-    { level: "12", status: "inactive" },
-    { level: "13", status: "inactive" },
-    { level: "14", status: "inactive" },
-    { level: "15", status: "inactive" },
-    { level: "16", status: "inactive" },
-    { level: "17", status: "inactive" },
-    { level: "18", status: "inactive" },
-    { level: "19", status: "inactive" },
-    { level: "20", status: "inactive" },
+    { level: "1", position: { x: 20, y: -30 }, status: "active" },
+    { level: "2", position: { x: 60, y: -60 }, status: "inactive" },
+    { level: "3", position: { x: 20, y: -90 }, status: "inactive" },
+    { level: "4", position: { x: 60, y: -120 }, status: "inactive" },
+    { level: "5", position: { x: 20, y: -150 }, status: "inactive" },
+    { level: "6", position: { x: 60, y: -180 }, status: "inactive" },
+    { level: "7", position: { x: 20, y: -210 }, status: "inactive" },
+    { level: "8", position: { x: 60, y: -240 }, status: "inactive" },
+    { level: "9", position: { x: 20, y: -270 }, status: "inactive" },
+    { level: "10", position: { x: 60, y: -300 }, status: "inactive" },
   ];
 
   return (
@@ -36,11 +27,11 @@ const Levels = () => {
       <FlatList
         data={levelsData}
         renderItem={({ item }) => (
-          <Level
-            status={item.status}
-            level={item.level}
-          />
+          <Level status={item.status} level={item.level} left={item.position.x} top={item.position.y}/>
         )}
+        keyExtractor={(item) => item.level}
+        inverted = {true}
+        style={tw`w-full`}
       />
     </SafeAreaView>
   );

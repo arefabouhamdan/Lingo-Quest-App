@@ -16,7 +16,7 @@ const Tutor = () => {
       <View style={tw`flex flex-col items-center my-30`}>
         <Image
           source={require("@/assets/images/game/guide-no-tutor.png")}
-          style={tw`w-32 h-50 mb-5`}
+          style={tw`w-48 h-50 mb-5`}
         />
         <View style={tw`flex items-center gap-5`}>
           <View>
@@ -26,9 +26,7 @@ const Tutor = () => {
             <Input placeholder="Enter your username" />
           </View>
           <View>
-            <Text style={tw`${themeTextStyle} text-xl font-bold`}>
-              Email
-            </Text>
+            <Text style={tw`${themeTextStyle} text-xl font-bold`}>Email</Text>
             <Input placeholder="Enter your email" />
           </View>
           <View>
@@ -43,7 +41,12 @@ const Tutor = () => {
             </Text>
             <Input placeholder="Enter your password" />
           </View>
-          <Button text="Continue" press="Avatar" type="submit" />
+          <Button
+            text="Continue"
+            press="Avatar"
+            type="submit"
+            image={false}
+          />
         </View>
       </View>
     </SafeAreaView>

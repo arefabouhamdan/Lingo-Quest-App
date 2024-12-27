@@ -41,11 +41,11 @@ const Home = () => {
         style={tw`${themeViewStyle} flex flex-row items-start p-5 justify-center gap-5 mt-95 rounded-lg w-11/12 h-22 border border-gray-200`}
       >
         <Streak letter={"S"} played />
-        <Streak letter={"M"} />
+        <Streak letter={"M"} played={false}/>
         <Streak letter={"T"} played />
-        <Streak letter={"W"} />
-        <Streak letter={"Th"} />
-        <Streak letter={"F"} />
+        <Streak letter={"W"} played={false}/>
+        <Streak letter={"Th"} played={false}/>
+        <Streak letter={"F"} played={false}/>
         <Streak letter={"St"} played />
       </View>
       <View
@@ -60,7 +60,7 @@ const Home = () => {
         <TouchableOpacity
           style={tw`${themeViewStyle}flex items-center p-5 flex-row gap-2 justify-center mt-10 rounded-lg w-9/19 h-22 border border-gray-200`}
           onPress={() => {
-            navigation.navigate('Vocab' as never)
+            navigation.navigate("Vocab" as never);
           }}
         >
           {colorScheme === "light" ? (
