@@ -17,7 +17,7 @@ const Home = () => {
   const { themeViewStyle, themeTextStyle } = useTheme();
   const navigation = useNavigation();
   const colorScheme = useColorScheme();
-  const borderStyle = tw`${themeViewStyle} flex flex-row items-start p-5 justify-center gap-5 mt-95 rounded-lg w-11/12 h-22 border border-gray-200`;
+  const borderStyle = tw`${themeViewStyle} flex flex-row items-center p-5 justify-center gap-5 rounded-lg w-11/12 h-22 border border-gray-200`;
   const name = "Aref";
   const rank = "Silver";
   return (
@@ -37,6 +37,7 @@ const Home = () => {
         source={require("@/assets/images/game/guide-hello.png")}
         style={tw`w-48 h-60 mb-5 z-10 absolute top-45`}
       />
+      <View style={tw`mt-95`}></View>
       <View
         style={borderStyle}
       >

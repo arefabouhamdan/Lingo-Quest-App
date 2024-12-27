@@ -2,11 +2,12 @@ import React from "react";
 import { SafeAreaView, FlatList } from "react-native";
 import { useTheme } from "@/assets/utils/useTheme";
 import Level from "@/assets/components/level";
+import LanguageBar from "@/assets/components/languageBar";
 import tw from "twrnc";
 
 const Levels = () => {
   const { themeViewStyle } = useTheme();
-  
+
   const levelsData = [
     { level: "1", position: { x: 20, y: -30 }, status: "active" },
     { level: "2", position: { x: 60, y: -60 }, status: "inactive" },
@@ -24,14 +25,19 @@ const Levels = () => {
     <SafeAreaView
       style={tw`${themeViewStyle} flex-1 items-center justify-center`}
     >
+      <LanguageBar />
       <FlatList
         data={levelsData}
         renderItem={({ item }) => (
-          <Level status={item.status} level={item.level} left={item.position.x} top={item.position.y}/>
+          <Level
+            status={item.status}
+            level={item.level}
+            left={item.position.x}
+            top={item.position.y}
+          />
         )}
-        keyExtractor={(item) => item.level}
-        inverted = {true}
-        style={tw`w-full`}
+        inverted={true}
+        style={tw`w-full flex-1`}
       />
     </SafeAreaView>
   );

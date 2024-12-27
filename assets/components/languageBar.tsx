@@ -8,8 +8,8 @@ const LanguageBar = () => {
   const language = "German";
   const level = "A1";
 
-  const borderStyle = tw`${themeViewStyle} flex flex-row items-start p-5 justify-center gap-5 mt-95 rounded-lg w-11/12 h-22 border border-gray-200`;
-  
+  const borderStyle = tw`${themeViewStyle} flex flex-row items-center p-5 justify-center gap-5 mt-10 rounded-lg w-11/12 h-22 border border-gray-200`;
+
   return (
     <View style={borderStyle}>
       <Image source={require("@/assets/images/flags/German.png")} />
