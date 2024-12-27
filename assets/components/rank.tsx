@@ -10,7 +10,7 @@ const Rank = () => {
   let third = "Rony";
 
   return (
-    <View>
+    <View style={tw`mt-10`}>
       <View style={tw`flex flex-row items-end justify-center gap-3.5`}>
         <View style={tw`flex flex-col items-center justify-center gap-1`}>
           <Text style={tw`${themeTextStyle} text-lg`}>{second}</Text>
