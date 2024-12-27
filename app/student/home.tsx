@@ -12,6 +12,7 @@ import { useNavigation } from "expo-router";
 import Streak from "@/assets/components/streak";
 import { useTheme } from "@/assets/utils/useTheme";
 import LanguageBar from "@/assets/components/languageBar";
+import StreakBar from "@/assets/components/streakBar";
 
 const Home = () => {
   const { themeViewStyle, themeTextStyle } = useTheme();
@@ -38,17 +39,7 @@ const Home = () => {
         style={tw`w-48 h-60 mb-5 z-10 absolute top-45`}
       />
       <View style={tw`mt-95`}></View>
-      <View
-        style={borderStyle}
-      >
-        <Streak letter={"S"} played />
-        <Streak letter={"M"} played={false}/>
-        <Streak letter={"T"} played />
-        <Streak letter={"W"} played={false}/>
-        <Streak letter={"Th"} played={false}/>
-        <Streak letter={"F"} played={false}/>
-        <Streak letter={"St"} played />
-      </View>
+      <StreakBar />
 
       <LanguageBar />
       
