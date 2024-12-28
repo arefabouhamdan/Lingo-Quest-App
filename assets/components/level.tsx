@@ -6,20 +6,19 @@ type LevelProps = {
   status?: string;
   level?: string;
   left?: number;
-  top?: number;
 };
 
-const Level = ({ status, level, left, top }: LevelProps) => {
+const Level = ({ status, level, left }: LevelProps) => {
   const backgroundColor = status == "active" ? "bg-sky-400" : "bg-gray-300";
-  const postionStyle = 'absolute left-' + left + ' top-' + top;
+  const positionStyle = 'left-' + left + ' top-' + top;
 
   return (
     <TouchableOpacity
       disabled={status == 'inactive'}
-      style={tw` items-center justify-center mt-10`}
+      style={tw`mt-20 mb-5`}
     >
       <View
-        style={tw`${backgroundColor} ${postionStyle} w-20 h-20 rounded-full items-center justify-center`}
+        style={tw`${backgroundColor} ${positionStyle} w-20 h-20 rounded-full items-center justify-center`}
       >
         <Text style={tw`text-white font-bold text-3xl`}>{level}</Text>
       </View>
