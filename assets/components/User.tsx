@@ -13,10 +13,10 @@ const User = ({ name, info, avatar }: UserProps) => {
   const { themeTextStyle } = useTheme();
 
   return (
-    <TouchableOpacity style={tw`flex flex-row items-center gap-5 p-4 rounded border border-gray-200 mb-4`}>
+    <TouchableOpacity style={tw`flex flex-row items-center gap-5 p-4 rounded border border-gray-200 mb-4 h-20`}>
       <Image
         source={require(`@/assets/images/character/Aref.png`)}
-        style={tw`w-9 h-14`}
+        style={tw`w-7 h-10`}
       />
       <View>
           <Text style={tw`${themeTextStyle} text-xl`}>{name}</Text>
