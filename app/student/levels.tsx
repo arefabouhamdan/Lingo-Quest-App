@@ -9,16 +9,17 @@ const Levels = () => {
   const { themeViewStyle } = useTheme();
 
   const levelsData = [
-    { level: "1", position: 20, status: "active" },
-    { level: "2", position: 60, status: "inactive" },
-    { level: "3", position: 20, status: "inactive" },
-    { level: "4", position: 60, status: "inactive" },
-    { level: "5", position: 20, status: "inactive" },
-    { level: "6", position: 60, status: "inactive" },
-    { level: "7", position: 20, status: "inactive" },
-    { level: "8", position: 60, status: "inactive" },
-    { level: "9", position: 20, status: "inactive" },
-    { level: "10", position: 60, status: "inactive" },
+    { level: "1", position: 20, status: "active", type: "level" },
+    { level: "2", position: 60, status: "inactive", type: "level" },
+    { level: "3", position: 20, status: "inactive", type: "level" },
+    { level: "4", position: 60, status: "inactive", type: "level" },
+    { level: "5", position: 20, status: "inactive", type: "level" },
+    { level: "Test A1", position: 20, status: "inactive", type: "test" },
+    { level: "6", position: 60, status: "inactive", type: "level" },
+    { level: "7", position: 20, status: "inactive", type: "level" },
+    { level: "8", position: 60, status: "inactive", type: "level" },
+    { level: "9", position: 20, status: "inactive", type: "level" },
+    { level: "10", position: 60, status: "inactive", type: "level" },
     { level: "11", position: 60, status: "hidden" },
   ];
 
@@ -26,16 +27,12 @@ const Levels = () => {
     <SafeAreaView
       style={tw`${themeViewStyle} flex-1 items-center justify-center`}
     >
-      <LanguageBar style={'absolute top-0 z-10'}/>
+      <LanguageBar style={"absolute top-0 z-10"} />
 
       <FlatList
         data={levelsData}
         renderItem={({ item }) => (
-          <Level
-            status={item.status}
-            level={item.level}
-            left={item.position}
-          />
+          <Level status={item.status} level={item.level} left={item.position} type={item.type} />
         )}
         inverted={true}
         style={tw`flex-1 w-full`}
