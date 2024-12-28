@@ -19,6 +19,7 @@ const Levels = () => {
     { level: "8", position: 60, status: "inactive" },
     { level: "9", position: 20, status: "inactive" },
     { level: "10", position: 60, status: "inactive" },
+    { level: "11", position: 60, status: "hidden" },
   ];
 
   return (

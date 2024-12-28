@@ -10,7 +10,8 @@ type LevelProps = {
 
 const Level = ({ status, level, left }: LevelProps) => {
   const backgroundColor = status == "active" ? "bg-sky-400" : "bg-gray-300";
-  const positionStyle = 'left-' + left + ' top-' + top;
+  const positionStyle = 'left-' + left ;
+  const hidden = status == 'hidden' ? 'hidden' : '';
 
   return (
     <TouchableOpacity
@@ -18,7 +19,7 @@ const Level = ({ status, level, left }: LevelProps) => {
       style={tw`mt-20 mb-5`}
     >
       <View
-        style={tw`${backgroundColor} ${positionStyle} w-20 h-20 rounded-full items-center justify-center`}
+        style={tw`${backgroundColor} ${positionStyle} ${hidden} w-20 h-20 rounded-full items-center justify-center`}
       >
         <Text style={tw`text-white font-bold text-3xl`}>{level}</Text>
       </View>
