@@ -6,8 +6,8 @@ import tw from "twrnc";
 const LeaderList = () => {
   const data = [
     { name: "Aref", info: "12000", key: "1" },
-    { name: "Ali", info: "10000", key: "2" },
-    { name: "Mehdi", info: "9000", key: "3" },
+    { name: "Oday", info: "10000", key: "2" },
+    { name: "Rony", info: "9000", key: "3" },
     { name: "Amir", info: "8000", key: "4" },
     { name: "Reza", info: "7000", key: "5" },
     { name: "Hossein", info: "6000", key: "6" },
