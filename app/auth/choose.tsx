@@ -24,8 +24,8 @@ const Choose = () => {
           <Text style={tw`${themeTextStyle} my-auto text-xl font-bold`}>
             Choose your role
           </Text>
-          <Button text="Student" press="Student" />
-          <Button text="Tutor" press="Tutor" />
+          <Button text="Student" press="Student" type="submit" image={false} />
+          <Button text="Tutor" press="Tutor" type="submit" image={false}/>
         </View>
       </View>
     </SafeAreaView>

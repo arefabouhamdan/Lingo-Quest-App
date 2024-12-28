@@ -4,7 +4,6 @@ import { useTheme } from "../../assets/utils/useTheme";
 import { useNavigation } from "@react-navigation/native";
 import tw from "twrnc";
 import Button from "../../assets/components/Button";
-import Navigation from "../navigation";
 
 const Welcome = () => {
   const { themeTextStyle, themeViewStyle } = useTheme();
@@ -20,8 +19,8 @@ const Welcome = () => {
           style={tw`w-48 h-60 mb-5`}
         />
         <View>
-          <Button text="Login" press="Login"/>
-          <Button image text="Login with Google"/>
+          <Button text="Login" press="Login" type="submit" image={false}/>
+          <Button text="Login with Google" press="" type="submit" image={true}/>
         </View>
       </View>
       <Text onPress={() => navigation.navigate('Choose' as never)} style={tw`${themeTextStyle} my-auto`}>

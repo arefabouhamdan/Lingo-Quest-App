@@ -2,7 +2,6 @@ import React from "react";
 import { TextInput, View } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import { useTheme } from "../utils/useTheme";
-import { useColorScheme } from "react-native";
 import tw from "twrnc";
 
 type SearchProps = {

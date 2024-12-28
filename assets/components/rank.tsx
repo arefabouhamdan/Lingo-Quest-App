@@ -4,7 +4,7 @@ import { useTheme } from "@/assets/utils/useTheme";
 import tw from "twrnc";
 
 const Rank = () => {
-  const { themeViewStyle, themeTextStyle } = useTheme();
+  const { themeTextStyle } = useTheme();
   let first = "Aref";
   let second = "Oday";
   let third = "Rony";

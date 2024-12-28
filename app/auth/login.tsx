@@ -31,7 +31,7 @@ const Login = () => {
             </Text>
             <Input placeholder="Enter your password" />
           </View>
-          <Button text="Login" press="Login" type="submit" />
+          <Button text="Login" press="Login" type="submit" image={false}/>
         </View>
       </View>
       <Text style={tw`${themeTextStyle} my-auto`}>
