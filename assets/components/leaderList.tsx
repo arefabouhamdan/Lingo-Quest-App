@@ -24,7 +24,7 @@ const LeaderList = () => {
         renderItem={({ item }) => (
           <User name={item.name} avatar={item.name} info={item.info} />
         )}
-        style={tw`p-5 `}
+        style={tw`p-3`}
       />
     </View>
   );

@@ -13,7 +13,7 @@ const User = ({ name, info, avatar }: UserProps) => {
   const { themeTextStyle } = useTheme();
 
   return (
-    <View style={tw`flex flex-row items-center gap-5 p-5 rounded border border-gray-200 mb-5`}>
+    <View style={tw`flex flex-row items-center gap-5 p-4 rounded border border-gray-200 mb-4`}>
       <Image
         source={require(`@/assets/images/character/Aref.png`)}
         style={tw`w-9 h-14`}
