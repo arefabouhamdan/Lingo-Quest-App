@@ -1,16 +1,18 @@
 import React from "react";
-import { SafeAreaView, FlatList } from "react-native";
+import { SafeAreaView, FlatList, TouchableOpacity, Text } from "react-native";
 import { useTheme } from "@/assets/utils/useTheme";
 import Level from "@/assets/components/level";
 import LanguageBar from "@/assets/components/languageBar";
+import { useNavigation } from "expo-router";
 import tw from "twrnc";
 
 const Levels = () => {
+  const navigation = useNavigation();
   const { themeViewStyle } = useTheme();
 
   const levelsData = [
     { level: "1", position: 20, status: "active", type: "level" },
-    { level: "2", position: 60, status: "inactive", type: "level" },
+    { level: "2", position: 60, status: "active", type: "level" },
     { level: "3", position: 20, status: "inactive", type: "level" },
     { level: "4", position: 60, status: "inactive", type: "level" },
     { level: "5", position: 20, status: "inactive", type: "level" },
@@ -37,6 +39,7 @@ const Levels = () => {
         inverted={true}
         style={tw`flex-1 w-full`}
       />
+    
     </SafeAreaView>
   );
 };

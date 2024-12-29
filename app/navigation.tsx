@@ -12,6 +12,8 @@ import Levels from "./student/levels";
 import Leaderboard from "./student/leaderboard";
 import Profile from "./student/profile";
 import Vocab from "./student/vocab";
+import Level1 from "./levels/Level1";
+import Level2 from "./levels/Level2";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -19,12 +21,26 @@ const loggedIn = true;
 
 const HomeStack = createStackNavigator();
 
-const HomeStackScreen = () => (
-  <HomeStack.Navigator screenOptions={{ headerShown: false }}>
-    <HomeStack.Screen name="HomeMain" component={Home} />
-    <HomeStack.Screen name="Vocab" component={Vocab} />
-  </HomeStack.Navigator>
-);
+const HomeStackScreen = () => {
+  return (
+    <HomeStack.Navigator screenOptions={{ headerShown: false }}>
+      <HomeStack.Screen name="HomeMain" component={Home} />
+      <HomeStack.Screen name="Vocab" component={Vocab} />
+    </HomeStack.Navigator>
+  );
+};
+
+const LevelStack = createStackNavigator();
+
+const LevelStackScreen = () => {
+  return (
+    <LevelStack.Navigator screenOptions={{ headerShown: false }}>
+      <LevelStack.Screen name="Levels" component={Levels} />
+      <LevelStack.Screen name="Level1" component={Level1} />
+      <LevelStack.Screen name="Level2" component={Level2} />
+    </LevelStack.Navigator>
+  );
+};
 
 const Navigation = () => {
   return (
@@ -57,7 +73,7 @@ const Navigation = () => {
             name="Home"
             component={HomeStackScreen}
             options={{
-              tabBarIcon: ({focused}) => (
+              tabBarIcon: ({ focused }) => (
                 <Icon
                   name="home-outline"
                   color={"white"}
@@ -74,15 +90,20 @@ const Navigation = () => {
           />
           <Tab.Screen
             name="Levels"
-            component={Levels}
+            component={LevelStackScreen}
             options={{
-              tabBarIcon: ({focused}) => (
-                <Icon name="bonfire-outline" color={"white"} size={26} style={{
-                  color: focused ? "#4FC0E8" : "white",
-                  backgroundColor: focused ? "white" : "#4FC0E8",
-                  borderRadius: 25,
-                  padding: 10,
-                }}/>
+              tabBarIcon: ({ focused }) => (
+                <Icon
+                  name="bonfire-outline"
+                  color={"white"}
+                  size={26}
+                  style={{
+                    color: focused ? "#4FC0E8" : "white",
+                    backgroundColor: focused ? "white" : "#4FC0E8",
+                    borderRadius: 25,
+                    padding: 10,
+                  }}
+                />
               ),
             }}
           />
@@ -90,13 +111,18 @@ const Navigation = () => {
             name="Leaderboard"
             component={Leaderboard}
             options={{
-              tabBarIcon: ({focused}) => (
-                <Icon name="trophy-outline" color={"white"} size={26} style={{
-                  color: focused ? "#4FC0E8" : "white",
-                  backgroundColor: focused ? "white" : "#4FC0E8",
-                  borderRadius: 25,
-                  padding: 10,
-                }}/>
+              tabBarIcon: ({ focused }) => (
+                <Icon
+                  name="trophy-outline"
+                  color={"white"}
+                  size={26}
+                  style={{
+                    color: focused ? "#4FC0E8" : "white",
+                    backgroundColor: focused ? "white" : "#4FC0E8",
+                    borderRadius: 25,
+                    padding: 10,
+                  }}
+                />
               ),
             }}
           />
@@ -104,13 +130,18 @@ const Navigation = () => {
             name="Profile"
             component={Profile}
             options={{
-              tabBarIcon: ({focused}) => (
-                <Icon name="person-outline" color={"white"} size={26} style={{
-                  color: focused ? "#4FC0E8" : "white",
-                  backgroundColor: focused ? "white" : "#4FC0E8",
-                  borderRadius: 25,
-                  padding: 10,
-                }}/>
+              tabBarIcon: ({ focused }) => (
+                <Icon
+                  name="person-outline"
+                  color={"white"}
+                  size={26}
+                  style={{
+                    color: focused ? "#4FC0E8" : "white",
+                    backgroundColor: focused ? "white" : "#4FC0E8",
+                    borderRadius: 25,
+                    padding: 10,
+                  }}
+                />
               ),
             }}
           />
