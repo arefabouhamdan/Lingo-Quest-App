@@ -15,7 +15,7 @@ import Vocab from "./student/vocab";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
-const loggedIn = false;
+const loggedIn = true;
 
 const HomeStack = createStackNavigator();
 
