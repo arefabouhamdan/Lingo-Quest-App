@@ -13,7 +13,7 @@ const Streak = ({ letter, played } : StreakProps) => {
   return (
     <View style={tw`flex items-center justify-center`}>
       {played ? (
-        <Image source={require("@/assets/images/icons/fire.png")} />
+        <Image source={require("@/assets/images/icons/fire.png")} style={tw`w-8 h-10`}/>
       ) : (
         <View style={tw`bg-sky-400 rounded-10 p-4`}></View>
       )}
