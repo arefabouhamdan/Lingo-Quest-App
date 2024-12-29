@@ -10,6 +10,8 @@ const Profile = () => {
     name: "Aref",
     id: "1234",
     joined: "2021-09-01",
+    streak: '20',
+    xp: '12000'
   };
   const friends = ["Aref", "Bilal", "Hassan", "Ali"];
   return (
@@ -53,6 +55,29 @@ const Profile = () => {
       </View>
       <View style={tw`flex items-center my-5`}>
         <Button text="Add Friend" image="add-outline" press="" type="submit" />
+      </View>
+      <View style={tw`pl-3`}>
+        <Text>
+          Stats
+        </Text>
+        <View>
+          <Text>
+            Day Streak
+          </Text>
+          <Image source={require("@/assets/images/icons/fire.png")} />
+          <Text>
+            {user.streak} days
+          </Text>
+        </View>
+        <View>
+          <Text>
+            Total XP
+          </Text>
+          <Image source={require("@/assets/images/icons/bolt.png")} />
+          <Text>
+            {user.xp} XP
+          </Text>
+        </View>
       </View>
     </SafeAreaView>
   );
