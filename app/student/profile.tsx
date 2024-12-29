@@ -15,21 +15,20 @@ const Profile = () => {
     <SafeAreaView
       style={tw`${themeViewStyle} flex-1`}
     >
-      <View>
-        <Image source={require('@/assets/images/character/Aref.png')}/>
+      <View style={tw`flex flex-col items-center justify-end bg-sky-500 w-full h-1/3`}>
+        <Image source={require('@/assets/images/character/Aref.png')} style={tw`h-55 w-40`}/>
       </View>
-      <Text>{user.name}</Text>
-      <View>
-        <View>
-          <Text>{user.joined}</Text>
-          <Text>ID {user.id}</Text>
+      <Text style={tw`${themeTextStyle} text-2xl font-bold text-left mt-5 pl-3`}>{user.name}</Text>
+      <View style={tw`flex flex-row justify-between items-center w-full`}>
+        <View style={tw`flex flex-col pl-3`}>
+          <Text style={tw`${themeTextStyle} text-lg font-medium mt-5`}>{user.joined}</Text>
+          <Text style={tw`${themeTextStyle} text-lg font-medium mt-2`}>ID {user.id}</Text>
         </View>
-        <View>
-          <Text>Language <Image source={require('@/assets/images/flags/German.png')}/></Text>
-          <Text>Friends {friends.length}</Text>
+        <View style={tw`flex flex-col pr-3`}>
+          <Text style={tw`${themeTextStyle} text-lg font-medium mt-5`}>Language <Image style={tw`h-4 w-6`} source={require('@/assets/images/flags/German.png')}/></Text>
+          <Text style={tw`${themeTextStyle} text-lg font-medium mt-2 text-right`}>Friends {friends.length}</Text>
         </View>
       </View>
-
 
     </SafeAreaView>
   );
