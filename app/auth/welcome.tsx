@@ -19,8 +19,8 @@ const Welcome = () => {
           style={tw`w-48 h-60 mb-5`}
         />
         <View>
-          <Button text="Login" press="Login" type="login" image={false}/>
-          <Button text="Login with Google" press="" type="login" image={true}/>
+          <Button text="Login" press="Login" type="login" image=''/>
+          <Button text="Login with Google" press="" type="login" image='logo-google'/>
         </View>
       </View>
       <Text onPress={() => navigation.navigate('Choose' as never)} style={tw`${themeTextStyle} my-auto`}>
