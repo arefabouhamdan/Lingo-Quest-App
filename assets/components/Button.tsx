@@ -15,13 +15,13 @@ const Button = ({ image, text, press, type }: ButtonProps) => {
   const colorScheme = useColorScheme();
   const navigation = useNavigation();
   const loginStyle = "w-60";
-  const submitStyle = "w-42";
+  const submitStyle = "w-52";
 
   return (
     <TouchableOpacity
       style={tw` ${
         type == "submit" ? submitStyle : loginStyle
-      } bg-sky-400 rounded-2 h-11 mt-5 flex flex-row justify-center items-center gap-5`}
+      } bg-sky-400 rounded-2 h-14 mt-5 flex flex-row justify-center items-center gap-5`}
       onPress={() => navigation.navigate(press as never)}
     >
       {image && (
