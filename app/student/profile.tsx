@@ -51,7 +51,7 @@ const Profile = () => {
           </Text>
         </View>
       </View>
-      <View>
+      <View style={tw`flex items-center my-5`}>
         <Button text="Add Friend" image="add-outline" press="" type="submit" />
       </View>
     </SafeAreaView>
