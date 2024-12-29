@@ -57,12 +57,12 @@ const Profile = () => {
         <Button text="Add Friend" image="add-outline" press="" type="submit" />
       </View>
 
-      <Text style={tw`${themeTextStyle} text-xl font-bold mt-2 text-left pl-3`}>
+      <Text style={tw`${themeTextStyle} text-xl font-bold mb-2 text-left pl-3`}>
         Stats
       </Text>
-      <View style={tw`flex flex-row gap-2 items-center px-3 justify-center`}>
+      <View style={tw`flex flex-row gap-2 items-center px-2 justify-center`}>
         <View
-          style={tw`flex items-center w-1/2.1 gap-2 border-2 border-b-4 rounded-2`}
+          style={tw`flex items-center w-1/2.1 gap-2 border-2 border-b-4 rounded-2 border-gray-300`}
         >
           <Text style={tw`${themeTextStyle} text-xl my-2 font-medium`}>
             Day Streak
@@ -76,7 +76,7 @@ const Profile = () => {
           </Text>
         </View>
         <View
-          style={tw`flex items-center w-1/2.1 gap-2 border-2 border-b-4 rounded-2`}
+          style={tw`flex items-center w-1/2.1 gap-2 border-2 border-b-4 rounded-2 border-gray-300`}
         >
           <Text style={tw`${themeTextStyle} text-xl my-2 font-medium`}>
             Total XP
