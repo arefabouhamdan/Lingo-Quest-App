@@ -10,8 +10,8 @@ const Profile = () => {
     name: "Aref",
     id: "1234",
     joined: "2021-09-01",
-    streak: '20',
-    xp: '12000'
+    streak: "20",
+    xp: "12000",
   };
   const friends = ["Aref", "Bilal", "Hassan", "Ali"];
   return (
@@ -56,27 +56,36 @@ const Profile = () => {
       <View style={tw`flex items-center my-5`}>
         <Button text="Add Friend" image="add-outline" press="" type="submit" />
       </View>
-      <View style={tw`pl-3`}>
-        <Text>
-          Stats
-        </Text>
-        <View>
-          <Text>
+
+      <Text style={tw`${themeTextStyle} text-xl font-bold mt-2 text-left pl-3`}>
+        Stats
+      </Text>
+      <View style={tw`flex flex-row gap-2 items-center px-3 justify-center`}>
+        <View
+          style={tw`flex items-center w-1/2.1 gap-2 border-2 border-b-4 rounded-2`}
+        >
+          <Text style={tw`${themeTextStyle} text-xl my-2 font-medium`}>
             Day Streak
           </Text>
-          <Image source={require("@/assets/images/icons/fire.png")} />
-          <Text>
+          <Image
+            source={require("@/assets/images/icons/fire.png")}
+            style={tw`h-33 w-27`}
+          />
+          <Text style={tw`${themeTextStyle} text-xl my-2`}>
             {user.streak} days
           </Text>
         </View>
-        <View>
-          <Text>
+        <View
+          style={tw`flex items-center w-1/2.1 gap-2 border-2 border-b-4 rounded-2`}
+        >
+          <Text style={tw`${themeTextStyle} text-xl my-2 font-medium`}>
             Total XP
           </Text>
-          <Image source={require("@/assets/images/icons/bolt.png")} />
-          <Text>
-            {user.xp} XP
-          </Text>
+          <Image
+            source={require("@/assets/images/icons/bolt.png")}
+            style={tw`h-33 w-25`}
+          />
+          <Text style={tw`${themeTextStyle} text-xl my-2`}>{user.xp} XP</Text>
         </View>
       </View>
     </SafeAreaView>
