@@ -15,6 +15,8 @@ import Vocab from "./student/vocab";
 import Level1 from "./levels/Level1";
 import Level2 from "./levels/Level2";
 
+const User = { type: "student" };
+
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 const loggedIn = true;
@@ -46,106 +48,172 @@ const Navigation = () => {
   return (
     <>
       {loggedIn ? (
-        <Tab.Navigator
-          screenOptions={{
-            headerShown: false,
-            tabBarStyle: {
-              backgroundColor: "#4FC0E8",
-              borderBottomWidth: 5,
-              borderColor: "#3AADD9",
-              height: 60,
-            },
-            tabBarLabelStyle: {
-              color: "#4FC0E8",
-            },
-            tabBarShowLabel: false,
-            tabBarIconStyle: {
-              width: 50,
-              height: 50,
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              borderRadius: 50,
-            },
-          }}
-        >
-          <Tab.Screen
-            name="Home"
-            component={HomeStackScreen}
-            options={{
-              tabBarIcon: ({ focused }) => (
-                <Icon
-                  name="home-outline"
-                  color={"white"}
-                  size={26}
-                  style={{
-                    color: focused ? "#4FC0E8" : "white",
-                    backgroundColor: focused ? "white" : "#4FC0E8",
-                    borderRadius: 25,
-                    padding: 10,
-                  }}
-                />
-              ),
+        (User.type == "student" && (
+          <Tab.Navigator
+            screenOptions={{
+              headerShown: false,
+              tabBarStyle: {
+                backgroundColor: "#4FC0E8",
+                borderBottomWidth: 5,
+                borderColor: "#3AADD9",
+                height: 60,
+              },
+              tabBarLabelStyle: {
+                color: "#4FC0E8",
+              },
+              tabBarShowLabel: false,
+              tabBarIconStyle: {
+                width: 50,
+                height: 50,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                borderRadius: 50,
+              },
             }}
-          />
-          <Tab.Screen
-            name="Levels"
-            component={LevelStackScreen}
-            options={{
-              tabBarIcon: ({ focused }) => (
-                <Icon
-                  name="bonfire-outline"
-                  color={"white"}
-                  size={26}
-                  style={{
-                    color: focused ? "#4FC0E8" : "white",
-                    backgroundColor: focused ? "white" : "#4FC0E8",
-                    borderRadius: 25,
-                    padding: 10,
-                  }}
-                />
-              ),
+          >
+            <Tab.Screen
+              name="Home"
+              component={HomeStackScreen}
+              options={{
+                tabBarIcon: ({ focused }) => (
+                  <Icon
+                    name="home-outline"
+                    color={"white"}
+                    size={26}
+                    style={{
+                      color: focused ? "#4FC0E8" : "white",
+                      backgroundColor: focused ? "white" : "#4FC0E8",
+                      borderRadius: 25,
+                      padding: 10,
+                    }}
+                  />
+                ),
+              }}
+            />
+            <Tab.Screen
+              name="Levels"
+              component={LevelStackScreen}
+              options={{
+                tabBarIcon: ({ focused }) => (
+                  <Icon
+                    name="bonfire-outline"
+                    color={"white"}
+                    size={26}
+                    style={{
+                      color: focused ? "#4FC0E8" : "white",
+                      backgroundColor: focused ? "white" : "#4FC0E8",
+                      borderRadius: 25,
+                      padding: 10,
+                    }}
+                  />
+                ),
+              }}
+            />
+            <Tab.Screen
+              name="Leaderboard"
+              component={Leaderboard}
+              options={{
+                tabBarIcon: ({ focused }) => (
+                  <Icon
+                    name="trophy-outline"
+                    color={"white"}
+                    size={26}
+                    style={{
+                      color: focused ? "#4FC0E8" : "white",
+                      backgroundColor: focused ? "white" : "#4FC0E8",
+                      borderRadius: 25,
+                      padding: 10,
+                    }}
+                  />
+                ),
+              }}
+            />
+            <Tab.Screen
+              name="Profile"
+              component={Profile}
+              options={{
+                tabBarIcon: ({ focused }) => (
+                  <Icon
+                    name="person-outline"
+                    color={"white"}
+                    size={26}
+                    style={{
+                      color: focused ? "#4FC0E8" : "white",
+                      backgroundColor: focused ? "white" : "#4FC0E8",
+                      borderRadius: 25,
+                      padding: 10,
+                    }}
+                  />
+                ),
+              }}
+            />
+          </Tab.Navigator>
+        )) ||
+        (User.type == "tutor" && (
+          <Tab.Navigator
+            screenOptions={{
+              headerShown: false,
+              tabBarStyle: {
+                backgroundColor: "#4FC0E8",
+                borderBottomWidth: 5,
+                borderColor: "#3AADD9",
+                height: 60,
+              },
+              tabBarLabelStyle: {
+                color: "#4FC0E8",
+              },
+              tabBarShowLabel: false,
+              tabBarIconStyle: {
+                width: 50,
+                height: 50,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                borderRadius: 50,
+              },
             }}
-          />
-          <Tab.Screen
-            name="Leaderboard"
-            component={Leaderboard}
-            options={{
-              tabBarIcon: ({ focused }) => (
-                <Icon
-                  name="trophy-outline"
-                  color={"white"}
-                  size={26}
-                  style={{
-                    color: focused ? "#4FC0E8" : "white",
-                    backgroundColor: focused ? "white" : "#4FC0E8",
-                    borderRadius: 25,
-                    padding: 10,
-                  }}
-                />
-              ),
-            }}
-          />
-          <Tab.Screen
-            name="Profile"
-            component={Profile}
-            options={{
-              tabBarIcon: ({ focused }) => (
-                <Icon
-                  name="person-outline"
-                  color={"white"}
-                  size={26}
-                  style={{
-                    color: focused ? "#4FC0E8" : "white",
-                    backgroundColor: focused ? "white" : "#4FC0E8",
-                    borderRadius: 25,
-                    padding: 10,
-                  }}
-                />
-              ),
-            }}
-          />
-        </Tab.Navigator>
+          >
+            <Tab.Screen
+              name="Home"
+              component={HomeStackScreen}
+              options={{
+                tabBarIcon: ({ focused }) => (
+                  <Icon
+                    name="home-outline"
+                    color={"white"}
+                    size={26}
+                    style={{
+                      color: focused ? "#4FC0E8" : "white",
+                      backgroundColor: focused ? "white" : "#4FC0E8",
+                      borderRadius: 25,
+                      padding: 10,
+                    }}
+                  />
+                ),
+              }}
+            />
+            <Tab.Screen
+              name="Profile"
+              component={Profile}
+              options={{
+                tabBarIcon: ({ focused }) => (
+                  <Icon
+                    name="person-outline"
+                    color={"white"}
+                    size={26}
+                    style={{
+                      color: focused ? "#4FC0E8" : "white",
+                      backgroundColor: focused ? "white" : "#4FC0E8",
+                      borderRadius: 25,
+                      padding: 10,
+                    }}
+                  />
+                ),
+              }}
+            />
+          </Tab.Navigator>
+        ))
       ) : (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Welcome" component={Welcome} />
