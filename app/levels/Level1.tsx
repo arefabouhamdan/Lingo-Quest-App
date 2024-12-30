@@ -5,7 +5,6 @@ import {
   View,
   TouchableOpacity,
   Text,
-  useColorScheme
 } from "react-native";
 import { useTheme } from "@/assets/utils/useTheme";
 import Back from "@/assets/components/Back";
@@ -14,7 +13,6 @@ import tw from "twrnc";
 
 const Level1 = () => {
   const { themeViewStyle } = useTheme();
-  const colorScheme = useColorScheme();
 
   return (
     <SafeAreaView style={tw`${themeViewStyle}flex-1 items-center`}>
@@ -29,13 +27,11 @@ const Level1 = () => {
           style={tw`flex-1 w-55 h-100 absolute bottom-0`}
         />
       </View>
-      <TouchableOpacity>
-        <Icon
-          name='mic'
-          color={colorScheme === "light" ? "#000" : "#fff"}
-          size={26}
-        />
-        <Text>Push to talk</Text>
+      <TouchableOpacity
+        style={tw`w-48 h-14 bg-white flex flex-row justify-center items-center gap-2.5 rounded my-auto`}
+      >
+        <Icon name="mic-outline" color="#4EC0E8" size={36} />
+        <Text style={tw`text-xl font-medium`}>Push to talk</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
