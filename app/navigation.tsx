@@ -35,7 +35,7 @@ const LevelStack = createStackNavigator();
 const LevelStackScreen = () => {
   return (
     <LevelStack.Navigator screenOptions={{ headerShown: false }}>
-      <LevelStack.Screen name="Levels" component={Levels} />
+      <LevelStack.Screen name="LevelsMain" component={Levels} />
       <LevelStack.Screen name="Level1" component={Level1} />
       <LevelStack.Screen name="Level2" component={Level2} />
     </LevelStack.Navigator>
