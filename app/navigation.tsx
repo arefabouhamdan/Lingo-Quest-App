@@ -14,8 +14,10 @@ import Profile from "./student/profile";
 import Vocab from "./student/vocab";
 import Level1 from "./levels/Level1";
 import Level2 from "./levels/Level2";
+import TutorHome from "./tutor/TutorHome";
+import TutorProfile from "./tutor/TutorProfile";
 
-const User = { type: "student" };
+const User = { type: "tutor" };
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -176,7 +178,7 @@ const Navigation = () => {
           >
             <Tab.Screen
               name="Home"
-              component={HomeStackScreen}
+              component={TutorHome}
               options={{
                 tabBarIcon: ({ focused }) => (
                   <Icon
@@ -195,7 +197,7 @@ const Navigation = () => {
             />
             <Tab.Screen
               name="Profile"
-              component={Profile}
+              component={TutorProfile}
               options={{
                 tabBarIcon: ({ focused }) => (
                   <Icon
