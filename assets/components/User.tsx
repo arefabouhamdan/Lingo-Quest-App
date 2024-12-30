@@ -17,7 +17,7 @@ const User = ({ name, info, avatar }: UserProps) => {
 
   return (
     <TouchableOpacity
-      style={tw`flex flex-row items-center gap-5 p-4 rounded border-2 border-gray-200 mb-4 h-20 justify-between`}
+      style={tw`flex flex-row items-center gap-5 p-4 rounded border border-gray-200 mb-4 h-20 justify-between`}
     >
       <View style={tw`flex flex-row items-center gap-5`}>
         <Image
