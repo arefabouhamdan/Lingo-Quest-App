@@ -25,7 +25,6 @@ const Back = ({ text } : BackProps) => {
           name="chevron-back-outline"
           color={colorScheme === "light" ? "#000" : "#fff"}
           size={26}
-          style={tw`justify-self-start`}
         />
       </TouchableOpacity>
       <Text style={tw`${themeTextStyle} text-xl font-medium text-center p-2`}>
