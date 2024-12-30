@@ -13,7 +13,6 @@ const TutorHome = () => {
     { name: "Hassan", level: "C1" },
     { name: "Ali", level: "A2" },
   ];
-  const tests = 10;
 
   const borderStyle = `${themeViewStyle} flex items-center p-5 justify-center gap-5 mt-10 rounded-lg w-11/12 h-30 border border-gray-200`;
   return (
@@ -23,7 +22,7 @@ const TutorHome = () => {
         <Text style={tw`${themeTextStyle} text-xl font-bold`}>
           Number of Tests
         </Text>
-        <Text style={tw`${themeTextStyle} text-3xl font-bold`}>{tests}</Text>
+        <Text style={tw`${themeTextStyle} text-3xl font-bold`}>{data.length}</Text>
       </View>
       <FlatList
         data={data}
