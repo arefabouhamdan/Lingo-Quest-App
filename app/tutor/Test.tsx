@@ -94,7 +94,12 @@ const Test = ({ route }: TestProps) => {
 
   const studentData = tests.find((test) => test.student === userName);
   const [index, setIndex] = useState(0);
-  
+  const prevStyle = index === 0 ? "opacity-50" : "opacity-100";
+  const nextStyle =
+    studentData && index === studentData.testData.length - 1
+      ? "opacity-50"
+      : "opacity-100";
+
   const incrementIndex = () => {
     if (studentData && index === studentData?.testData.length - 1) {
       return;
@@ -126,11 +131,11 @@ const Test = ({ route }: TestProps) => {
         <Text>{studentData?.testData[index]?.answer}</Text>
       </View>
 
-      <TouchableOpacity onPress={decrementIndex}>
+      <TouchableOpacity onPress={decrementIndex} style={tw`${prevStyle}`}>
         <Text>Prev</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={incrementIndex}>
+      <TouchableOpacity onPress={incrementIndex} style={tw`${nextStyle}`}>
         <Text>Next</Text>
       </TouchableOpacity>
     </SafeAreaView>
