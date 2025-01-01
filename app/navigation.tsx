@@ -16,6 +16,7 @@ import Level1 from "./levels/Level1";
 import Level2 from "./levels/Level2";
 import TutorHome from "./tutor/TutorHome";
 import TutorProfile from "./tutor/TutorProfile";
+import Test from "./tutor/Test";
 
 const User = { type: "tutor" };
 
@@ -43,6 +44,17 @@ const LevelStackScreen = () => {
       <LevelStack.Screen name="Level1" component={Level1} />
       <LevelStack.Screen name="Level2" component={Level2} />
     </LevelStack.Navigator>
+  );
+};
+
+const TutorStack = createStackNavigator();
+
+const TutorStackScreen = () => {
+  return (
+    <TutorStack.Navigator screenOptions={{ headerShown: false }}>
+      <TutorStack.Screen name="TutorMain" component={TutorHome} />
+      <TutorStack.Screen name="Test" component={Test} />
+    </TutorStack.Navigator>
   );
 };
 
@@ -178,7 +190,7 @@ const Navigation = () => {
           >
             <Tab.Screen
               name="Home"
-              component={TutorHome}
+              component={TutorStackScreen}
               options={{
                 tabBarIcon: ({ focused }) => (
                   <Icon

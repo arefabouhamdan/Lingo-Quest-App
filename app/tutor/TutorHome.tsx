@@ -27,7 +27,7 @@ const TutorHome = () => {
       <FlatList
         data={data}
         renderItem={({ item }) => (
-          <User name={item.name} avatar={item.name} info={`Level ${item.level}`} />
+          <User name={item.name} avatar={item.name} info={`Level ${item.level}`} navigateTo={'Test'}/>
         )}
         style={tw`mt-10 w-11/12`}
       />
