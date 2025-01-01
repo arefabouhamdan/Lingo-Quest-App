@@ -1,5 +1,5 @@
-import React from "react";
-import { View, Text, SafeAreaView } from "react-native";
+import React, { useState } from "react";
+import { View, Text, SafeAreaView, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import tw from "twrnc";
 
@@ -93,8 +93,25 @@ const Test = ({ route }: TestProps) => {
   ];
 
   const studentData = tests.find((test) => test.student === userName);
+  const [index, setIndex] = useState(0);
+  
+  const incrementIndex = () => {
+    if (studentData && index === studentData?.testData.length - 1) {
+      return;
+    }
+    setIndex((prev) => {
+      return prev + 1;
+    });
+  };
 
-  let index = 2;
+  const decrementIndex = () => {
+    if (index === 0) {
+      return;
+    }
+    setIndex((prev) => {
+      return prev - 1;
+    });
+  };
 
   return (
     <SafeAreaView>
@@ -108,6 +125,14 @@ const Test = ({ route }: TestProps) => {
         <Text>{studentData?.testData[index]?.question}</Text>
         <Text>{studentData?.testData[index]?.answer}</Text>
       </View>
+
+      <TouchableOpacity onPress={decrementIndex}>
+        <Text>Prev</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={incrementIndex}>
+        <Text>Next</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
