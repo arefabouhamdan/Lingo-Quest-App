@@ -99,6 +99,9 @@ const Test = ({ route }: TestProps) => {
     studentData && index === studentData.testData.length - 1
       ? "opacity-50"
       : "opacity-100";
+  const buttonStyle =
+    "w-23 h-11 bg-sky-400 flex justify-center items-center rounded-3 my-auto border-r-4 border-b-4 border-sky-600";
+  const textStyle = "text-white text-xl font-medium";
 
   const incrementIndex = () => {
     if (studentData && index === studentData?.testData.length - 1) {
@@ -131,13 +134,20 @@ const Test = ({ route }: TestProps) => {
         <Text>{studentData?.testData[index]?.answer}</Text>
       </View>
 
-      <TouchableOpacity onPress={decrementIndex} style={tw`${prevStyle}`}>
-        <Text>Prev</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={incrementIndex} style={tw`${nextStyle}`}>
-        <Text>Next</Text>
-      </TouchableOpacity>
+      <View style={tw`flex flex-row gap-4 justify-center`}>
+        <TouchableOpacity
+          onPress={decrementIndex}
+          style={tw`${prevStyle} ${buttonStyle}`}
+        >
+          <Text style={tw`${textStyle}`}>Prev</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={incrementIndex}
+          style={tw`${nextStyle} ${buttonStyle}`}
+        >
+          <Text style={tw`${textStyle}`}>Next</Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 };
