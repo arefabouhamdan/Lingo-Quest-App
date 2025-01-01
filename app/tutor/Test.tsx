@@ -1,5 +1,7 @@
+import Back from "@/assets/components/Back";
 import React, { useState } from "react";
 import { View, Text, SafeAreaView, TouchableOpacity } from "react-native";
+import { useTheme } from "@/assets/utils/useTheme";
 import Icon from "react-native-vector-icons/Ionicons";
 import tw from "twrnc";
 
@@ -12,6 +14,7 @@ type TestProps = {
 };
 
 const Test = ({ route }: TestProps) => {
+  const { themeViewStyle } = useTheme();
   const { userName } = route.params;
 
   const tests = [
@@ -134,7 +137,8 @@ const Test = ({ route }: TestProps) => {
   };
 
   return (
-    <SafeAreaView style={tw`flex-1 items-center justify-center`}>
+    <SafeAreaView style={tw`${themeViewStyle} flex-1 items-center justify-center`}>
+      <Back />
       <View
         style={tw`flex flex-col items-center justify-around m-5 w-96 h-100 bg-sky-400 rounded-2 border-b-4 border-r-4 border-sky-600`}
       >
