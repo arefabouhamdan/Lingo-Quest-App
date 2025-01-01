@@ -21,7 +21,7 @@ const User = ({ name, info, avatar, navigateTo }: UserProps) => {
   return (
     <TouchableOpacity
       style={tw`flex flex-row items-center gap-5 p-4 rounded border border-gray-200 mb-4 h-20 justify-between`}
-      onPress={() => navigation.navigate(navigateTo as never)}
+      onPress={() => navigation.navigate(navigateTo, { userName: name })}
     >
       <View style={tw`flex flex-row items-center gap-5`}>
         <Image

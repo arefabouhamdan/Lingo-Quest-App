@@ -1,12 +1,22 @@
 import React from "react";
 import { View, Text, SafeAreaView } from "react-native";
+import tw from "twrnc";
 
-const Test = () => {
+type TestProps = {
+  route: {
+    params: {
+      userName: string;
+    };
+  };
+};
+
+const Test = ({ route } : TestProps) => {
+  const { userName } = route.params;
 
   return (
     <SafeAreaView>
       <View>
-        <Text>Test</Text>
+        <Text>{userName}</Text>
       </View>
     </SafeAreaView>
   );
