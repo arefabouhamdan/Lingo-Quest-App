@@ -27,7 +27,7 @@ const Button = ({ image, text, press, type }: ButtonProps) => {
       {image && (
         <Icon
           name={image}
-          color={colorScheme === "light" ? "#000" : "#fff"}
+          color='white'
           size={26}
         />
       )}
