@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, SafeAreaView } from "react-native";
+import Icon from "react-native-vector-icons/Ionicons";
 import tw from "twrnc";
 
 type TestProps = {
@@ -36,7 +37,7 @@ const Test = ({ route }: TestProps) => {
           response_type: "text",
           question: "What is the capital of Spain?",
           answer: "Madrid",
-        }
+        },
       ],
     },
     {
@@ -61,7 +62,7 @@ const Test = ({ route }: TestProps) => {
           response_type: "text",
           question: "What is the capital of Spain?",
           answer: "Madrid",
-        }
+        },
       ],
     },
     {
@@ -86,19 +87,26 @@ const Test = ({ route }: TestProps) => {
           response_type: "text",
           question: "What is the capital of Spain?",
           answer: "Madrid",
-        }
+        },
       ],
-    }
+    },
   ];
 
   const studentData = tests.find((test) => test.student === userName);
 
+  let index = 2;
+
   return (
     <SafeAreaView>
       <View>
+        {studentData?.testData[index]?.response_type === "voice" ? (
+          <Icon name="mic-outline" color="#4EC0E8" size={36} />
+        ) : (
+          <Icon name="chatbox-ellipses-outline" color="#4EC0E8" size={36} />
+        )}
         <Text>{studentData?.student}</Text>
-        <Text>{studentData?.testData[0]?.question}</Text>
-        <Text>{studentData?.testData[0]?.answer}</Text>
+        <Text>{studentData?.testData[index]?.question}</Text>
+        <Text>{studentData?.testData[index]?.answer}</Text>
       </View>
     </SafeAreaView>
   );
