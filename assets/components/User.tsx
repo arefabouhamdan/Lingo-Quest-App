@@ -3,21 +3,25 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import { useTheme } from "@/assets/utils/useTheme";
 import Icon from "react-native-vector-icons/Ionicons";
 import { useColorScheme } from "react-native";
+import { useNavigation } from "expo-router";
 import tw from "twrnc";
 
 type UserProps = {
   name: string;
   info: string;
   avatar: string;
+  navigateTo: string;
 };
 
-const User = ({ name, info, avatar }: UserProps) => {
+const User = ({ name, info, avatar, navigateTo }: UserProps) => {
+  const navigation = useNavigation();
   const colorScheme = useColorScheme();
   const { themeTextStyle } = useTheme();
 
   return (
     <TouchableOpacity
       style={tw`flex flex-row items-center gap-5 p-4 rounded border border-gray-200 mb-4 h-20 justify-between`}
+      onPress={() => navigation.navigate(navigateTo as never)}
     >
       <View style={tw`flex flex-row items-center gap-5`}>
         <Image
