@@ -18,7 +18,7 @@ import TutorHome from "./tutor/TutorHome";
 import TutorProfile from "./tutor/TutorProfile";
 import Test from "./tutor/Test";
 
-const User = { type: "tutor" };
+const User = { type: "student" };
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -47,7 +47,7 @@ const LevelStackScreen = () => {
   );
 };
 
-const TutorStack = createStackNavigator();
+const TutorStack = createStackNavigator() as any;
 
 const TutorStackScreen = () => {
   return (
