@@ -1,13 +1,15 @@
 import * as React from "react";
 import Svg, { SvgProps, Path } from "react-native-svg";
+import tw from "twrnc";
 
 type EyesProps = {
     eyeColor: string;
+    style?: string;
 };
 
-const Eyes = ({eyeColor} : EyesProps , props: SvgProps) => {
+const Eyes = ({eyeColor, style} : EyesProps , props: SvgProps) => {
   return (
-    <Svg width={49} height={29} fill="none" {...props}>
+    <Svg width={49} height={29} fill="none" {...props} style={tw`${style || ''}`}>
       <Path
         fill="#fff"
         d="M0 10C0 4.477 4.477 0 10 0s10 4.477 10 10v8.75c0 5.523-4.477 10-10 10s-10-4.477-10-10V10Z"

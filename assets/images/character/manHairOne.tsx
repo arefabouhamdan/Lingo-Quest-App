@@ -6,14 +6,16 @@ import Svg, {
   LinearGradient,
   Stop,
 } from "react-native-svg";
+import tw from "twrnc";
 
 type ManHairOneProps = {
   hairColor: string;
+  style?: string;
 };
 
-const ManHairOne = ({ hairColor }: ManHairOneProps, props: SvgProps) => {
+const ManHairOne = ({ hairColor, style }: ManHairOneProps, props: SvgProps) => {
   return (
-    <Svg width={85} height={60} fill="none" {...props}>
+    <Svg width={85} height={60} fill="none" {...props} style={tw`${style || ''}`}>
       <Path
         fill={ hairColor }
         d="M19 19.5C19 26.404 14.747 32 9.5 32S0 26.404 0 19.5 4.253 7 9.5 7 19 12.596 19 19.5Z"

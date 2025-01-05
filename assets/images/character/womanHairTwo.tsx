@@ -1,13 +1,15 @@
 import * as React from "react";
 import Svg, { SvgProps, Path } from "react-native-svg";
+import tw from "twrnc";
 
 type HairProps = {
   hairColor: string;
+  style?: string;
 };
 
-const WomanHairTwo = ({ hairColor }: HairProps, props: SvgProps) => {
+const WomanHairTwo = ({ hairColor, style }: HairProps, props: SvgProps) => {
   return (
-    <Svg width={142} height={148} fill="none" {...props}>
+    <Svg width={142} height={148} fill="none" {...props} style={tw`${style || ''}`}>
       <Path
         fill={ hairColor }
         fillRule="evenodd"
