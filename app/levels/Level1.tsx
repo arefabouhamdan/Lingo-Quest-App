@@ -28,7 +28,7 @@ const Level1 = () => {
         />
       </View>
       <TouchableOpacity
-        style={tw`w-48 h-14 bg-white flex flex-row justify-center items-center gap-2.5 rounded my-auto border-r-4 border-b-4 border-sky-400`}
+        style={tw`w-48 h-14 bg-white flex flex-row justify-center items-center gap-2.5 rounded my-auto border-r-4 border-b-4 border-sky-400 `}
       >
         <Icon name="mic-outline" color="#4EC0E8" size={36} />
         <Text style={tw`text-xl font-medium`}>Push to talk</Text>
