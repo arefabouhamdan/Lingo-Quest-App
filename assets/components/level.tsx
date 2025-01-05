@@ -12,7 +12,6 @@ type LevelProps = {
 const Level = ({ status, level, type }: LevelProps) => {
   const navigation = useNavigation();
   const backgroundColor = status == "active" ? "bg-sky-400" : "bg-gray-300";
-  const hidden = status == "hidden" ? "hidden" : "";
   const typeStyle =
     type == "level"
       ? "w-20 h-20 rounded-full"
@@ -33,7 +32,7 @@ const Level = ({ status, level, type }: LevelProps) => {
       }}
     >
       <View
-        style={tw` ${typeStyle} ${backgroundColor} ${hidden} ${position} items-center justify-center mx-15`}
+        style={tw` ${typeStyle} ${backgroundColor} ${position} items-center justify-center mx-15`}
       >
         <Text style={tw`text-white font-bold text-3xl`}>{level}</Text>
       </View>

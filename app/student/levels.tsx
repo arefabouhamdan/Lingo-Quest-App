@@ -20,14 +20,13 @@ const Levels = () => {
     { level: "8", status: "inactive", type: "level" },
     { level: "9", status: "inactive", type: "level" },
     { level: "10", status: "inactive", type: "level" },
-    { level: "11", status: "hidden" },
   ];
 
   return (
     <SafeAreaView
       style={tw`${themeViewStyle} flex-1 items-center justify-center`}
     >
-      <LanguageBar style={"absolute top-0 z-10"} />
+      <LanguageBar />
 
       <FlatList
         data={levelsData}
