@@ -9,7 +9,7 @@ const Profile = () => {
   const user = {
     name: "Aref",
     id: "1234",
-    joined: "2021-09-01",
+    joined: "01-09-2021",
     streak: "20",
     xp: "12000",
   };
@@ -32,7 +32,7 @@ const Profile = () => {
       <View style={tw`flex flex-row justify-between items-center w-full`}>
         <View style={tw`flex flex-col pl-3`}>
           <Text style={tw`${themeTextStyle} text-lg font-medium mt-5`}>
-            {user.joined}
+            Joined {user.joined}
           </Text>
           <Text style={tw`${themeTextStyle} text-lg font-medium mt-2`}>
             ID {user.id}
@@ -49,7 +49,7 @@ const Profile = () => {
           <Text
             style={tw`${themeTextStyle} text-lg font-medium mt-2 text-right`}
           >
-            Friends {friends.length}
+            No. Friends  <Text style={tw`text-sky-400 font-extrabold`}>{friends.length}</Text>
           </Text>
         </View>
       </View>
