@@ -3,6 +3,7 @@ import { Text, SafeAreaView, Image, View } from "react-native";
 import Button from "@/assets/components/Button";
 import { useTheme } from "@/assets/utils/useTheme";
 import tw from "twrnc";
+import Avatar from "@/assets/components/Avatar";
 
 const Profile = () => {
   const { themeViewStyle, themeTextStyle } = useTheme();
@@ -19,10 +20,7 @@ const Profile = () => {
       <View
         style={tw`flex flex-col items-center justify-end bg-sky-500 w-full h-1/3`}
       >
-        <Image
-          source={require("@/assets/images/character/Aref.png")}
-          style={tw`h-55 w-40`}
-        />
+        <Avatar />
       </View>
       <Text
         style={tw`${themeTextStyle} text-2xl font-bold text-left mt-5 pl-3`}
