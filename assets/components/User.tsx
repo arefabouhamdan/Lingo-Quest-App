@@ -29,8 +29,8 @@ const User = ({ name, info, avatar, navigateTo }: UserProps) => {
           style={tw`w-7 h-10`}
         />
         <View>
-          <Text style={tw`${themeTextStyle} text-xl font-bold`}>{name}</Text>
-          <Text style={tw`${themeTextStyle} text-lg font-medium`}>{info}</Text>
+          <Text style={tw`${themeTextStyle} text-xl font-extrabold`}>{name}</Text>
+          <Text style={tw`${themeTextStyle} text-lg font-medium text-sky-400`}>{info}</Text>
         </View>
       </View>
       <Icon
