@@ -29,15 +29,15 @@ const Avatar = () => {
   return (
     user.avatar.gender == 'male' ? (
     <View style={tw`flex flex-col items-center justify-end absolute`}>
-      <ManHairTwo hairColor={user.avatar.hair.color} style="relative top-17 z-1"/>
-      <MaleEyes eyeColor={user.avatar.eyes.color} style="relative top-14.5 z-2"/>
+      <ManHairTwo hairColor={user.avatar.hair.color} style="relative top-17 z-2"/>
+      <MaleEyes eyeColor={user.avatar.eyes.color} style="relative top-14.5 z-1"/>
       <MaleFace skinColor={user.avatar.skin.color} />
       <ManShirt shirtColor={user.avatar.shirt.color} />
     </View>
     ) : (
       <View style={tw`flex flex-col items-center justify-end absolute`}>
-        <WomanHairThree hairColor={user.avatar.hair.color} style="relative top-40.8 z-1"/>
-        <FemaleEyes eyeColor={user.avatar.eyes.color} style="relative top-11 z-2"/>
+        <WomanHairThree hairColor={user.avatar.hair.color} style="relative top-40.8 z-2"/>
+        <FemaleEyes eyeColor={user.avatar.eyes.color} style="relative top-11 z-1"/>
         <WomanFace skinColor={user.avatar.skin.color} />
         <WomanShirt shirtColor={user.avatar.shirt.color} />
       </View>
