@@ -22,32 +22,32 @@ const Profile = () => {
       >
         <Avatar />
       </View>
-      <Text
-        style={tw`${themeTextStyle} text-2xl font-bold text-left mt-5 pl-3`}
-      >
-        {user.name}
-      </Text>
+      <View style={tw`flex flex-row px-3 justify-between items-center w-full mt-5`}>
+        <Text style={tw`${themeTextStyle} text-2xl font-bold text-left `}>
+          {user.name}
+        </Text>
+        <Image
+          style={tw`h-4.4 w-6`}
+          source={require("@/assets/images/flags/German.png")}
+        />
+      </View>
       <View style={tw`flex flex-row justify-between items-center w-full`}>
-        <View style={tw`flex flex-col pl-3`}>
-          <Text style={tw`${themeTextStyle} text-lg font-medium mt-5`}>
-            Joined {user.joined}
-          </Text>
-          <Text style={tw`${themeTextStyle} text-lg font-medium mt-2`}>
-            ID {user.id}
-          </Text>
-        </View>
-        <View style={tw`flex flex-col pr-3`}>
-          <Text style={tw`${themeTextStyle} text-lg font-medium mt-5`}>
-            Language{" "}
-            <Image
-              style={tw`h-4 w-6`}
-              source={require("@/assets/images/flags/German.png")}
-            />
-          </Text>
-          <Text
-            style={tw`${themeTextStyle} text-lg font-medium mt-2 text-right`}
+        <View style={tw`flex flex-col px-3`}>
+          <View
+            style={tw`flex flex-row items-center mt-5 w-full justify-between`}
           >
-            No. Friends  <Text style={tw`text-sky-400 font-extrabold`}>{friends.length}</Text>
+            <Text style={tw`${themeTextStyle} text-lg font-medium mt-2`}>
+              ID {user.id}
+            </Text>
+            <Text style={tw`${themeTextStyle} text-lg font-medium `}>
+              No. Friends{"  "}
+              <Text style={tw`text-sky-400 font-extrabold`}>
+                {friends.length}
+              </Text>
+            </Text>
+          </View>
+          <Text style={tw`${themeTextStyle} text-lg font-medium`}>
+            Joined {user.joined}
           </Text>
         </View>
       </View>
