@@ -6,6 +6,7 @@ import ManHairThree from "../images/character/manHairThree";
 import MaleFace from "../images/character/maleFace";
 import Eyes from "../images/character/Eyes";
 import MaleEyes from "../images/character/maleEyes";
+import FemaleEyes from "../images/character/femaleEyes";
 import ManShirt from "../images/character/manShirt";
 import tw from "twrnc";
 import WomanShirt from "../images/character/womanShirt";
@@ -36,7 +37,7 @@ const Avatar = () => {
     ) : (
       <View style={tw`flex flex-col items-center justify-end absolute`}>
         <WomanHairThree hairColor={user.avatar.hair.color} style="relative top-40.8 z-1"/>
-        <MaleEyes eyeColor={user.avatar.eyes.color} style="relative top-11 z-2"/>
+        <FemaleEyes eyeColor={user.avatar.eyes.color} style="relative top-11 z-2"/>
         <WomanFace skinColor={user.avatar.skin.color} />
         <WomanShirt shirtColor={user.avatar.shirt.color} />
       </View>
