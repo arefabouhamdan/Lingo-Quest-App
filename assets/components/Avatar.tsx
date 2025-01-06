@@ -16,7 +16,7 @@ const Avatar = () => {
   const user = {
     type: "student",
     avatar: {
-      gender: 'female',
+      gender: 'male',
       hair: { color: "#674238", style: "ManHairOne" },
       skin: { color: "#E7BC98", style: "MaleFace" },
       eyes: { color: "#1E81C8", style: "Eyes" },
@@ -27,15 +27,15 @@ const Avatar = () => {
   return (
     user.avatar.gender == 'male' ? (
     <View style={tw`flex flex-col items-center justify-end absolute`}>
-      <ManHairOne hairColor={user.avatar.hair.color} style="relative top-17"/>
-      <Eyes eyeColor={user.avatar.eyes.color} style="relative top-14.5"/>
+      <ManHairTwo hairColor={user.avatar.hair.color} style="relative top-17 z-1"/>
+      <Eyes eyeColor={user.avatar.eyes.color} style="relative top-14.5 z-2"/>
       <MaleFace skinColor={user.avatar.skin.color} />
       <ManShirt shirtColor={user.avatar.shirt.color} />
     </View>
     ) : (
       <View style={tw`flex flex-col items-center justify-end absolute`}>
-        <WomanHairThree hairColor={user.avatar.hair.color} style="relative top-40.8"/>
-        <Eyes eyeColor={user.avatar.eyes.color} style="relative top-11"/>
+        <WomanHairThree hairColor={user.avatar.hair.color} style="relative top-40.8 z-1"/>
+        <Eyes eyeColor={user.avatar.eyes.color} style="relative top-11 z-2"/>
         <WomanFace skinColor={user.avatar.skin.color} />
         <WomanShirt shirtColor={user.avatar.shirt.color} />
       </View>
