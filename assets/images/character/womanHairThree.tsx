@@ -10,8 +10,8 @@ type HairProps = {
 const WomanHairThree = ({ hairColor, style }: HairProps, props: SvgProps) => {
   return (
     <Svg
-      width={142}
-      height={148}
+      width={138}
+      height={147}
       fill="none"
       {...props}
       style={tw`${style || ""}`}
