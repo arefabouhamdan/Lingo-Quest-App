@@ -1,18 +1,17 @@
 import React from "react";
-import { TouchableOpacity, Text, useColorScheme } from "react-native";
+import { TouchableOpacity, Text } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
 import tw from "twrnc";
 
 type ButtonProps = {
-  image: string;
+  image?: string;
   text: string;
   press: string;
   type: string;
 };
 
 const Button = ({ image, text, press, type }: ButtonProps) => {
-  const colorScheme = useColorScheme();
   const navigation = useNavigation();
   const loginStyle = "w-60";
   const submitStyle = "w-52";

@@ -37,7 +37,7 @@ const Student = () => {
             </Text>
             <Input placeholder="Enter your password" />
           </View>
-          <Button text="Continue" press="Avatar" type="submit" image={false}/>
+          <Button text="Continue" press="Avatar" type="submit"/>
         </View>
       </View>
     </SafeAreaView>
