@@ -67,7 +67,7 @@ const Profile = () => {
           </Text>
           <Image
             source={require("@/assets/images/icons/fire.png")}
-            style={tw`h-33 w-27`}
+            style={tw`h-26 w-22`}
           />
           <Text style={tw`${themeTextStyle} text-xl my-2`}>
             {user.streak} days
@@ -81,7 +81,7 @@ const Profile = () => {
           </Text>
           <Image
             source={require("@/assets/images/icons/bolt.png")}
-            style={tw`h-33 w-25`}
+            style={tw`h-26 w-19`}
           />
           <Text style={tw`${themeTextStyle} text-xl my-2`}>{user.xp} XP</Text>
         </View>
