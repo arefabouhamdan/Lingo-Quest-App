@@ -40,7 +40,7 @@ const CreateAvatar = () => {
         </TouchableOpacity>
       </View>
       <Avatar user={user} />
-      <View style={tw`flex flex-row justify-between items-center px-5 my-5`}>
+      <View style={tw`px-5 my-5`}>
         <Tabs />
       </View>
     </SafeAreaView>
