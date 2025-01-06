@@ -14,30 +14,30 @@ import Eyes from '../images/character/Eyes';
 import MaleEyes from '../images/character/maleEyes';
 import FemaleEyes from '../images/character/femaleEyes';
 
-const avatarComponents = {
-  hair: {
-    ManHairOne,
-    ManHairTwo,
-    ManHairThree,
-    WomanHairTwo,
-    WomanHairThree,
-  },
-  face: {
-    MaleFace,
-    WomanFace,
-  },
-  shirt: {
-    ManShirt,
-    WomanShirt,
-  },
-  eyes: {
-    Eyes,
-    MaleEyes,
-    FemaleEyes
-  },
-};
-
 const Avatar = () => {
+  const avatarComponents = {
+    hair: {
+      ManHairOne,
+      ManHairTwo,
+      ManHairThree,
+      WomanHairTwo,
+      WomanHairThree,
+    },
+    face: {
+      MaleFace,
+      WomanFace,
+    },
+    shirt: {
+      ManShirt,
+      WomanShirt,
+    },
+    eyes: {
+      Eyes,
+      MaleEyes,
+      FemaleEyes
+    },
+  };
+
   const user = {
     type: "student",
     avatar: {

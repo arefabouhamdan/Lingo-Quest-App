@@ -16,13 +16,13 @@ import Level1 from "./levels/Level1";
 import Level2 from "./levels/Level2";
 import TutorHome from "./tutor/TutorHome";
 import TutorProfile from "./tutor/TutorProfile";
+import CreateAvatar from "./auth/createAvatar";
 import Test from "./tutor/Test";
-
-const User = { type: "student" };
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
-const loggedIn = true;
+const loggedIn = false;
+const User = { type: "tutor" };
 
 const HomeStack = createStackNavigator();
 
@@ -235,6 +235,7 @@ const Navigation = () => {
           <Stack.Screen name="Choose" component={Choose} />
           <Stack.Screen name="Student" component={Student} />
           <Stack.Screen name="Tutor" component={Tutor} />
+          <Stack.Screen name="CreateAvatar" component={CreateAvatar} />
         </Stack.Navigator>
       )}
     </>
