@@ -8,7 +8,7 @@ type ButtonProps = {
   image?: string;
   text: string;
   press: string;
-  type: string;
+  type?: string;
 };
 
 const Button = ({ image, text, press, type }: ButtonProps) => {

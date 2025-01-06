@@ -1,10 +1,20 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import React from "react";
+import { SafeAreaView, View, TouchableOpacity, Text } from "react-native";
+import tw from "twrnc";
 
 const CreateAvatar = () => {
   return (
-    <View><Text>Create Avatar</Text></View>
-  )
-}
+    <SafeAreaView style={tw`flex-1`}>
+      <View>
+        <TouchableOpacity>
+          <Text>Male</Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text>Female</Text>
+        </TouchableOpacity>
+      </View>
+    </SafeAreaView>
+  );
+};
 
-export default CreateAvatar
+export default CreateAvatar;
