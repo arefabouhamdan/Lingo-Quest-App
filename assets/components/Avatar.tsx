@@ -61,7 +61,7 @@ const Avatar = ({ user }: AvatarProps) => {
   const EyesComponent = avatarComponents.eyes[eyes.style];
 
   return (
-    <View style={[tw`flex flex-col items-center justify-end absolute`, { backgroundColor: background.color }]}>
+    <View style={[tw`flex flex-col items-center justify-end w-full`, { backgroundColor: background.color }]}>
       <HairComponent hairColor={hair.color} style="relative top-17 z-2" />
       <EyesComponent eyeColor={eyes.color} style="relative top-14.5 z-1" />
       <FaceComponent skinColor={skin.color} />

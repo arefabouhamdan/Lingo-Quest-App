@@ -7,24 +7,35 @@ import Avatar from "@/assets/components/Avatar";
 
 const Profile = () => {
   const { themeViewStyle, themeTextStyle } = useTheme();
+
   const user = {
     name: "Aref",
     id: "1234",
     joined: "01-09-2021",
     streak: "20",
     xp: "12000",
+    type: "student",
+    avatar: {
+      gender: "male",
+      background: { color: "#4FC0E8" },
+      hair: { color: "#674238", style: "ManHairOne" },
+      skin: { color: "#E7BC98", style: "MaleFace" },
+      eyes: { color: "#1E81C8", style: "Eyes" },
+      shirt: { color: "#484848", style: "ManShirt" },
+    },
+    friends: ["Aref", "Bilal", "Hassan", "Ali"],
   };
-  const friends = ["Aref", "Bilal", "Hassan", "Ali"];
+
+  const { name, id, joined, streak, xp, friends } = user;
+
   return (
     <SafeAreaView style={tw`${themeViewStyle} flex-1`}>
+      <Avatar user={user} />
       <View
-        style={tw`flex flex-col items-center justify-end bg-sky-500 w-full h-1/3`}
+        style={tw`flex flex-row px-3 justify-between items-center w-full mt-5`}
       >
-        <Avatar />
-      </View>
-      <View style={tw`flex flex-row px-3 justify-between items-center w-full mt-5`}>
         <Text style={tw`${themeTextStyle} text-2xl font-bold text-left `}>
-          {user.name}
+          {name}
         </Text>
         <Image
           style={tw`h-4.4 w-6`}
@@ -37,7 +48,7 @@ const Profile = () => {
             style={tw`flex flex-row items-center mt-5 w-full justify-between`}
           >
             <Text style={tw`${themeTextStyle} text-lg font-medium mt-2`}>
-              ID {user.id}
+              ID {id}
             </Text>
             <Text style={tw`${themeTextStyle} text-lg font-medium `}>
               No. Friends{"  "}
@@ -47,7 +58,7 @@ const Profile = () => {
             </Text>
           </View>
           <Text style={tw`${themeTextStyle} text-lg font-medium`}>
-            Joined {user.joined}
+            Joined {joined}
           </Text>
         </View>
       </View>
@@ -69,9 +80,7 @@ const Profile = () => {
             source={require("@/assets/images/icons/fire.png")}
             style={tw`h-26 w-22`}
           />
-          <Text style={tw`${themeTextStyle} text-xl my-2`}>
-            {user.streak} days
-          </Text>
+          <Text style={tw`${themeTextStyle} text-xl my-2`}>{streak} days</Text>
         </View>
         <View
           style={tw`flex items-center w-1/2.1 gap-2 border-2 border-b-4 rounded-2 border-gray-300`}
@@ -83,7 +92,7 @@ const Profile = () => {
             source={require("@/assets/images/icons/bolt.png")}
             style={tw`h-26 w-19`}
           />
-          <Text style={tw`${themeTextStyle} text-xl my-2`}>{user.xp} XP</Text>
+          <Text style={tw`${themeTextStyle} text-xl my-2`}>{xp} XP</Text>
         </View>
       </View>
     </SafeAreaView>
