@@ -43,9 +43,8 @@ const Tutor = () => {
           </View>
           <Button
             text="Continue"
-            press="Avatar"
+            press="CreateAvatar"
             type="submit"
-            image={false}
           />
         </View>
       </View>
