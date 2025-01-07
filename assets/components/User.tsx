@@ -8,12 +8,13 @@ import tw from "twrnc";
 
 type UserProps = {
   name: string;
-  info: string;
-  avatar: string;
-  navigateTo: string;
+  info?: string;
+  avatar?: string;
+  navigateTo?: string;
+  tutor?: boolean;
 };
 
-const User = ({ name, info, avatar, navigateTo }: UserProps) => {
+const User = ({ name, info, avatar, navigateTo, tutor }: UserProps) => {
   const navigation = useNavigation();
   const colorScheme = useColorScheme();
   const { themeTextStyle } = useTheme();
@@ -21,7 +22,11 @@ const User = ({ name, info, avatar, navigateTo }: UserProps) => {
   return (
     <TouchableOpacity
       style={tw`flex flex-row items-center gap-5 p-4 rounded border border-gray-200 mb-4 h-20 justify-between`}
-      onPress={() => navigation.navigate(navigateTo, { userName: name })}
+      onPress={
+        tutor
+          ? () => navigation.navigate(navigateTo, { userName: name })
+          : () => console.log("Navigate to student profile")
+      }
     >
       <View style={tw`flex flex-row items-center gap-5`}>
         <Image
@@ -29,8 +34,12 @@ const User = ({ name, info, avatar, navigateTo }: UserProps) => {
           style={tw`w-7 h-10`}
         />
         <View>
-          <Text style={tw`${themeTextStyle} text-xl font-extrabold`}>{name}</Text>
-          <Text style={tw`${themeTextStyle} text-lg font-medium text-sky-400`}>{info}</Text>
+          <Text style={tw`${themeTextStyle} text-xl font-extrabold`}>
+            {name}
+          </Text>
+          <Text style={tw`${themeTextStyle} text-lg font-medium text-sky-400`}>
+            {info}
+          </Text>
         </View>
       </View>
       <Icon
