@@ -1,5 +1,6 @@
 import React from "react";
 import { Modal, Text, TouchableOpacity, View } from "react-native";
+import { useTheme } from "../utils/useTheme";
 import tw from "twrnc";
 import Avatar from "./Avatar";
 import Icon from "react-native-vector-icons/Ionicons";
@@ -28,16 +29,18 @@ const user = {
 };
 
 const FriendModal = ({ modalVisible, setModalVisible }: FriendModalProps) => {
+  const { themeViewStyle, themeTextStyle } = useTheme();
+
   return (
     <Modal
-      animationType="none"
+      animationType="slide"
       transparent={true}
       visible={modalVisible}
       style={tw`bg-black`}
     >
-      <View style={tw`flex-1 justify-center items-center`}>
+      <View style={tw`flex-1 justify-center items-center bg-black bg-opacity-50`}>
         <View
-          style={tw`bg-white p-1 rounded-2 w-92 h-120 flex flex-col items-center`}
+          style={tw`${themeViewStyle} border-4 border-white rounded-2 w-92 h-120 flex flex-col items-center`}
         >
           <Avatar user={user} />
           <TouchableOpacity
