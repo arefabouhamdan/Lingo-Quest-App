@@ -23,7 +23,7 @@ const Vocab = () => {
 
       <FlatList
         data={words}
-        style={tw`w-full mt-5`}
+        style={tw`w-full`}
         renderItem={({ item }) => (
           <View style={tw`items-center`}>
             <Word word={item.word} translation={item.translation} />

@@ -20,7 +20,7 @@ const Back = ({ text, background }: BackProps) => {
 
   return (
     <View
-      style={tw`w-full h-15 items-center justify-center z-10 ${backgroundStyle}`}
+      style={tw`w-full h-15 items-center justify-center ${backgroundStyle}`}
     >
       <TouchableOpacity
         onPress={() => navigation.goBack()}
