@@ -41,6 +41,13 @@ const FriendModal = ({ modalVisible, setModalVisible }: FriendModalProps) => {
         >
           <Avatar user={user} />
           
+          <TouchableOpacity
+            style={tw`w-52 bg-sky-400 rounded-2 h-14 mt-5 flex flex-row justify-center items-center gap-5`}
+            onPress={() => console.log("Friend Added")}
+          >
+            <Icon name="add-outline" color="white" size={26} />
+            <Text style={tw`text-white font-bold text-lg`}>Add Friend</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </Modal>
