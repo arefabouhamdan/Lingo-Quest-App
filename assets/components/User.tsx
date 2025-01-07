@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { useTheme } from "@/assets/utils/useTheme";
 import Icon from "react-native-vector-icons/Ionicons";
 import { useColorScheme } from "react-native";
 import { useNavigation } from "expo-router";
 import tw from "twrnc";
+import FriendModal from "./friendModal";
 
 type UserProps = {
   name: string;
@@ -15,39 +16,47 @@ type UserProps = {
 };
 
 const User = ({ name, info, avatar, navigateTo, tutor }: UserProps) => {
+  const [modalVisible, setModalVisible] = useState(false);
   const navigation = useNavigation();
   const colorScheme = useColorScheme();
   const { themeTextStyle } = useTheme();
 
   return (
-    <TouchableOpacity
-      style={tw`flex flex-row items-center gap-5 p-4 rounded border border-gray-200 mb-4 h-20 justify-between`}
-      onPress={
-        tutor
-          ? () => navigation.navigate(navigateTo, { userName: name })
-          : () => console.log("Navigate to student profile")
-      }
-    >
-      <View style={tw`flex flex-row items-center gap-5`}>
-        <Image
-          source={require("@/assets/images/character/Aref.png")}
-          style={tw`w-7 h-10`}
-        />
-        <View>
-          <Text style={tw`${themeTextStyle} text-xl font-extrabold`}>
-            {name}
-          </Text>
-          <Text style={tw`${themeTextStyle} text-lg font-medium text-sky-400`}>
-            {info}
-          </Text>
+    <>
+      <FriendModal modalVisible={modalVisible} setModalVisible={setModalVisible}/>
+      <TouchableOpacity
+        style={tw`flex flex-row items-center gap-5 p-4 rounded border border-gray-200 mb-4 h-20 justify-between`}
+        onPress={() => {
+          if (tutor && navigateTo) {
+            navigation.navigate(navigateTo, { userName: name });
+          } else {
+            setModalVisible((prev) => !prev);
+          }
+        }}
+      >
+        <View style={tw`flex flex-row items-center gap-5`}>
+          <Image
+            source={require("@/assets/images/character/Aref.png")}
+            style={tw`w-7 h-10`}
+          />
+          <View>
+            <Text style={tw`${themeTextStyle} text-xl font-extrabold`}>
+              {name}
+            </Text>
+            <Text
+              style={tw`${themeTextStyle} text-lg font-medium text-sky-400`}
+            >
+              {info}
+            </Text>
+          </View>
         </View>
-      </View>
-      <Icon
-        name="chevron-forward-outline"
-        color={colorScheme === "light" ? "#000" : "#fff"}
-        size={26}
-      />
-    </TouchableOpacity>
+        <Icon
+          name="chevron-forward-outline"
+          color={colorScheme === "light" ? "#000" : "#fff"}
+          size={26}
+        />
+      </TouchableOpacity>
+    </>
   );
 };
 
