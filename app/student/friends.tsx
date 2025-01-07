@@ -1,12 +1,13 @@
 import Search from "@/assets/components/Search";
 import User from "@/assets/components/User";
 import React from "react";
-import { FlatList, SafeAreaView, View } from "react-native";
+import { FlatList, SafeAreaView, View, Text } from "react-native";
 import { useTheme } from "@/assets/utils/useTheme";
 import tw from "twrnc";
+import Back from "@/assets/components/Back";
 
 const Friends = () => {
-  const { themeViewStyle } = useTheme();
+  const { themeViewStyle, themeTextStyle } = useTheme();
   const user = {
     name: "Aref",
     id: "1234",
@@ -27,18 +28,11 @@ const Friends = () => {
       { name: "Bilal", dateAdded: "01-09-2021" },
       { name: "Hassan", dateAdded: "01-09-2021" },
       { name: "Ali", dateAdded: "01-09-2021" },
-      { name: "Aref", dateAdded: "01-09-2021" },
-      { name: "Bilal", dateAdded: "01-09-2021" },
-      { name: "Hassan", dateAdded: "01-09-2021" },
-      { name: "Ali", dateAdded: "01-09-2021" },
-      { name: "Aref", dateAdded: "01-09-2021" },
-      { name: "Bilal", dateAdded: "01-09-2021" },
-      { name: "Hassan", dateAdded: "01-09-2021" },
-      { name: "Ali", dateAdded: "01-09-2021" },
     ],
   };
   return (
     <SafeAreaView style={tw`${themeViewStyle} flex-1 items-center`}>
+      <Back text="Friends" />
       <View style={tw`mt-5 w-11/12`}>
         <Search text="Lost your friend? Search for him" />
       </View>
@@ -46,6 +40,13 @@ const Friends = () => {
         data={user.friends}
         renderItem={({ item }) => (
           <User name={item.name} info={`${item.dateAdded}`} />
+        )}
+        ListEmptyComponent={() => (
+          <View style={tw`flex-1 items-center justify-center`}>
+            <Text style={tw`${themeTextStyle} text-xl font-bold`}>
+              You have no friends? Sad
+            </Text>
+          </View>
         )}
         style={tw`mt-5 w-11/12`}
       />
