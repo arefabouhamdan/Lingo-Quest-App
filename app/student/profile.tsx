@@ -63,7 +63,7 @@ const Profile = () => {
         </View>
       </View>
       <View style={tw`flex items-center my-5`}>
-        <Button text="Add Friend" image="add-outline" press="" type="submit" />
+        <Button text="Add Friend" image="add-outline" press="Friends" type="submit" />
       </View>
 
       <Text style={tw`${themeTextStyle} text-xl font-bold mb-2 text-left pl-3`}>

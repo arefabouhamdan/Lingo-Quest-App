@@ -13,7 +13,7 @@ const Search = ({ text } : SearchProps) => {
 
   return (
     <View
-      style={tw`${themeViewStyle} flex-row items-center bg-white rounded border-b-4 border-r-4 border-sky-400 px-3 py-2 w-3/4`}
+      style={tw`${themeViewStyle} flex-row items-center bg-white rounded border-b-4 border-r-4 border-sky-400 px-3 py-2`}
     >
       <Icon name="search" size={20} color="#000" style={tw`mr-2`} />
       <TextInput

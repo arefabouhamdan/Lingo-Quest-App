@@ -11,6 +11,7 @@ import Home from "./student/home";
 import Levels from "./student/levels";
 import Leaderboard from "./student/leaderboard";
 import Profile from "./student/profile";
+import Friends from "./student/friends";
 import Vocab from "./student/vocab";
 import Level1 from "./levels/Level1";
 import Level2 from "./levels/Level2";
@@ -44,6 +45,17 @@ const LevelStackScreen = () => {
       <LevelStack.Screen name="Level1" component={Level1} />
       <LevelStack.Screen name="Level2" component={Level2} />
     </LevelStack.Navigator>
+  );
+};
+
+const ProfileStack = createStackNavigator();
+
+const ProfileStackScreen = () => {
+  return (
+    <ProfileStack.Navigator screenOptions={{ headerShown: false }}>
+      <ProfileStack.Screen name="Profile" component={Profile} />
+      <ProfileStack.Screen name="Friends" component={Friends} />
+    </ProfileStack.Navigator>
   );
 };
 
@@ -145,7 +157,7 @@ const Navigation = () => {
             />
             <Tab.Screen
               name="Profile"
-              component={Profile}
+              component={ProfileStackScreen}
               options={{
                 tabBarIcon: ({ focused }) => (
                   <Icon
