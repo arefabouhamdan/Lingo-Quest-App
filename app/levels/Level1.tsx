@@ -16,7 +16,7 @@ const Level1 = () => {
 
   return (
     <SafeAreaView style={tw`${themeViewStyle}flex-1 items-center`}>
-      <Back text="Level 1" />
+      <Back text="Level 1" background/>
       <View style={tw`w-full h-3/4 items-center justify-start`}>
         <Image
           source={require("@/assets/images/game/coffeeshop-night-1.png")}

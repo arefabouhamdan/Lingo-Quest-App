@@ -8,26 +8,31 @@ import tw from "twrnc";
 
 type BackProps = {
   text?: string;
+  background?: boolean;
 };
 
-const Back = ({ text } : BackProps) => {
+const Back = ({ text, background }: BackProps) => {
   const navigation = useNavigation();
   const colorScheme = useColorScheme();
   const { themeTextStyle } = useTheme();
+  const textStyle = background ? "text-white" : themeTextStyle;
+  const backgroundStyle = background ? "bg-sky-400" : "";
 
   return (
-    <View style={tw`w-full items-center justify-center absolute top-0 z-10`}>
+    <View
+      style={tw`w-full h-15 items-center justify-center z-10 ${backgroundStyle}`}
+    >
       <TouchableOpacity
         onPress={() => navigation.goBack()}
-        style={tw`flex-row p-2 w-full absolute top-0`}
+        style={tw`flex-row p-2 w-full absolute`}
       >
         <Icon
           name="chevron-back-outline"
-          color={colorScheme === "light" ? "#000" : "#fff"}
+          color={!background && colorScheme === "light" ? "#000" : "#fff"}
           size={26}
         />
       </TouchableOpacity>
-      <Text style={tw`${themeTextStyle} text-xl font-medium text-center p-2`}>
+      <Text style={tw`${textStyle} text-xl font-medium text-center p-2`}>
         {text}
       </Text>
     </View>

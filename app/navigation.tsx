@@ -21,7 +21,7 @@ import Test from "./tutor/Test";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
-const loggedIn = false;
+const loggedIn = true;
 const User = { type: "student" };
 
 const HomeStack = createStackNavigator();
