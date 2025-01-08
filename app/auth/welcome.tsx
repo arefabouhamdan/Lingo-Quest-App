@@ -24,7 +24,7 @@ const Welcome = () => {
         </View>
       </View>
       <Text onPress={() => navigation.navigate('Choose' as never)} style={tw`${themeTextStyle} my-auto`}>
-        Don't have an account? <Text style={tw`text-sky-400 font-bold`}>Sign up</Text>
+        Don't have an account? <Text style={tw`text-sky-400 font-bold`}>Sign Up</Text>
       </Text>
     </SafeAreaView>
   );

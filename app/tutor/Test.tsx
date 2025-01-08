@@ -115,7 +115,7 @@ const Test = ({ route }: TestProps) => {
       ? "opacity-50"
       : "opacity-100";
   const buttonStyle =
-    "w-23 h-11 bg-sky-400 flex justify-center items-center rounded-2 my-auto border-r-4 border-b-4 border-sky-600";
+    "w-23 h-11 bg-sky-400 flex justify-center items-center rounded-2 my-auto border-sky-600";
   const textStyle = "text-white text-xl font-medium";
 
   const incrementIndex = () => {
@@ -140,7 +140,7 @@ const Test = ({ route }: TestProps) => {
     <SafeAreaView style={tw`${themeViewStyle} flex-1 items-center justify-center`}>
       <Back />
       <View
-        style={tw`flex flex-col items-center justify-around m-5 w-96 h-100 bg-sky-400 rounded-2 border-b-4 border-r-4 border-sky-600`}
+        style={tw`flex flex-col items-center justify-around m-5 w-96 h-100 bg-sky-400 rounded-2 border-sky-600`}
       >
         {studentData?.testData[index]?.response_type === "voice" ? (
           <View
