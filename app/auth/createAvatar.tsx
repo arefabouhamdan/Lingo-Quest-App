@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import {
-  SafeAreaView,
-  View,
-  TouchableOpacity,
-  Text,
-} from "react-native";
+import { SafeAreaView, View, TouchableOpacity, Text } from "react-native";
 import { useTheme } from "@/assets/utils/useTheme";
 import tw from "twrnc";
 import Tabs from "@/assets/components/tabs";
@@ -17,7 +12,7 @@ const CreateAvatar = () => {
   const [shirtColor, setShirtColor] = useState("green");
   const [backgroundColor, setBackgroundColor] = useState("gray");
   const [gender, setGender] = useState("male");
-  
+
   const { themeViewStyle } = useTheme();
   const buttonStyle =
     "flex justify-center items-center p-1 w-9/20 h-14 rounded-2 border-r-4 border-b-4";
@@ -43,7 +38,14 @@ const CreateAvatar = () => {
         gender={gender}
       />
       <View style={tw`px-5 my-5`}>
-        <Tabs setHairColor={setHairColor}/>
+        <Tabs
+          setHairColor={setHairColor}
+          setEyeColor={setEyeColor}
+          setSkinColor={setSkinColor}
+          setShirtColor={setShirtColor}
+          setBackgroundColor={setBackgroundColor}
+          setGender={setGender}
+        />
       </View>
     </SafeAreaView>
   );

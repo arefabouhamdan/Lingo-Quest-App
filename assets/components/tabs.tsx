@@ -10,9 +10,21 @@ import { BgColors } from "../utils/bgColors";
 
 type TabsProps = {
   setHairColor: (color: string) => void;
+  setEyeColor: (color: string) => void;
+  setSkinColor: (color: string) => void;
+  setShirtColor: (color: string) => void;
+  setBackgroundColor: (color: string) => void;
+  setGender: (color: string) => void;
 };
 
-const Tabs = ({ setHairColor }: TabsProps) => {
+const Tabs = ({
+  setHairColor,
+  setEyeColor,
+  setSkinColor,
+  setShirtColor,
+  setBackgroundColor,
+  setGender,
+}: TabsProps) => {
   const { themeTextStyle } = useTheme();
   const [active, setActive] = useState("hair");
   const fontStyle = "font-bold text-lg py-2";
@@ -94,7 +106,7 @@ const Tabs = ({ setHairColor }: TabsProps) => {
                 tw`p-10 my-5 mx-auto rounded-3`,
                 { backgroundColor: item.color },
               ]}
-              onPress={() => setHairColor(item.color)}
+              onPress={() => setEyeColor(item.color)}
             />
           )}
           keyExtractor={(item) => item.id}
@@ -112,7 +124,7 @@ const Tabs = ({ setHairColor }: TabsProps) => {
                 tw`p-10 my-5 mx-auto rounded-3`,
                 { backgroundColor: item.color },
               ]}
-              onPress={() => setHairColor(item.color)}
+              onPress={() => setSkinColor(item.color)}
             />
           )}
           keyExtractor={(item) => item.id}
@@ -130,7 +142,7 @@ const Tabs = ({ setHairColor }: TabsProps) => {
                 tw`p-10 my-5 mx-auto rounded-3`,
                 { backgroundColor: item.color },
               ]}
-              onPress={() => setHairColor(item.color)}
+              onPress={() => setShirtColor(item.color)}
             />
           )}
           keyExtractor={(item) => item.id}
@@ -148,7 +160,7 @@ const Tabs = ({ setHairColor }: TabsProps) => {
                 tw`p-10 my-5 mx-auto rounded-3`,
                 { backgroundColor: item.color },
               ]}
-              onPress={() => setHairColor(item.color)}
+              onPress={() => setBackgroundColor(item.color)}
             />
           )}
           keyExtractor={(item) => item.id}
