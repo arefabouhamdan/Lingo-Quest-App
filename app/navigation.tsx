@@ -25,10 +25,12 @@ import { useStorage } from "@/hooks/useStorage";
 const Tab = createStackNavigator();
 
 const Navigation = () => {
-  const { user } = useStorage();
+  const { user, loggedIn } = useStorage();
+  console.log("loggedIn", loggedIn)
   return (
     <>
       <Tab.Navigator
+        initialRouteName="Home"
         screenOptions={{
           headerShown: false,
         }}

@@ -23,7 +23,6 @@ const Login = () => {
 
   const handleLogin = () => {
     loginMutation.mutate({ name, password });
-    navigation.navigate("Home");
   };
 
   return (
