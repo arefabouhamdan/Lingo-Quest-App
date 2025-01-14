@@ -32,7 +32,7 @@ const Tabs = ({
 
   return (
     <>
-      <View style={tw`flex flex-row justify-between items-center w-full`}>
+      <View style={tw`flex flex-row justify-between items-center w-full px-5 my-5`}>
         <TouchableOpacity onPress={() => setActive("hair")}>
           <Text
             style={tw`${themeTextStyle} ${fontStyle} ${
@@ -85,7 +85,7 @@ const Tabs = ({
           renderItem={({ item }) => (
             <TouchableOpacity
               style={[
-                tw`p-10 my-5 mx-auto rounded-3`,
+                tw`p-10 mb-5 mx-auto rounded-3`,
                 { backgroundColor: item.color },
               ]}
               onPress={() => setHairColor(item.color)}
@@ -103,7 +103,7 @@ const Tabs = ({
           renderItem={({ item }) => (
             <TouchableOpacity
               style={[
-                tw`p-10 my-5 mx-auto rounded-3`,
+                tw`p-10 mb-5 mx-auto rounded-3`,
                 { backgroundColor: item.color },
               ]}
               onPress={() => setEyeColor(item.color)}
@@ -121,7 +121,7 @@ const Tabs = ({
           renderItem={({ item }) => (
             <TouchableOpacity
               style={[
-                tw`p-10 my-5 mx-auto rounded-3`,
+                tw`p-10 mb-5 mx-auto rounded-3`,
                 { backgroundColor: item.color },
               ]}
               onPress={() => setSkinColor(item.color)}
@@ -139,7 +139,7 @@ const Tabs = ({
           renderItem={({ item }) => (
             <TouchableOpacity
               style={[
-                tw`p-10 my-5 mx-auto rounded-3`,
+                tw`p-10 mb-5 mx-auto rounded-3`,
                 { backgroundColor: item.color },
               ]}
               onPress={() => setShirtColor(item.color)}
@@ -157,7 +157,7 @@ const Tabs = ({
           renderItem={({ item }) => (
             <TouchableOpacity
               style={[
-                tw`p-10 my-5 mx-auto rounded-3`,
+                tw`p-10 mb-5 mx-auto rounded-3`,
                 { backgroundColor: item.color },
               ]}
               onPress={() => setBackgroundColor(item.color)}

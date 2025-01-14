@@ -37,16 +37,14 @@ const CreateAvatar = () => {
         shirtColor={shirtColor}
         gender={gender}
       />
-      <View style={tw`px-5 my-5`}>
-        <Tabs
-          setHairColor={setHairColor}
-          setEyeColor={setEyeColor}
-          setSkinColor={setSkinColor}
-          setShirtColor={setShirtColor}
-          setBackgroundColor={setBackgroundColor}
-          setGender={setGender}
-        />
-      </View>
+      <Tabs
+        setHairColor={setHairColor}
+        setEyeColor={setEyeColor}
+        setSkinColor={setSkinColor}
+        setShirtColor={setShirtColor}
+        setBackgroundColor={setBackgroundColor}
+        setGender={setGender}
+      />
     </SafeAreaView>
   );
 };
