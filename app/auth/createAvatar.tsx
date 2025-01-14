@@ -16,7 +16,7 @@ const CreateAvatar = () => {
 
   const { themeViewStyle } = useTheme();
   const buttonStyle =
-    "flex justify-center items-center p-1 w-9/20 h-14 rounded-2 border-r-4 border-b-4";
+    "flex justify-center items-center p-1 w-9/20 h-14 rounded-2";
   const fontStyle = "font-bold text-lg py-2 text-white";
   return (
     <SafeAreaView style={tw`${themeViewStyle} flex-1`}>
