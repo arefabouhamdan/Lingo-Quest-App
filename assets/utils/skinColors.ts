@@ -11,22 +11,12 @@ export const SkinColors = [
     },
     {
         "id": "3",
-        "color": "#C68642",
-        "name": "Medium"
-    },
-    {
-        "id": "4",
         "color": "#8D5524",
         "name": "Tan"
     },
     {
-        "id": "5",
+        "id": "4",
         "color": "#6B4226",
         "name": "Dark"
     },
-    {
-        "id": "6",
-        "color": "#4B2E15",
-        "name": "Deep"
-    }
 ]
