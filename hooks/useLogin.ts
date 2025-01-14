@@ -1,5 +1,6 @@
 import { useMutation } from "react-query";
 import axios from "axios";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface LoginCredentials {
   name: string;
@@ -17,11 +18,12 @@ const login = async (credentials: LoginCredentials) => {
 export const useLogin = () => {
   return useMutation({
     mutationFn: login,
-    onSuccess: (data) => {
-      console.log("Login successful!", data);
-    },
-    onError: (error) => {
-      console.error("Login failed:", error.response?.data || error.message);
+    onSuccess: async (data) => {
+      try {
+        await AsyncStorage.setItem('user', JSON.stringify(data));
+      } catch (error) {
+        console.error("Error storing login data securely:", error);
+      }
     },
   });
 };
