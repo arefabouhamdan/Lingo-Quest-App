@@ -1,13 +1,23 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
 import { useTheme } from "@/assets/utils/useTheme";
+import { languages } from "@/assets/utils/languages";
 import tw from "twrnc";
 
 type LanguageBarProps = {
   style?: string;
+  user: {
+    name: string;
+    id: string;
+    joined: string;
+    streak: string;
+    xp: string;
+    type: string;
+    language: string;
+  }
 };
 
-const LanguageBar = ({style = ""} : LanguageBarProps ) => {
+const LanguageBar = ({style = "", user} : LanguageBarProps ) => {
   const { themeViewStyle, themeTextStyle } = useTheme();
   const language = "German";
   const level = "A1";
@@ -16,7 +26,7 @@ const LanguageBar = ({style = ""} : LanguageBarProps ) => {
 
   return (
     <View style={tw`${borderStyle} ${style}`}>
-      <Image source={require("@/assets/images/flags/German.png")} />
+      <Image source={languages.find((lang) => lang.name === user.language)?.source} />
       <Text style={tw`${themeTextStyle} text-2xl font-bold `}>
         {language} {level}
       </Text>

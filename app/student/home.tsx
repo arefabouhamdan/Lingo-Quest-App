@@ -17,8 +17,26 @@ const Home = () => {
   const { themeViewStyle, themeTextStyle } = useTheme();
   const navigation = useNavigation();
   const colorScheme = useColorScheme();
-  const name = "Aref";
-  const rank = "Silver";
+
+  const user = {
+    name: "Aref",
+    id: "1234",
+    joined: "01-09-2021",
+    streak: "20",
+    xp: "12000",
+    type: "student",
+    language: "Arabic",
+    rank: "Diamond",
+    avatar: {
+      gender: "female",
+      background: { color: "#4FC0E8" },
+      hair: { color: "#674238", style: "WomanHairTwo" },
+      skin: { color: "#E7BC98", style: "WomanFace" },
+      eyes: { color: "#1E81C8", style: "Eyes" },
+      shirt: { color: "#484848", style: "WomanShirt" },
+    },
+    friends: ["Aref", "Bilal", "Hassan", "Ali"],
+  };
   return (
     <SafeAreaView
       style={tw`${themeViewStyle} flex-1 items-center justify-center`}
@@ -26,7 +44,7 @@ const Home = () => {
       <Text
         style={tw`${themeTextStyle} text-2xl font-bold absolute top-15 z-11`}
       >
-        Welcome back {name}!
+        Welcome back {user.name}!
       </Text>
       <Image
         source={require("@/assets/images/game/iglo.png")}
@@ -39,7 +57,7 @@ const Home = () => {
       <View style={tw`mt-95`}></View>
       <StreakBar />
 
-      <LanguageBar />
+      <LanguageBar user={user}/>
       
       <View style={tw`flex flex-row justify-center items-center gap-5 w-11/12`}>
         <TouchableOpacity
@@ -69,7 +87,7 @@ const Home = () => {
             <Image source={require("@/assets/images/icons/shield-white.png")} />
           )}
           <Text style={tw`${themeTextStyle} text-xl font-bold `}>
-            {rank} League
+            {user.rank} League
           </Text>
         </TouchableOpacity>
       </View>
