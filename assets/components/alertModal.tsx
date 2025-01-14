@@ -1,5 +1,6 @@
 import React from "react";
 import { Modal, Text, TouchableOpacity, View, Image } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { useTheme } from "../utils/useTheme";
 import tw from "twrnc";
 import Icon from "react-native-vector-icons/Ionicons";
@@ -12,6 +13,11 @@ type FriendModalProps = {
 
 const AlertModal = ({ modalVisible, setModalVisible }: FriendModalProps) => {
   const { themeViewStyle, themeTextStyle } = useTheme();
+  const navigation = useNavigation();
+  const handleLeave = () => {
+    setModalVisible(!modalVisible)
+    navigation.goBack()
+  }
   return (
     <Modal
       animationType="slide"
@@ -34,10 +40,9 @@ const AlertModal = ({ modalVisible, setModalVisible }: FriendModalProps) => {
           </TouchableOpacity>
           <TouchableOpacity
             style={tw`w-52 bg-sky-400 rounded-2 h-14 my-auto flex flex-row justify-center items-center gap-5`}
-            onPress={() => console.log("Friend Added")}
+            onPress={handleLeave}
           >
-            <Icon name="add-outline" color="white" size={26} />
-            <Text style={tw`text-white font-bold text-lg`}>Add Friend</Text>
+            <Text style={tw`text-white font-bold text-lg`}>Leave</Text>
           </TouchableOpacity>
         </View>
       </View>
