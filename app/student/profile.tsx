@@ -13,9 +13,17 @@ import Avatar from "@/assets/components/Avatar";
 import { languages } from "@/assets/utils/languages";
 import Icons from "react-native-vector-icons/Ionicons";
 import BottomBar from "@/assets/components/bottomBar";
+import { useNavigation } from "@react-navigation/native";
+import { useStorage } from "@/hooks/useStorage";
 
 const Profile = () => {
   const { themeViewStyle, themeTextStyle } = useTheme();
+  const navigation = useNavigation();
+  const { logout } = useStorage();
+  const handleLogout = () => {
+    logout();
+    navigation.navigate("Login");
+  }
 
   const user = {
     name: "Aref",
@@ -42,6 +50,7 @@ const Profile = () => {
     <SafeAreaView style={tw`${themeViewStyle} flex-1`}>
       <TouchableOpacity
         style={tw`absolute z-10 top-2 right-2 bg-red-700 px-5 py-3 rounded flex items-center justify-center`}
+        onPress={handleLogout}
       >
         <Icons name="log-out-sharp" size={36} color={"#fff"}/>
       </TouchableOpacity>
