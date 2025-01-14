@@ -92,7 +92,6 @@ const Home = () => {
           </Text>
         </TouchableOpacity>
       </View>
-      <BottomBar />
     </SafeAreaView>
   );
 };

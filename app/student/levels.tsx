@@ -61,7 +61,6 @@ const Levels = () => {
         inverted={true}
         style={tw`flex-1 w-full`}
       />
-      <BottomBar/>
     </SafeAreaView>
   );
 };

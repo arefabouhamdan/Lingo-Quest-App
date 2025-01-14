@@ -36,7 +36,6 @@ const Leaderboard = () => {
       </View>
       <Rank/>
       <LeaderList/>
-      <BottomBar/>
     </SafeAreaView>
   );
 };

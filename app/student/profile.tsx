@@ -124,7 +124,6 @@ const Profile = () => {
           <Text style={tw`${themeTextStyle} text-xl my-2`}>{xp} XP</Text>
         </View>
       </View>
-      <BottomBar/>
     </SafeAreaView>
   );
 };
