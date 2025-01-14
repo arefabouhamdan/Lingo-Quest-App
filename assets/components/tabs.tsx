@@ -3,6 +3,10 @@ import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { useTheme } from "../utils/useTheme";
 import { HairColors } from "../utils/hairColors";
 import tw from "twrnc";
+import { EyeColors } from "../utils/eyeColors";
+import { SkinColors } from "../utils/skinColors";
+import { ShirtColors } from "../utils/shirtColors";
+import { BgColors } from "../utils/bgColors";
 
 type TabsProps = {
   setHairColor: (color: string) => void;
@@ -66,6 +70,78 @@ const Tabs = ({ setHairColor }: TabsProps) => {
       {active == "hair" && (
         <FlatList
           data={HairColors}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              style={[
+                tw`p-10 my-5 mx-auto rounded-3`,
+                { backgroundColor: item.color },
+              ]}
+              onPress={() => setHairColor(item.color)}
+            />
+          )}
+          keyExtractor={(item) => item.id}
+          horizontal={false}
+          numColumns={4}
+          style={tw`w-full h-full`}
+        />
+      )}
+      {active == "eyes" && (
+        <FlatList
+          data={EyeColors}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              style={[
+                tw`p-10 my-5 mx-auto rounded-3`,
+                { backgroundColor: item.color },
+              ]}
+              onPress={() => setHairColor(item.color)}
+            />
+          )}
+          keyExtractor={(item) => item.id}
+          horizontal={false}
+          numColumns={4}
+          style={tw`w-full h-full`}
+        />
+      )}
+      {active == "skin" && (
+        <FlatList
+          data={SkinColors}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              style={[
+                tw`p-10 my-5 mx-auto rounded-3`,
+                { backgroundColor: item.color },
+              ]}
+              onPress={() => setHairColor(item.color)}
+            />
+          )}
+          keyExtractor={(item) => item.id}
+          horizontal={false}
+          numColumns={4}
+          style={tw`w-full h-full`}
+        />
+      )}
+      {active == "shirt" && (
+        <FlatList
+          data={ShirtColors}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              style={[
+                tw`p-10 my-5 mx-auto rounded-3`,
+                { backgroundColor: item.color },
+              ]}
+              onPress={() => setHairColor(item.color)}
+            />
+          )}
+          keyExtractor={(item) => item.id}
+          horizontal={false}
+          numColumns={4}
+          style={tw`w-full h-full`}
+        />
+      )}
+      {active == "background" && (
+        <FlatList
+          data={BgColors}
           renderItem={({ item }) => (
             <TouchableOpacity
               style={[
