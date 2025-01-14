@@ -23,7 +23,10 @@ const User = ({ name, info, avatar, navigateTo, tutor }: UserProps) => {
 
   return (
     <>
-      <FriendModal modalVisible={modalVisible} setModalVisible={setModalVisible}/>
+      <FriendModal
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+      />
       <TouchableOpacity
         style={tw`flex flex-row items-center gap-5 p-4 rounded border border-gray-200 mb-4 h-20 justify-between`}
         onPress={() => {
@@ -43,11 +46,13 @@ const User = ({ name, info, avatar, navigateTo, tutor }: UserProps) => {
             <Text style={tw`${themeTextStyle} text-xl font-extrabold`}>
               {name}
             </Text>
-            <Text
-              style={tw`${themeTextStyle} text-lg font-medium text-sky-400`}
-            >
-              {info}
-            </Text>
+            {info && (
+              <Text
+                style={tw`${themeTextStyle} text-lg font-medium text-sky-400`}
+              >
+                {info}
+              </Text>
+            )}
           </View>
         </View>
         <Icon

@@ -39,7 +39,7 @@ const Friends = () => {
       <FlatList
         data={user.friends}
         renderItem={({ item }) => (
-          <User name={item.name} info={`${item.dateAdded}`} />
+          <User name={item.name} />
         )}
         ListEmptyComponent={() => (
           <View style={tw`flex-1 items-center justify-center`}>
