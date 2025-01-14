@@ -1,7 +1,7 @@
 export const BgColors = [
   {
     id: "1",
-    color: "#FFFFFF",
+    color: "#F3F3F3",
     name: "White",
   },
   {
