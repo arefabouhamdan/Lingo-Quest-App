@@ -7,7 +7,7 @@ import tw from "twrnc";
 type ButtonProps = {
   image?: string;
   text: string;
-  press: string;
+  press?: string;
   type?: string;
 };
 
@@ -21,7 +21,8 @@ const Button = ({ image, text, press, type }: ButtonProps) => {
       style={tw` ${
         type == "submit" ? submitStyle : loginStyle
       } bg-sky-400 rounded-2 h-14 mt-5 flex flex-row justify-center items-center gap-5`}
-      onPress={() => navigation.navigate(press as never)}
+      onPress={press ? () => navigation.navigate(press as never) : undefined}
+      disabled={press ? false : true}
     >
       {image && (
         <Icon
