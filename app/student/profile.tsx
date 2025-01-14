@@ -89,7 +89,7 @@ const Profile = () => {
       <Text style={tw`${themeTextStyle} text-xl font-bold mb-2 text-left pl-3`}>
         Stats
       </Text>
-      <View style={tw`flex flex-row gap-2 items-center px-2 justify-center`}>
+      <View style={tw`flex flex-row gap-2 items-center px-2 justify-center mb-5`}>
         <View
           style={tw`flex items-center w-1/2.1 gap-2 border-2 border-b-4 rounded-2 border-gray-300`}
         >

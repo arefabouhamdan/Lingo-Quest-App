@@ -60,7 +60,7 @@ const Home = () => {
 
       <LanguageBar user={user}/>
       
-      <View style={tw`flex flex-row justify-center items-center gap-5 w-11/12`}>
+      <View style={tw`flex flex-row justify-center items-center gap-5 w-11/12 mb-8`}>
         <TouchableOpacity
           style={tw`${themeViewStyle}flex items-center p-5 flex-row gap-2 justify-center mt-10 rounded-lg w-9/19 h-22 border border-gray-200`}
           onPress={() => {

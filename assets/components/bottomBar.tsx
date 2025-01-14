@@ -16,25 +16,25 @@ const BottomBar = () => {
       <View style={tw`flex flex-row w-full h-full`}>
           <TouchableOpacity
             style={tw`flex-1 flex items-center justify-center`}
-            onPress={() => navigation.navigate("Home")}
+            onPress={() => navigation.navigate("Home" as never)}
           >
             <Icon name="home" size={30} color={"#fff"} />
           </TouchableOpacity>
           <TouchableOpacity
             style={tw`flex-1 flex items-center justify-center`}
-            onPress={() => navigation.navigate("Levels")}
+            onPress={() => navigation.navigate("Levels" as never)}
           >
             <Icon name="bonfire" size={30} color={"#fff"} />
           </TouchableOpacity>
           <TouchableOpacity
             style={tw`flex-1 flex items-center justify-center`}
-            onPress={() => navigation.navigate("Leaderboard")}
+            onPress={() => navigation.navigate("Leaderboard" as never)}
           >
             <Icon name="trophy" size={30} color={"#fff"} />
           </TouchableOpacity>
           <TouchableOpacity
             style={tw`flex-1 flex items-center justify-center`}
-            onPress={() => navigation.navigate("Profile")}
+            onPress={() => navigation.navigate("Profile" as never)}
           >
             <Icon name="person" size={30} color={"#fff"} />
           </TouchableOpacity>
