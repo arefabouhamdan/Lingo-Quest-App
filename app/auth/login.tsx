@@ -15,12 +15,12 @@ import { useLogin } from "@/hooks/useLogin";
 
 const Login = () => {
   const { themeViewStyle, themeTextStyle } = useTheme();
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const loginMutation = useLogin();
 
   const handleLogin = () => {
-    loginMutation.mutate({ email, password });
+    loginMutation.mutate({ name, password });
   };
 
   return (
@@ -36,11 +36,11 @@ const Login = () => {
         <View style={tw`flex items-center gap-5`}>
           <View>
             <Text style={tw`${themeTextStyle} text-xl font-bold`}>
-              Email
+              Username
             </Text>
             <Input
-              placeholder="Enter your email"
-              onChange={(text) => setEmail(text)}
+              placeholder="Enter your username"
+              onChange={(text) => setName(text)}
               error={loginMutation.isError }
             />
           </View>
