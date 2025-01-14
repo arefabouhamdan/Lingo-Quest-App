@@ -35,29 +35,25 @@ const CustomizeAvatar = ({
   return (
     <View
       style={[
-        tw`flex flex-col items-center justify-end w-full`,
+        tw`flex flex-col items-center justify-end w-full h-2/7`,
         { backgroundColor: backgroundColor },
       ]}
     >
       {gender === "female" ? (
         <>
-          <WomanHairThree hairColor={hairColor} style="relative top-17 z-2" />
-          <View
-            style={tw`flex top-15 flex-row justify-between items-center w-1/2`}
-          >
+          <WomanHairThree hairColor={hairColor} style="relative top-50 z-2" />
+          <Eyes eyeColor={eyeColor} style="relative top-20 z-1" />
+          <View style={tw`flex top-15 flex-row justify-between items-center w-1/2`}>
             <Icon name="arrow-back-outline" size={36} />
             <Icon name="arrow-forward-outline" size={36} />
           </View>
-          <Eyes eyeColor={eyeColor} style="relative top-14.5 z-1" />
           <WomanFace skinColor={skinColor} />
           <WomanShirt shirtColor={shirtColor} />
         </>
       ) : (
         <>
-          <ManHairThree hairColor={hairColor} style="relative top-17 z-2" />
-          <View
-            style={tw`top-15 flex flex-row justify-between items-center w-1/2`}
-          >
+          <ManHairThree hairColor={hairColor} style="relative top-26 z-2" />
+          <View style={tw`top-15 flex flex-row justify-between items-center w-1/2`}>
             <Icon name="arrow-back-outline" size={36} />
             <Icon name="arrow-forward-outline" size={36} />
           </View>
