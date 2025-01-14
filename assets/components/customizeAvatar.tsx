@@ -23,26 +23,25 @@ type AvatarProps = {
   gender: string;
 };
 
-const CustomizeAvatar = ({
-  hairColor,
-  eyeColor,
-  skinColor,
-  shirtColor,
-  backgroundColor,
-  gender,
-}: AvatarProps) => {
+const CustomizeAvatar = ({hairColor, eyeColor, skinColor, shirtColor, backgroundColor, gender}: AvatarProps) => {
   return (
-    <View
-      style={[
-        tw`flex flex-col items-center justify-end w-full`,
-        { backgroundColor: backgroundColor },
-      ]}
-    >
-      <WomanHairThree hairColor={hairColor} style="relative top-17 z-2" />
-      <Eyes eyeColor={eyeColor} style="relative top-14.5 z-1" />
-      <WomanFace skinColor={skinColor} />
-      <WomanShirt shirtColor={shirtColor} />
-    </View>
+  <View style={[tw`flex flex-col items-center justify-end w-full`, { backgroundColor: backgroundColor }]}>
+    {gender === 'female' ? (
+      <>
+        <WomanHairThree hairColor={hairColor} style="relative top-17 z-2" />
+        <Eyes eyeColor={eyeColor} style="relative top-14.5 z-1" />
+        <WomanFace skinColor={skinColor} />
+        <WomanShirt shirtColor={shirtColor} />
+      </>
+    ) : (
+      <>
+        <ManHairThree hairColor={hairColor} style="relative top-17 z-2" />
+        <Eyes eyeColor={eyeColor} style="relative top-14.5 z-1" />
+        <MaleFace skinColor={skinColor} />
+        <ManShirt shirtColor={shirtColor} />
+      </>
+    )}
+  </View>
   );
 };
 
