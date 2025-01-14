@@ -14,7 +14,6 @@ type TabsProps = {
   setSkinColor: (color: string) => void;
   setShirtColor: (color: string) => void;
   setBackgroundColor: (color: string) => void;
-  setGender: (color: string) => void;
 };
 
 const Tabs = ({
@@ -22,8 +21,7 @@ const Tabs = ({
   setEyeColor,
   setSkinColor,
   setShirtColor,
-  setBackgroundColor,
-  setGender,
+  setBackgroundColor
 }: TabsProps) => {
   const { themeTextStyle } = useTheme();
   const [active, setActive] = useState("hair");

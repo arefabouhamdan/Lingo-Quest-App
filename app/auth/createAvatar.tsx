@@ -44,7 +44,6 @@ const CreateAvatar = () => {
         setSkinColor={setSkinColor}
         setShirtColor={setShirtColor}
         setBackgroundColor={setBackgroundColor}
-        setGender={setGender}
       />
       <View style={tw`flex flex-row justify-center items-center my-5`}>
         <Button text="Continue" press="Choose" type="submit" />
