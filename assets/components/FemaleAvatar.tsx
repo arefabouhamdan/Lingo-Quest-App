@@ -34,9 +34,9 @@ const FemaleAvatar = ({ avatar }) => {
   const EyesComponent = avatarComponents.eyes[eyes.style];
 
   return (
-    <View style={[tw`flex flex-col items-center justify-end w-full`, { backgroundColor: background.color }]}>
-      <HairComponent hairColor={hair.color} style="relative top-17 z-2" />
-      <EyesComponent eyeColor={eyes.color} style="relative top-14.5 z-1" />
+    <View style={[tw`flex flex-col items-center justify-end w-full h-1/3`, { backgroundColor: background.color }]}>
+      <HairComponent hairColor={hair.color} style="relative top-41 z-2" />
+      <EyesComponent eyeColor={eyes.color} style="relative top-11 z-1" />
       <FaceComponent skinColor={skin.color} />
       <ShirtComponent shirtColor={shirt.color} />
     </View>
