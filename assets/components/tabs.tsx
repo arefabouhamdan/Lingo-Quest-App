@@ -7,6 +7,7 @@ import { EyeColors } from "../utils/eyeColors";
 import { SkinColors } from "../utils/skinColors";
 import { ShirtColors } from "../utils/shirtColors";
 import { BgColors } from "../utils/bgColors";
+import Icon from "react-native-vector-icons/Ionicons";
 
 type TabsProps = {
   setHairColor: (color: string) => void;
@@ -21,16 +22,23 @@ const Tabs = ({
   setEyeColor,
   setSkinColor,
   setShirtColor,
-  setBackgroundColor
+  setBackgroundColor,
 }: TabsProps) => {
   const { themeTextStyle } = useTheme();
   const [active, setActive] = useState("hair");
+  const [selectedHair, setSelectedHair] = useState("#4B3621");
+  const [selectedSkin, setSelectedSkin] = useState("#0F52BA");
+  const [selectedEye, setSelectedEye] = useState("#F5CBA7");
+  const [selectedBg, setSelectedBg] = useState("#000000");
+  const [selectedShirt, setSelectedShirt] = useState("#ADD8E6");
   const fontStyle = "font-bold text-lg py-2";
   const activeStyle = "border-b-2 border-white";
 
   return (
     <>
-      <View style={tw`flex flex-row justify-between items-center w-full px-5 my-5`}>
+      <View
+        style={tw`flex flex-row justify-between items-center w-full px-5 my-5`}
+      >
         <TouchableOpacity onPress={() => setActive("hair")}>
           <Text
             style={tw`${themeTextStyle} ${fontStyle} ${
@@ -83,11 +91,21 @@ const Tabs = ({
           renderItem={({ item }) => (
             <TouchableOpacity
               style={[
-                tw`p-10 mb-5 mx-auto rounded-3`,
+                tw`${
+                  item.color == selectedHair ? "p-5.5" : "p-10"
+                } mb-5 mx-auto rounded-3 flex items-center justify-center`,
                 { backgroundColor: item.color },
               ]}
-              onPress={() => setHairColor(item.color)}
-            />
+              onPress={() => {
+                setHairColor(item.color), setSelectedHair(item.color);
+              }}
+            >
+              <View>
+                {item.color == selectedHair && (
+                  <Icon name="checkmark-outline" size={36} />
+                )}
+              </View>
+            </TouchableOpacity>
           )}
           keyExtractor={(item) => item.id}
           horizontal={false}
@@ -101,11 +119,21 @@ const Tabs = ({
           renderItem={({ item }) => (
             <TouchableOpacity
               style={[
-                tw`p-10 mb-5 mx-auto rounded-3`,
+                tw`${
+                  item.color == selectedEye ? "p-5.5" : "p-10"
+                } mb-5 mx-auto rounded-3 flex items-center justify-center`,
                 { backgroundColor: item.color },
               ]}
-              onPress={() => setEyeColor(item.color)}
-            />
+              onPress={() => {
+                setEyeColor(item.color), setSelectedEye(item.color);
+              }}
+            >
+              <View>
+                {item.color == selectedEye && (
+                  <Icon name="checkmark-outline" size={36} />
+                )}
+              </View>
+            </TouchableOpacity>
           )}
           keyExtractor={(item) => item.id}
           horizontal={false}
@@ -119,11 +147,21 @@ const Tabs = ({
           renderItem={({ item }) => (
             <TouchableOpacity
               style={[
-                tw`p-10 mb-5 mx-auto rounded-3`,
+                tw`${
+                  item.color == selectedSkin ? "p-5.5" : "p-10"
+                } mb-5 mx-auto rounded-3 flex items-center justify-center`,
                 { backgroundColor: item.color },
               ]}
-              onPress={() => setSkinColor(item.color)}
-            />
+              onPress={() => {
+                setSkinColor(item.color), setSelectedSkin(item.color);
+              }}
+            >
+              <View>
+                {item.color == selectedSkin && (
+                  <Icon name="checkmark-outline" size={36} />
+                )}
+              </View>
+            </TouchableOpacity>
           )}
           keyExtractor={(item) => item.id}
           horizontal={false}
@@ -137,11 +175,21 @@ const Tabs = ({
           renderItem={({ item }) => (
             <TouchableOpacity
               style={[
-                tw`p-10 mb-5 mx-auto rounded-3`,
+                tw`${
+                  item.color == selectedShirt ? "p-5.5" : "p-10"
+                } mb-5 mx-auto rounded-3 flex items-center justify-center`,
                 { backgroundColor: item.color },
               ]}
-              onPress={() => setShirtColor(item.color)}
-            />
+              onPress={() => {
+                setShirtColor(item.color), setSelectedShirt(item.color);
+              }}
+            >
+              <View>
+                {item.color == selectedShirt && (
+                  <Icon name="checkmark-outline" size={36} />
+                )}
+              </View>
+            </TouchableOpacity>
           )}
           keyExtractor={(item) => item.id}
           horizontal={false}
@@ -155,14 +203,23 @@ const Tabs = ({
           renderItem={({ item }) => (
             <TouchableOpacity
               style={[
-                tw`p-10 mb-5 mx-auto rounded-3`,
+                tw`${
+                  item.color == selectedBg ? "p-5.5" : "p-10"
+                } mb-5 mx-auto rounded-3 flex items-center justify-center`,
                 { backgroundColor: item.color },
               ]}
-              onPress={() => setBackgroundColor(item.color)}
-            />
+              onPress={() => {
+                setBackgroundColor(item.color), setSelectedBg(item.color);
+              }}
+            >
+              <View>
+                {item.color == selectedBg && (
+                  <Icon name="checkmark-outline" size={36} />
+                )}
+              </View>
+            </TouchableOpacity>
           )}
           keyExtractor={(item) => item.id}
-          horizontal={false}
           numColumns={4}
           style={tw`w-full h-full`}
         />
