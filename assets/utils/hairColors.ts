@@ -1,202 +1,102 @@
 export const HairColors = [
     {
-      id: "1",
-      color: "#4FC0E8",
-      name: "Sky Blue",
+        "id": "1",
+        "color": "#000000",
+        "name": "Jet Black"
     },
     {
-      id: "2",
-      color: "#674238",
-      name: "Brown",
+        "id": "2",
+        "color": "#4B3621",
+        "name": "Dark Brown"
     },
     {
-      id: "3",
-      color: "#E7BC98",
-      name: "Skin",
+        "id": "3",
+        "color": "#A0522D",
+        "name": "Chestnut Brown"
     },
     {
-      id: "4",
-      color: "#1E81C8",
-      name: "Blue",
+        "id": "4",
+        "color": "#D2B48C",
+        "name": "Ash Blonde"
     },
     {
-      id: "5",
-      color: "#484848",
-      name: "Grey",
+        "id": "5",
+        "color": "#F5DEB3",
+        "name": "Honey Blonde"
     },
     {
-      id: "6",
-      color: "#F2F2F2",
-      name: "Light Grey",
+        "id": "6",
+        "color": "#C19A6B",
+        "name": "Light Brown"
     },
     {
-      id: "7",
-      color: "#000000",
-      name: "Black",
+        "id": "7",
+        "color": "#8B0000",
+        "name": "Burgundy"
     },
     {
-      id: "8",
-      color: "#FFFFFF",
-      name: "White",
+        "id": "8",
+        "color": "#FF4500",
+        "name": "Copper Red"
     },
     {
-      id: "9",
-      color: "#FF0000",
-      name: "Red",
+        "id": "9",
+        "color": "#FF6347",
+        "name": "Strawberry Blonde"
     },
     {
-      id: "10",
-      color: "#00FF00",
-      name: "Green",
+        "id": "10",
+        "color": "#FFF5EE",
+        "name": "Platinum Blonde"
     },
     {
-      id: "11",
-      color: "#0000FF",
-      name: "Blue",
+        "id": "11",
+        "color": "#D2691E",
+        "name": "Auburn"
     },
     {
-      id: "12",
-      color: "#FFFF00",
-      name: "Yellow",
+        "id": "12",
+        "color": "#B5651D",
+        "name": "Golden Brown"
     },
     {
-      id: "13",
-      color: "#FF00FF",
-      name: "Pink",
+        "id": "13",
+        "color": "#808080",
+        "name": "Silver"
     },
     {
-      id: "14",
-      color: "#00FFFF",
-      name: "Cyan",
+        "id": "14",
+        "color": "#708090",
+        "name": "Salt and Pepper"
     },
     {
-      id: "15",
-      color: "#800000",
-      name: "Maroon",
+        "id": "15",
+        "color": "#8E44AD",
+        "name": "Violet"
     },
     {
-      id: "16",
-      color: "#008000",
-      name: "Green",
+        "id": "16",
+        "color": "#A52A2A",
+        "name": "Mahogany"
     },
     {
-      id: "17",
-      color: "#000080",
-      name: "Navy",
+        "id": "17",
+        "color": "#D8BFD8",
+        "name": "Lilac"
     },
     {
-      id: "18",
-      color: "#808000",
-      name: "Olive",
+        "id": "18",
+        "color": "#E3C565",
+        "name": "Caramel"
     },
     {
-      id: "19",
-      color: "#800080",
-      name: "Purple",
+        "id": "19",
+        "color": "#E97451",
+        "name": "Rose Gold"
     },
     {
-      id: "20",
-      color: "#008080",
-      name: "Teal",
-    },
-    {
-      id: "21",
-      color: "#808080",
-      name: "Grey",
-    },
-    {
-      id: "22",
-      color: "#C0C0C0",
-      name: "Silver",
-    },
-    {
-      id: "23",
-      color: "#FFA500",
-      name: "Orange",
-    },
-    {
-      id: "24",
-      color: "#FFC0CB",
-      name: "Pink",
-    },
-    {
-      id: "25",
-      color: "#FFD700",
-      name: "Gold",
-    },
-    {
-      id: "26",
-      color: "#FF4500",
-      name: "Orange Red",
-    },
-    {
-      id: "27",
-      color: "#FF6347",
-      name: "Tomato",
-    },
-    {
-      id: "28",
-      color: "#FF69B4",
-      name: "Hot Pink",
-    },
-    {
-      id: "29",
-      color: "#FFA07A",
-      name: "Light Salmon",
-    },
-    {
-      id: "30",
-      color: "#FFB6C1",
-      name: "Light Pink",
-    },
-    {
-      id: "31",
-      color: "#FFDAB9",
-      name: "PeachPuff",
-    },
-    {
-      id: "32",
-      color: "#FFDEAD",
-      name: "NavajoWhite",
-    },
-    {
-      id: "33",
-      color: "#FFE4B5",
-      name: "Moccasin",
-    },
-    {
-      id: "34",
-      color: "#FFE4C4",
-      name: "Bisque",
-    },
-    {
-      id: "35",
-      color: "#FFE4E1",
-      name: "MistyRose",
-    },
-    {
-      id: "36",
-      color: "#FFEBCD",
-      name: "BlanchedAlmond",
-    },
-    {
-      id: "37",
-      color: "#FFEFD5",
-      name: "PapayaWhip",
-    },
-    {
-      id: "38",
-      color: "#FFF0F5",
-      name: "LavenderBlush",
-    },
-    {
-      id: "39",
-      color: "#FFF5EE",
-      name: "SeaShell",
-    },
-    {
-      id: "40",
-      color: "#FFF8DC",
-      name: "Cornsilk",
-    },
-  ];
+        "id": "20",
+        "color": "#FAF0E6",
+        "name": "Vanilla Blonde"
+    }
+]
