@@ -42,6 +42,7 @@ const Login = () => {
             <Input
               placeholder="Enter your username"
               onChangeText={(text) => setName(text)}
+              error={loginMutation.isError }
             />
           </View>
           <View>
@@ -52,6 +53,7 @@ const Login = () => {
               placeholder="Enter your password"
               onChangeText={(text) => setPassword(text)}
               secureTextEntry={true}
+              error={loginMutation.isError }
             />
           </View>
           <TouchableOpacity onPress={handleLogin}>
