@@ -26,7 +26,7 @@ const ChooseLanguage = () => {
           <FlatList
             data={languages}
             renderItem={({ item }) => (
-              <TouchableOpacity style={tw`m-2`} onPress={() => {setLanguage(item.name)}}>
+              <TouchableOpacity style={tw`m-2 ${item.name == language ? 'opacity-100': 'opacity-50'}`} onPress={() => {setLanguage(item.name)}}>
                 <Image source={item.source} />
               </TouchableOpacity>
             )}
