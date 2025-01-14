@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "react-native";
+import { View, TouchableOpacity } from "react-native";
 import tw from "twrnc";
 import ManHairOne from "../images/character/manHairOne";
 import ManHairTwo from "../images/character/manHairTwo";
@@ -44,8 +44,12 @@ const CustomizeAvatar = ({
           <WomanHairThree hairColor={hairColor} style="relative top-50 z-2" />
           <Eyes eyeColor={eyeColor} style="relative top-20 z-1" />
           <View style={tw`flex top-15 flex-row justify-between items-center w-1/2`}>
-            <Icon name="arrow-back-outline" size={36} />
-            <Icon name="arrow-forward-outline" size={36} />
+            <TouchableOpacity>
+              <Icon name="arrow-back-outline" size={36} />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Icon name="arrow-forward-outline" size={36} />
+            </TouchableOpacity>
           </View>
           <WomanFace skinColor={skinColor} />
           <WomanShirt shirtColor={shirtColor} />
@@ -54,8 +58,12 @@ const CustomizeAvatar = ({
         <>
           <ManHairThree hairColor={hairColor} style="relative top-26 z-2" />
           <View style={tw`top-15 flex flex-row justify-between items-center w-1/2`}>
-            <Icon name="arrow-back-outline" size={36} />
-            <Icon name="arrow-forward-outline" size={36} />
+            <TouchableOpacity>
+              <Icon name="arrow-back-outline" size={36} />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Icon name="arrow-forward-outline" size={36} />
+            </TouchableOpacity>
           </View>
           <Eyes eyeColor={eyeColor} style="relative top-14.5 z-1" />
           <MaleFace skinColor={skinColor} />
