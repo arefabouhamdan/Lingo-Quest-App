@@ -59,6 +59,9 @@ const Home = () => {
         </TouchableOpacity>
         <TouchableOpacity
           style={tw`${themeViewStyle}flex p-5 flex-row gap-2 items-center justify-center mt-10 rounded-lg w-9/19 h-22 border border-gray-200`}
+          onPress={() => {
+            navigation.navigate("Leaderboard" as never);
+          }}
         >
           {colorScheme === "light" ? (
             <Image source={require("@/assets/images/icons/shield-black.png")} />

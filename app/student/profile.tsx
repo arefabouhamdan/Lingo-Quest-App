@@ -4,6 +4,7 @@ import Button from "@/assets/components/Button";
 import { useTheme } from "@/assets/utils/useTheme";
 import tw from "twrnc";
 import Avatar from "@/assets/components/Avatar";
+import { languages } from "@/assets/utils/languages";
 
 const Profile = () => {
   const { themeViewStyle, themeTextStyle } = useTheme();
@@ -15,6 +16,7 @@ const Profile = () => {
     streak: "20",
     xp: "12000",
     type: "student",
+    language: "Arabic",
     avatar: {
       gender: "female",
       background: { color: "#4FC0E8" },
@@ -39,7 +41,7 @@ const Profile = () => {
         </Text>
         <Image
           style={tw`h-4.4 w-6`}
-          source={require("@/assets/images/flags/German.png")}
+          source={languages.find((lang) => lang.name === user.language)?.source}
         />
       </View>
       <View style={tw`flex flex-row justify-between items-center w-full`}>
