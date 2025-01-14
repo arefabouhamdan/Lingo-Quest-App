@@ -16,12 +16,12 @@ const Profile = () => {
     xp: "12000",
     type: "student",
     avatar: {
-      gender: "male",
+      gender: "female",
       background: { color: "#4FC0E8" },
-      hair: { color: "#674238", style: "ManHairOne" },
-      skin: { color: "#E7BC98", style: "MaleFace" },
+      hair: { color: "#674238", style: "WomanHairTwo" },
+      skin: { color: "#E7BC98", style: "WomanFace" },
       eyes: { color: "#1E81C8", style: "Eyes" },
-      shirt: { color: "#484848", style: "ManShirt" },
+      shirt: { color: "#484848", style: "WomanShirt" },
     },
     friends: ["Aref", "Bilal", "Hassan", "Ali"],
   };
