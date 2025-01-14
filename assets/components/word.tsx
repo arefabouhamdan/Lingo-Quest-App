@@ -13,7 +13,7 @@ const Word = ({ word , translation } : WordProps) => {
 
   return (
     <View
-      style={tw`${themeViewStyle} items-center justify-center mt-10 rounded-2 w-11/12 h-22 border-2 border-sky-400`}
+      style={tw`${themeViewStyle} items-center justify-center mt-10 rounded-2 w-11/12 h-22 border-2 border-gray-200`}
     >
       <Text style={tw`${themeTextStyle} text-xl font-bold`}>{word} = {translation}</Text>
     </View>
