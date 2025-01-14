@@ -21,11 +21,19 @@ const CreateAvatar = () => {
   return (
     <SafeAreaView style={tw`${themeViewStyle} flex-1`}>
       <View style={tw`flex flex-row justify-between items-center px-5 my-5`}>
-        <TouchableOpacity style={tw`${buttonStyle} bg-sky-400 border-sky-600`}>
+        <TouchableOpacity
+          style={tw`${buttonStyle} bg-sky-400 border-sky-600`}
+          onPress={() => {
+            setGender("male");
+          }}
+        >
           <Text style={tw`${fontStyle}`}>Male</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={tw`${buttonStyle} bg-pink-500 border-pink-700`}
+          onPress={() => {
+            setGender("female");
+          }}
         >
           <Text style={tw`${fontStyle}`}>Female</Text>
         </TouchableOpacity>
