@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Text, Image, View, FlatList, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useTheme } from "../../assets/utils/useTheme";
@@ -8,6 +9,7 @@ import { languages } from "../../assets/utils/languages";
 
 const ChooseLanguage = () => {
   const { themeTextStyle, themeViewStyle } = useTheme();
+  const [language, setLanguage] = useState("English");
 
   return (
     <SafeAreaView style={tw`${themeViewStyle} flex-1 `}>
@@ -24,7 +26,7 @@ const ChooseLanguage = () => {
           <FlatList
             data={languages}
             renderItem={({ item }) => (
-              <TouchableOpacity style={tw`m-2`} onPress={() => {}}>
+              <TouchableOpacity style={tw`m-2`} onPress={() => {setLanguage(item.name)}}>
                 <Image source={item.source} />
               </TouchableOpacity>
             )}
