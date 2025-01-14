@@ -28,7 +28,7 @@ const AlertModal = ({ modalVisible, setModalVisible }: FriendModalProps) => {
         style={tw`flex-1 justify-center items-center bg-black bg-opacity-50`}
       >
         <View
-          style={tw`${themeViewStyle} border-4 border-white rounded-2 w-92 h-130 flex flex-col items-center justify-center`}
+          style={tw`${themeViewStyle} border-4 border-white rounded-2 w-85 h-80 flex flex-col items-center justify-center`}
         >
           <TouchableOpacity
             style={tw`absolute top-5 right-5`}
