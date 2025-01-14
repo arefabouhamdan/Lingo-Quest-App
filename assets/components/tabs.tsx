@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
-import { useTheme } from "../utils/useTheme";
+import { useTheme } from "../../hooks/useTheme";
 import { HairColors } from "../utils/hairColors";
 import tw from "twrnc";
 import { EyeColors } from "../utils/eyeColors";

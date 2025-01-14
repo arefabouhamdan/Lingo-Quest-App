@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, View } from "react-native";
-import { useTheme } from "../utils/useTheme";
+import { useTheme } from "../../hooks/useTheme";
 import tw from "twrnc";
 
 type WordProps = {

@@ -2,7 +2,7 @@ import Search from "@/assets/components/Search";
 import User from "@/assets/components/User";
 import React from "react";
 import { FlatList, SafeAreaView, View, Text } from "react-native";
-import { useTheme } from "@/assets/utils/useTheme";
+import { useTheme } from "@/hooks/useTheme";
 import tw from "twrnc";
 import Back from "@/assets/components/Back";
 

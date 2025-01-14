@@ -2,7 +2,7 @@ import Back from "@/assets/components/Back";
 import React from "react";
 import { SafeAreaView, FlatList, View } from "react-native";
 import tw from "twrnc";
-import { useTheme } from "@/assets/utils/useTheme";
+import { useTheme } from "@/hooks/useTheme";
 import Word from "@/assets/components/word";
 
 const Vocab = () => {

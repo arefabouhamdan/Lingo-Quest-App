@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
-import { useTheme } from "@/assets/utils/useTheme";
+import { useTheme } from "@/hooks/useTheme";
 import tw from "twrnc";
 
 type StreakProps = {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
-import { useTheme } from "@/assets/utils/useTheme";
+import { useTheme } from "@/hooks/useTheme";
 import Icon from "react-native-vector-icons/Ionicons";
 import { useColorScheme } from "react-native";
 import { useNavigation } from "expo-router";

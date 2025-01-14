@@ -9,7 +9,7 @@ import {
 import tw from "twrnc";
 import { useColorScheme } from "react-native";
 import { useNavigation } from "expo-router";
-import { useTheme } from "@/assets/utils/useTheme";
+import { useTheme } from "@/hooks/useTheme";
 import LanguageBar from "@/assets/components/languageBar";
 import StreakBar from "@/assets/components/streakBar";
 

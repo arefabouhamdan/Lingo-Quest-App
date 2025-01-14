@@ -1,7 +1,7 @@
 import LanguageBar from "@/assets/components/languageBar";
 import React from "react";
 import { View, Text, SafeAreaView, FlatList } from "react-native";
-import { useTheme } from "@/assets/utils/useTheme";
+import { useTheme } from "@/hooks/useTheme";
 import tw from "twrnc";
 import User from "@/assets/components/User";
 

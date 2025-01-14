@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   Text,
 } from "react-native";
-import { useTheme } from "@/assets/utils/useTheme";
+import { useTheme } from "@/hooks/useTheme";
 import Back from "@/assets/components/Back";
 import Icon from "react-native-vector-icons/Ionicons";
 import tw from "twrnc";

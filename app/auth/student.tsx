@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, Image, SafeAreaView } from "react-native";
-import { useTheme } from "@/assets/utils/useTheme";
+import { useTheme } from "@/hooks/useTheme";
 import Button from "@/assets/components/Button";
 import Back from "@/assets/components/Back";
 import tw from "twrnc";

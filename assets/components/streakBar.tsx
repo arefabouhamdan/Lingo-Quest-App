@@ -1,7 +1,7 @@
 import React from "react";
 import { View } from "react-native";
 import Streak from "./streak";
-import { useTheme } from "../utils/useTheme";
+import { useTheme } from "../../hooks/useTheme";
 import tw from "twrnc";
 
 const StreakBar = () => {

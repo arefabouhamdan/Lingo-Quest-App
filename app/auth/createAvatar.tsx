@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { SafeAreaView, View, TouchableOpacity, Text } from "react-native";
-import { useTheme } from "@/assets/utils/useTheme";
+import { useTheme } from "@/hooks/useTheme";
 import tw from "twrnc";
 import Tabs from "@/assets/components/tabs";
 import CustomizeAvatar from "@/assets/components/customizeAvatar";

@@ -1,6 +1,6 @@
 import React from "react";
 import { SafeAreaView, FlatList } from "react-native";
-import { useTheme } from "@/assets/utils/useTheme";
+import { useTheme } from "@/hooks/useTheme";
 import Level from "@/assets/components/level";
 import LanguageBar from "@/assets/components/languageBar";
 import tw from "twrnc";

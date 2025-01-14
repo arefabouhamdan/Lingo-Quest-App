@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, SafeAreaView, Image, View } from "react-native";
 import Button from "@/assets/components/Button";
-import { useTheme } from "@/assets/utils/useTheme";
+import { useTheme } from "@/hooks/useTheme";
 import tw from "twrnc";
 
 const TutorProfile = () => {

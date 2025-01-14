@@ -157,7 +157,7 @@ const Navigation = () => {
               }}
             />
             <Tab.Screen
-              name="Profile"
+              name="MainProfile"
               component={ProfileStackScreen}
               options={{
                 tabBarIcon: ({ focused }) => (
