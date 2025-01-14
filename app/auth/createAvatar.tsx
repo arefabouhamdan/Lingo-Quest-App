@@ -4,13 +4,14 @@ import { useTheme } from "@/assets/utils/useTheme";
 import tw from "twrnc";
 import Tabs from "@/assets/components/tabs";
 import CustomizeAvatar from "@/assets/components/customizeAvatar";
+import Button from "@/assets/components/Button";
 
 const CreateAvatar = () => {
-  const [hairColor, setHairColor] = useState("blue");
-  const [eyeColor, setEyeColor] = useState("red");
-  const [skinColor, setSkinColor] = useState("pink");
-  const [shirtColor, setShirtColor] = useState("green");
-  const [backgroundColor, setBackgroundColor] = useState("gray");
+  const [hairColor, setHairColor] = useState("#4B3621");
+  const [eyeColor, setEyeColor] = useState("#0F52BA");
+  const [skinColor, setSkinColor] = useState("#F5CBA7");
+  const [shirtColor, setShirtColor] = useState("#000000");
+  const [backgroundColor, setBackgroundColor] = useState("#ADD8E6");
   const [gender, setGender] = useState("male");
 
   const { themeViewStyle } = useTheme();
@@ -45,6 +46,9 @@ const CreateAvatar = () => {
         setBackgroundColor={setBackgroundColor}
         setGender={setGender}
       />
+      <View style={tw`flex flex-row justify-center items-center my-5`}>
+        <Button text="Continue" press="Choose" type="submit" />
+      </View>
     </SafeAreaView>
   );
 };
