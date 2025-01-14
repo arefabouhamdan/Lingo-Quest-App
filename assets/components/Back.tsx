@@ -9,21 +9,29 @@ import tw from "twrnc";
 type BackProps = {
   text?: string;
   background?: boolean;
+  setModalVisible?: (visible: boolean) => void;
 };
 
-const Back = ({ text, background }: BackProps) => {
+const Back = ({ text, background, setModalVisible }: BackProps) => {
   const navigation = useNavigation();
   const colorScheme = useColorScheme();
   const { themeTextStyle } = useTheme();
   const textStyle = background ? "text-white" : themeTextStyle;
   const backgroundStyle = background ? "bg-sky-400" : "";
+  const handleBack = () => {
+    if (setModalVisible) {
+      setModalVisible(true);
+    } else {
+      navigation.goBack();
+    }
+  }
 
   return (
     <View
       style={tw`w-full h-15 items-center justify-center ${backgroundStyle}`}
     >
       <TouchableOpacity
-        onPress={() => navigation.goBack()}
+        onPress={handleBack}
         style={tw`flex-row p-2 w-full absolute`}
       >
         <Icon
