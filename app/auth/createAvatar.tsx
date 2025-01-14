@@ -54,7 +54,7 @@ const CreateAvatar = () => {
         setBackgroundColor={setBackgroundColor}
       />
       <View style={tw`flex flex-row justify-center items-center my-5`}>
-        <Button text="Continue" press="Choose" type="submit" />
+        <Button text="Continue" press="ChooseLanguage" type="submit" />
       </View>
     </SafeAreaView>
   );
