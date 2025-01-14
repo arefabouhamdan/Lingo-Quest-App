@@ -7,6 +7,7 @@ import Login from "./auth/login";
 import Choose from "./auth/choose";
 import Student from "./auth/student";
 import Tutor from "./auth/tutor";
+import ChooseLanguage from "./auth/chooseLanguage";
 import Home from "./student/home";
 import Levels from "./student/levels";
 import Leaderboard from "./student/leaderboard";
@@ -248,6 +249,7 @@ const Navigation = () => {
           <Stack.Screen name="Student" component={Student} />
           <Stack.Screen name="Tutor" component={Tutor} />
           <Stack.Screen name="CreateAvatar" component={CreateAvatar} />
+          <Stack.Screen name="ChooseLanguage" component={ChooseLanguage} />
         </Stack.Navigator>
       )}
     </>
