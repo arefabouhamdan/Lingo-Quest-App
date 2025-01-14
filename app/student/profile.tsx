@@ -1,10 +1,17 @@
 import React from "react";
-import { Text, SafeAreaView, Image, View } from "react-native";
+import {
+  Text,
+  SafeAreaView,
+  Image,
+  View,
+  TouchableOpacity,
+} from "react-native";
 import Button from "@/assets/components/Button";
 import { useTheme } from "@/hooks/useTheme";
 import tw from "twrnc";
 import Avatar from "@/assets/components/Avatar";
 import { languages } from "@/assets/utils/languages";
+import Icons from "react-native-vector-icons/Ionicons";
 
 const Profile = () => {
   const { themeViewStyle, themeTextStyle } = useTheme();
@@ -32,6 +39,11 @@ const Profile = () => {
 
   return (
     <SafeAreaView style={tw`${themeViewStyle} flex-1`}>
+      <TouchableOpacity
+        style={tw`absolute z-10 top-2 right-2 bg-red-700 px-5 py-3 rounded flex items-center justify-center`}
+      >
+        <Icons name="log-out-sharp" size={36} color={"#fff"}/>
+      </TouchableOpacity>
       <Avatar user={user} />
       <View
         style={tw`flex flex-row px-3 justify-between items-center w-full mt-5`}
@@ -65,7 +77,12 @@ const Profile = () => {
         </View>
       </View>
       <View style={tw`flex items-center my-5`}>
-        <Button text="Add Friend" image="add-outline" press="Friends" type="submit" />
+        <Button
+          text="Add Friend"
+          image="add-outline"
+          press="Friends"
+          type="submit"
+        />
       </View>
 
       <Text style={tw`${themeTextStyle} text-xl font-bold mb-2 text-left pl-3`}>
