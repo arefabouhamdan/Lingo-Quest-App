@@ -20,10 +20,12 @@ import TutorHome from "./tutor/TutorHome";
 import TutorProfile from "./tutor/TutorProfile";
 import CreateAvatar from "./auth/createAvatar";
 import Test from "./tutor/Test";
+import { useStorage } from "@/hooks/useStorage";
+
+
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
-const loggedIn = false;
 const User = { type: "student" };
 
 const HomeStack = createStackNavigator();
@@ -72,6 +74,7 @@ const TutorStackScreen = () => {
 };
 
 const Navigation = () => {
+  const { loggedIn } = useStorage();
   return (
     <>
       {loggedIn ? (
