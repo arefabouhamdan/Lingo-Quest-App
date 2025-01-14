@@ -12,8 +12,10 @@ import Back from "@/assets/components/Back";
 import tw from "twrnc";
 import Input from "@/assets/components/Input";
 import { useLogin } from "@/hooks/useLogin";
+import { useNavigation } from "@react-navigation/native";
 
 const Login = () => {
+  const navigation = useNavigation();
   const { themeViewStyle, themeTextStyle } = useTheme();
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -21,6 +23,7 @@ const Login = () => {
 
   const handleLogin = () => {
     loginMutation.mutate({ name, password });
+    navigation.navigate("Home");
   };
 
   return (
