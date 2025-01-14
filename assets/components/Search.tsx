@@ -14,7 +14,7 @@ const Search = ({ text } : SearchProps) => {
 
   return (
     <View
-      style={tw`${themeViewStyle} flex-row items-center rounded border-2 border-sky-400 px-3 py-2`}
+      style={tw`${themeViewStyle} flex-row items-center rounded border-2 border-gray-200 px-3 py-2`}
     >
       <Icon name="search" size={20} color={colorScheme == 'light' ? '#000' : '#fff'} style={tw`mr-2`} />
       <TextInput
