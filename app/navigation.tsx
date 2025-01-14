@@ -22,11 +22,7 @@ import CreateAvatar from "./auth/createAvatar";
 import Test from "./tutor/Test";
 import { useStorage } from "@/hooks/useStorage";
 
-
-
 const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
-const User = { type: "student" };
 
 const HomeStack = createStackNavigator();
 
@@ -77,31 +73,42 @@ const Navigation = () => {
   const { user } = useStorage();
   return (
     <>
-      {user ? (
-        (User.type == "student" && (
-          <Tab.Navigator
-            screenOptions={{
-              headerShown: false,
-              tabBarStyle: {
-                backgroundColor: "#4FC0E8",
-                borderBottomWidth: 5,
-                borderColor: "#3AADD9",
-                height: 60,
-              },
-              tabBarLabelStyle: {
-                color: "#4FC0E8",
-              },
-              tabBarShowLabel: false,
-              tabBarIconStyle: {
-                width: 50,
-                height: 50,
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                borderRadius: 50,
-              },
-            }}
-          >
+      <Tab.Navigator
+        screenOptions={{
+          headerShown: false,
+          tabBarStyle: {
+            display: `${!user ? 'none':'flex'}`,
+            backgroundColor: "#4FC0E8",
+            borderBottomWidth: 5,
+            borderColor: "#3AADD9",
+            height: 60,
+          },
+          tabBarLabelStyle: {
+            color: "#4FC0E8",
+          },
+          tabBarShowLabel: false,
+          tabBarIconStyle: {
+            width: 50,
+            height: 50,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            borderRadius: 50,
+          },
+        }}
+      >
+        {!user ? (
+          <>
+            <Tab.Screen name="Welcome" component={Welcome} />
+            <Tab.Screen name="Login" component={Login} />
+            <Tab.Screen name="Choose" component={Choose} />
+            <Tab.Screen name="Student" component={Student} />
+            <Tab.Screen name="Tutor" component={Tutor} />
+            <Tab.Screen name="CreateAvatar" component={CreateAvatar} />
+            <Tab.Screen name="ChooseLanguage" component={ChooseLanguage} />
+          </>
+        ) : user.type === "user" ? (
+          <>
             <Tab.Screen
               name="Home"
               component={HomeStackScreen}
@@ -178,34 +185,11 @@ const Navigation = () => {
                 ),
               }}
             />
-          </Tab.Navigator>
-        )) ||
-        (User.type == "tutor" && (
-          <Tab.Navigator
-            screenOptions={{
-              headerShown: false,
-              tabBarStyle: {
-                backgroundColor: "#4FC0E8",
-                borderBottomWidth: 5,
-                borderColor: "#3AADD9",
-                height: 60,
-              },
-              tabBarLabelStyle: {
-                color: "#4FC0E8",
-              },
-              tabBarShowLabel: false,
-              tabBarIconStyle: {
-                width: 50,
-                height: 50,
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                borderRadius: 50,
-              },
-            }}
-          >
+          </>
+        ) : (
+          <>
             <Tab.Screen
-              name="Home"
+              name="TutorHome"
               component={TutorStackScreen}
               options={{
                 tabBarIcon: ({ focused }) => (
@@ -224,7 +208,7 @@ const Navigation = () => {
               }}
             />
             <Tab.Screen
-              name="Profile"
+              name="TutorProfile"
               component={TutorProfile}
               options={{
                 tabBarIcon: ({ focused }) => (
@@ -242,19 +226,9 @@ const Navigation = () => {
                 ),
               }}
             />
-          </Tab.Navigator>
-        ))
-      ) : (
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="Welcome" component={Welcome} />
-          <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen name="Choose" component={Choose} />
-          <Stack.Screen name="Student" component={Student} />
-          <Stack.Screen name="Tutor" component={Tutor} />
-          <Stack.Screen name="CreateAvatar" component={CreateAvatar} />
-          <Stack.Screen name="ChooseLanguage" component={ChooseLanguage} />
-        </Stack.Navigator>
-      )}
+          </>
+        )}
+      </Tab.Navigator>
     </>
   );
 };
