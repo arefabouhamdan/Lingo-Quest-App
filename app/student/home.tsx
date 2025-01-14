@@ -12,6 +12,7 @@ import { useNavigation } from "expo-router";
 import { useTheme } from "@/hooks/useTheme";
 import LanguageBar from "@/assets/components/languageBar";
 import StreakBar from "@/assets/components/streakBar";
+import BottomBar from "@/assets/components/bottomBar";
 
 const Home = () => {
   const { themeViewStyle, themeTextStyle } = useTheme();
@@ -91,6 +92,7 @@ const Home = () => {
           </Text>
         </TouchableOpacity>
       </View>
+      <BottomBar />
     </SafeAreaView>
   );
 };

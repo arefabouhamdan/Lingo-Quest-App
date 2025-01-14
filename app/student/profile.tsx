@@ -12,6 +12,7 @@ import tw from "twrnc";
 import Avatar from "@/assets/components/Avatar";
 import { languages } from "@/assets/utils/languages";
 import Icons from "react-native-vector-icons/Ionicons";
+import BottomBar from "@/assets/components/bottomBar";
 
 const Profile = () => {
   const { themeViewStyle, themeTextStyle } = useTheme();
@@ -114,6 +115,7 @@ const Profile = () => {
           <Text style={tw`${themeTextStyle} text-xl my-2`}>{xp} XP</Text>
         </View>
       </View>
+      <BottomBar/>
     </SafeAreaView>
   );
 };

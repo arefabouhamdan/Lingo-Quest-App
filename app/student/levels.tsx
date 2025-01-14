@@ -4,6 +4,7 @@ import { useTheme } from "@/hooks/useTheme";
 import Level from "@/assets/components/level";
 import LanguageBar from "@/assets/components/languageBar";
 import tw from "twrnc";
+import BottomBar from "@/assets/components/bottomBar";
 
 const Levels = () => {
   const { themeViewStyle } = useTheme();
@@ -60,6 +61,7 @@ const Levels = () => {
         inverted={true}
         style={tw`flex-1 w-full`}
       />
+      <BottomBar/>
     </SafeAreaView>
   );
 };

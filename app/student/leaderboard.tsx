@@ -5,6 +5,7 @@ import { useColorScheme } from "react-native";
 import Rank from "@/assets/components/rank";
 import tw from "twrnc";
 import LeaderList from "@/assets/components/leaderList";
+import BottomBar from "@/assets/components/bottomBar";
 
 const Leaderboard = () => {
   const colorScheme = useColorScheme();
@@ -35,6 +36,7 @@ const Leaderboard = () => {
       </View>
       <Rank/>
       <LeaderList/>
+      <BottomBar/>
     </SafeAreaView>
   );
 };
