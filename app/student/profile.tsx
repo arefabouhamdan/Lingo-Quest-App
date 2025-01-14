@@ -25,26 +25,8 @@ const Profile = () => {
     navigation.navigate("Login");
   }
 
-  const user = {
-    name: "Aref",
-    id: "1234",
-    joined: "01-09-2021",
-    streak: "20",
-    xp: "12000",
-    type: "student",
-    language: "Arabic",
-    avatar: {
-      gender: "female",
-      background: { color: "#4FC0E8" },
-      hair: { color: "#674238", style: "WomanHairTwo" },
-      skin: { color: "#E7BC98", style: "WomanFace" },
-      eyes: { color: "#1E81C8", style: "Eyes" },
-      shirt: { color: "#484848", style: "WomanShirt" },
-    },
-    friends: ["Aref", "Bilal", "Hassan", "Ali"],
-  };
+  const { user } = useStorage();
 
-  const { name, id, joined, streak, xp, friends } = user;
 
   return (
     <SafeAreaView style={tw`${themeViewStyle} flex-1`}>
@@ -54,16 +36,16 @@ const Profile = () => {
       >
         <Icons name="log-out-sharp" size={36} color={"#fff"}/>
       </TouchableOpacity>
-      <Avatar user={user} />
+      <Avatar/>
       <View
         style={tw`flex flex-row px-3 justify-between items-center w-full mt-5`}
       >
         <Text style={tw`${themeTextStyle} text-2xl font-bold text-left `}>
-          {name}
+          {user?.name}
         </Text>
         <Image
           style={tw`h-4.4 w-6`}
-          source={languages.find((lang) => lang.name === user.language)?.source}
+          source={languages.find((lang) => lang.name === user?.language)?.source}
         />
       </View>
       <View style={tw`flex flex-row justify-between items-center w-full`}>
@@ -72,17 +54,17 @@ const Profile = () => {
             style={tw`flex flex-row items-center mt-5 w-full justify-between`}
           >
             <Text style={tw`${themeTextStyle} text-lg font-medium mt-2`}>
-              ID {id}
+              ID {user?._id}
             </Text>
             <Text style={tw`${themeTextStyle} text-lg font-medium `}>
               No. Friends{"  "}
               <Text style={tw`text-sky-400 font-extrabold`}>
-                {friends.length}
+                {user?.friends.length}
               </Text>
             </Text>
           </View>
           <Text style={tw`${themeTextStyle} text-lg font-medium`}>
-            Joined {joined}
+            Joined {user?.createdAt}
           </Text>
         </View>
       </View>
@@ -109,7 +91,7 @@ const Profile = () => {
             source={require("@/assets/images/icons/fire.png")}
             style={tw`h-26 w-22`}
           />
-          <Text style={tw`${themeTextStyle} text-xl my-2`}>{streak} days</Text>
+          <Text style={tw`${themeTextStyle} text-xl my-2`}>{user?.streak} days</Text>
         </View>
         <View
           style={tw`flex items-center w-1/2.1 gap-2 border-2 border-b-4 rounded-2 border-gray-300`}
@@ -121,7 +103,7 @@ const Profile = () => {
             source={require("@/assets/images/icons/bolt.png")}
             style={tw`h-26 w-19`}
           />
-          <Text style={tw`${themeTextStyle} text-xl my-2`}>{xp} XP</Text>
+          <Text style={tw`${themeTextStyle} text-xl my-2`}>{user?.xp} XP</Text>
         </View>
       </View>
     </SafeAreaView>
