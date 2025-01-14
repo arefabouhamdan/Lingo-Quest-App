@@ -1,4 +1,4 @@
-import { Text, Image, View, FlatList } from "react-native";
+import { Text, Image, View, FlatList, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useTheme } from "../../assets/utils/useTheme";
 import tw from "twrnc";
@@ -21,7 +21,14 @@ const ChooseLanguage = () => {
         />
         <FlatList
           data={languages}
-          renderItem={({ item }) => <Text>{item.name}</Text>}
+          renderItem={({ item }) => (
+            <TouchableOpacity style={tw`m-2`} onPress={() => {}}>
+              <Image source={item.source} />
+            </TouchableOpacity>
+          )}
+          horizontal={false}
+          numColumns={3}
+          style={tw`w-full h-full`}
         />
       </View>
     </SafeAreaView>
