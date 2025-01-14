@@ -3,7 +3,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const useStorage = () => {
   const [user, setUser] = useState(null);
-  const [loggedIn, setLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -11,7 +10,6 @@ export const useStorage = () => {
       try {
         const storedUser = await AsyncStorage.getItem('user');
         setUser(storedUser ? JSON.parse(storedUser) : null);
-        setLoggedIn(true);
       } catch (error) {
         console.error('Error fetching user data:', error);
       } finally {
@@ -32,5 +30,5 @@ export const useStorage = () => {
     }
   };
 
-  return { user, loading, logout, loggedIn };
+  return { user, loading, logout};
 };

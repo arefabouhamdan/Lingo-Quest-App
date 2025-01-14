@@ -74,10 +74,10 @@ const TutorStackScreen = () => {
 };
 
 const Navigation = () => {
-  const { loggedIn } = useStorage();
+  const { user } = useStorage();
   return (
     <>
-      {loggedIn ? (
+      {user ? (
         (User.type == "student" && (
           <Tab.Navigator
             screenOptions={{
