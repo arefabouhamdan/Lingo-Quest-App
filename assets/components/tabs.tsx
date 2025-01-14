@@ -1,10 +1,14 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { useTheme } from "../utils/useTheme";
-import Colors from "./colors";
+import { HairColors } from "../utils/hairColors";
 import tw from "twrnc";
 
-const Tabs = () => {
+type TabsProps = {
+  setHairColor: (color: string) => void;
+};
+
+const Tabs = ({ setHairColor }: TabsProps) => {
   const { themeTextStyle } = useTheme();
   const [active, setActive] = useState("hair");
   const fontStyle = "font-bold text-lg py-2";
@@ -59,7 +63,24 @@ const Tabs = () => {
           </Text>
         </TouchableOpacity>
       </View>
-      <Colors />
+      {active == "hair" && (
+        <FlatList
+          data={HairColors}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              style={[
+                tw`p-10 my-5 mx-auto rounded-3`,
+                { backgroundColor: item.color },
+              ]}
+              onPress={() => setHairColor(item.color)}
+            />
+          )}
+          keyExtractor={(item) => item.id}
+          horizontal={false}
+          numColumns={4}
+          style={tw`w-full h-full`}
+        />
+      )}
     </>
   );
 };
