@@ -19,17 +19,20 @@ const ChooseLanguage = () => {
           source={require("../../assets/images/game/guide-choose.png")}
           style={tw`w-52 h-68 mb-5`}
         />
-        <FlatList
-          data={languages}
-          renderItem={({ item }) => (
-            <TouchableOpacity style={tw`m-2`} onPress={() => {}}>
-              <Image source={item.source} />
-            </TouchableOpacity>
-          )}
-          horizontal={false}
-          numColumns={3}
-          style={tw`w-full h-full`}
-        />
+        <View style={tw`flex flex-col items-center gap-5`}>
+          <Text style={tw`${themeTextStyle} text-xl font-bold`}>Choose a language to learn</Text>
+          <FlatList
+            data={languages}
+            renderItem={({ item }) => (
+              <TouchableOpacity style={tw`m-2`} onPress={() => {}}>
+                <Image source={item.source} />
+              </TouchableOpacity>
+            )}
+            horizontal={false}
+            numColumns={3}
+          />
+        </View>
+        
       </View>
     </SafeAreaView>
   );
