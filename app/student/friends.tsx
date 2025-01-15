@@ -19,7 +19,7 @@ const Friends = () => {
       </View>
       <FlatList
         data={user?.friends}
-        renderItem={({ item }) => <User name={item.name} />}
+        renderItem={({ item }) => <User name={item} />}
         style={tw`mt-5 w-11/12`}
       />
       {user?.friends == 0 && (
