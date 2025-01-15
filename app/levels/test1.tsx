@@ -31,6 +31,15 @@ const Test1 = () => {
       <TouchableOpacity style={tw`w-11/12 h-1/15 mt-5 bg-sky-400 justify-center rounded px-3`}>
         <Text style={tw`text-white font-bold text-xl`}>Answer 4</Text>
       </TouchableOpacity>
+      <View style={tw`w-1/2 h-1/15 flex-row mt-5 px-3 gap-5`}>
+        <TouchableOpacity style={tw`w-full h-full mt-5 bg-sky-400 justify-center rounded px-3`}>
+          <Text style={tw`text-white font-bold text-xl text-center`}>Prev</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={tw`w-full h-full mt-5 bg-sky-400 justify-center rounded px-3`}>
+          <Text style={tw`text-white font-bold text-xl text-center`}>Next</Text>
+        </TouchableOpacity>
+      </View>
+      
     </SafeAreaView>
   );
 };
