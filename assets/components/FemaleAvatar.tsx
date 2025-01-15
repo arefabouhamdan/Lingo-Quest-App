@@ -6,7 +6,6 @@ import WomanHairThree from "../images/character/womanHairThree";
 import WomanFace from "../images/character/womanFace";
 import WomanShirt from "../images/character/womanShirt";
 import Eyes from "../images/character/Eyes";
-import FemaleEyes from "../images/character/femaleEyes";
 
 type AvatarProps = {
   user: {
