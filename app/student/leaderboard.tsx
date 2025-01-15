@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Text, SafeAreaView, View, Image } from "react-native";
 import { useQuery } from "react-query";
 import axios from "axios";
 import { useTheme } from "@/hooks/useTheme";
 import { useColorScheme } from "react-native";
+import { useFocusEffect } from "@react-navigation/native"; // <- import useFocusEffect
 import Rank from "@/assets/components/rank";
 import tw from "twrnc";
 import LeaderList from "@/assets/components/leaderList";
@@ -26,16 +27,18 @@ const Leaderboard = () => {
     }
   );
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const { data: fetchedData } = await refetch();
-      if (fetchedData) {
-        setTopThree(fetchedData.slice(0, 3));
-        setRest(fetchedData.slice(3, 50));
-      }
-    };
-    fetchData();
-  }, [refetch]);
+  useFocusEffect(
+    useCallback(() => {
+      const fetchData = async () => {
+        const { data: fetchedData } = await refetch();
+        if (fetchedData) {
+          setTopThree(fetchedData.slice(0, 3));
+          setRest(fetchedData.slice(3, 50));
+        }
+      };
+      fetchData();
+    }, [refetch])
+  );
 
   const colorScheme = useColorScheme();
   const { themeViewStyle, themeTextStyle } = useTheme();

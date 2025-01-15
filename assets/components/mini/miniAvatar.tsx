@@ -19,7 +19,6 @@ type AvatarProps = {
 
 
 const MiniAvatar = ({ user }: AvatarProps) => {
-console.log("user.avatar", user?.avatar.gender)
 
   return user?.avatar.gender === 'male' ? (
     <Male user={user} />
