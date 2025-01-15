@@ -31,6 +31,7 @@ const Leaderboard = () => {
   const { themeViewStyle, themeTextStyle } = useTheme();
   const rank = "Silver";
   const topThree = data?.slice(0, 3);
+  const rest = data?.slice(3, 50);
 
   return (
     <SafeAreaView
@@ -51,11 +52,11 @@ const Leaderboard = () => {
           />
         )}
         <Text style={tw`${themeTextStyle} text-2xl font-bold `}>
-          {rank} League
+          Top 50 Leaderboard
         </Text>
       </View>
-      {/* <Rank data={topThree}/> */}
-      <LeaderList data={data} isLoading={isLoading}/>
+      <Rank data={topThree}/>
+      <LeaderList data={rest} isLoading={isLoading}/>
     </SafeAreaView>
   );
 };

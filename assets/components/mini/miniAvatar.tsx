@@ -20,11 +20,11 @@ type AvatarProps = {
 
 const MiniAvatar = ({ user }: AvatarProps) => {
 
-  return user?.avatar.gender === 'male' ? (
-    <Male user={user} />
-  ) : (
-    <Female user={user} />
-  );
+  // return user?.avatar.gender === 'male' ? (
+  //   <Male user={user} />
+  // ) : (
+  //   <Female user={user} />
+  // );
 };
 
 export default MiniAvatar;

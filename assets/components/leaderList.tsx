@@ -17,7 +17,7 @@ const LeaderList= ({ data, isLoading } : LeaderListProps) => {
         <FlatList
           data={data}
           renderItem={({ item }) => (
-            <User name={item.name} avatar={item.name} info={item.info} />
+            <User name={item.name} user={item.avatar}/>
           )}
           style={tw`p-2`}
         />

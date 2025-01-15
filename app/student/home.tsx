@@ -70,7 +70,7 @@ const Home = () => {
             <Image source={require("@/assets/images/icons/shield-white.png")} />
           )}
           <Text style={tw`${themeTextStyle} text-xl font-bold `}>
-            {user?.rank} League
+            Compete
           </Text>
         </TouchableOpacity>
       </View>

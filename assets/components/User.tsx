@@ -15,10 +15,10 @@ type UserProps = {
   avatar?: string;
   navigateTo?: string;
   tutor?: boolean;
+  user: any;
 };
 
-const User = ({ name, info, avatar, navigateTo, tutor }: UserProps) => {
-  const { user } = useStorage();
+const User = ({ name, info, user, navigateTo, tutor }: UserProps) => {
   const [modalVisible, setModalVisible] = useState(false);
   const navigation = useNavigation();
   const colorScheme = useColorScheme();
