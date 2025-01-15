@@ -1,16 +1,16 @@
 import { useState } from "react";
 import React from "react";
-import { FlatList, SafeAreaView, View, Text } from "react-native";
+import { SafeAreaView, View, Text } from "react-native";
 import { useTheme } from "@/hooks/useTheme";
 import tw from "twrnc";
 import Back from "@/assets/components/Back";
 import { useStorage } from "@/hooks/useStorage";
 
-const Test = () => {
+const Test1 = () => {
   const { themeViewStyle, themeTextStyle } = useTheme();
   return (
     <SafeAreaView style={tw`${themeViewStyle} flex-1 items-center`}>
-      <Back text="Friends" />
+      <Back text="Test 1" />
       <View style={tw`mt-5 w-11/12`}>
         <Text>Test</Text>
       </View>
@@ -18,4 +18,4 @@ const Test = () => {
   );
 };
 
-export default Test;
+export default Test1;

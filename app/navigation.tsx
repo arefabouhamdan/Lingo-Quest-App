@@ -10,7 +10,7 @@ import Tutor from "./auth/tutor";
 import ChooseLanguage from "./auth/chooseLanguage";
 import Home from "./student/home";
 import Levels from "./student/levels";
-import Test from "./student/test";
+import Test1 from "./levels/test1";
 import Leaderboard from "./student/leaderboard";
 import Profile from "./student/profile";
 import Friends from "./student/friends";
@@ -153,7 +153,7 @@ const Navigation = () => {
       <Stack.Screen name="Levels" component={Levels} />
       <Stack.Screen name="Level1" component={Level1} />
       <Stack.Screen name="Level2" component={Level2} />
-      <Stack.Screen name="Test" component={Test} />
+      <Stack.Screen name="Test1" component={Test1} />
       <Stack.Screen name="Leaderboard" component={Leaderboard} />
       <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="Friends" component={Friends} />

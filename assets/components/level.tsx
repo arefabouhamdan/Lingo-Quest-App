@@ -27,14 +27,14 @@ const Level = ({ status, level, type }: LevelProps) => {
     <TouchableOpacity
       disabled={status == "inactive"}
       style={tw`mb-5 mt-15`}
-      onPress={() => {
-        navigation.navigate(`Level${level}` as never);
+      onPress={() => {type == "level" ?
+        navigation.navigate(`Level${level}` as never) : navigation.navigate(`Test${level}` as never)
       }}
     >
       <View
         style={tw` ${typeStyle} ${backgroundColor} ${position} items-center justify-center mx-15`}
       >
-        <Text style={tw`text-white font-bold text-3xl`}>{level}</Text>
+        <Text style={tw`text-white font-bold text-3xl`}>{type == 'test' && 'Test '}{level}</Text>
       </View>
     </TouchableOpacity>
   );
