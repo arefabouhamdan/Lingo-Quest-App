@@ -13,10 +13,12 @@ import Icon from "react-native-vector-icons/Ionicons";
 import tw from "twrnc";
 import AlertModal from "@/assets/components/modals/alertModal";
 import Progress from "@/assets/components/progress";
+import Congrats from "@/assets/components/modals/congrats";
 
 const Level1 = () => {
   const { themeViewStyle, themeTextStyle } = useTheme();
   const [modalVisible, setModalVisible] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [isFocused, setIsFocused] = useState(false);
   const numberOfStages = 5;
@@ -29,6 +31,7 @@ const Level1 = () => {
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
       />
+      <Congrats level={1} modalVisible={isModalVisible} setModalVisible={setIsModalVisible}/>
       <View style={tw`w-full h-1/2 items-center justify-start`}>
         <Image
           source={require("@/assets/images/game/coffeeshop-night-1.png")}
@@ -57,7 +60,8 @@ const Level1 = () => {
           onBlur={() => setIsFocused(false)}
         />
       </View>
-      <TouchableOpacity style={tw`w-48 h-14 bg-sky-400 flex items-center justify-center rounded mt-5`}>
+      <TouchableOpacity style={tw`w-48 h-14 bg-sky-400 flex items-center justify-center rounded mt-5`}
+        onPress={() => setIsModalVisible(true)}>
         <Text style={tw`text-lg font-bold text-white`}>Send Message</Text>
       </TouchableOpacity>
       {/* <TouchableOpacity
