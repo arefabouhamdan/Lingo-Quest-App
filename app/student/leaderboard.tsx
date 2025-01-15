@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Text, SafeAreaView, View, Image } from "react-native";
+import { useQuery } from "react-query";
+import axios from "axios";
 import { useTheme } from "@/hooks/useTheme";
 import { useColorScheme } from "react-native";
 import Rank from "@/assets/components/rank";
@@ -8,9 +10,27 @@ import LeaderList from "@/assets/components/leaderList";
 import BottomBar from "@/assets/components/bottomBar";
 
 const Leaderboard = () => {
+  const fetchUsers = async () => {
+    const response = await axios.get(`http://192.168.1.102:3000/users`);
+    return response.data;
+  };
+
+  const { data, isLoading, refetch } = useQuery(
+    ["userLeaderboard"],
+    () => fetchUsers(),
+    {
+      enabled: false,
+    }
+  );
+
+  useEffect(() => {
+    refetch();
+  }, []);
+
   const colorScheme = useColorScheme();
   const { themeViewStyle, themeTextStyle } = useTheme();
   const rank = "Silver";
+  const topThree = data?.slice(0, 3);
 
   return (
     <SafeAreaView
@@ -34,8 +54,8 @@ const Leaderboard = () => {
           {rank} League
         </Text>
       </View>
-      <Rank/>
-      <LeaderList/>
+      <Rank data={topThree}/>
+      <LeaderList data={data} isLoading={isLoading}/>
     </SafeAreaView>
   );
 };
