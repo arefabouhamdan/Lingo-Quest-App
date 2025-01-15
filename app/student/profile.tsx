@@ -66,7 +66,7 @@ const Profile = () => {
             </TouchableOpacity>
           </View>
           <Text style={tw`${themeTextStyle} text-lg font-medium`}>
-            Joined {user?.createdAt}
+            Joined {user?.createdAt.split("T")[0]}
           </Text>
         </View>
       </View>
