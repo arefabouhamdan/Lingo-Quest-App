@@ -26,46 +26,30 @@ const avatarComponents = {
   hair: {
     WomanHairTwo,
     WomanHairThree,
-  },
-  face: {
-    WomanFace,
-  },
-  shirt: {
-    WomanShirt,
-  },
-  eyes: {
-    Eyes,
-    FemaleEyes,
-  },
+  }
 };
 
 const FemaleAvatar = ({ user }: AvatarProps) => {
   const HairComponent =
     avatarComponents.hair[user?.avatar?.hair.style] || (() => null);
-  const FaceComponent =
-    avatarComponents.face[user?.avatar?.skin.style] || (() => null);
-  const ShirtComponent =
-    avatarComponents.shirt[user?.avatar?.shirt.style] || (() => null);
-  const EyesComponent =
-    avatarComponents.eyes[user?.avatar?.eyes.style] || (() => null);
 
   return (
     <View
       style={[
         tw`flex flex-col items-center justify-end w-full h-1/3`,
-        { backgroundColor: user?.avatar?.background.color || "#000" },
+        { backgroundColor: user?.avatar?.background.color},
       ]}
     >
       <HairComponent
-        hairColor={user?.avatar?.hair.color || "#000"}
+        hairColor={user?.avatar?.hair.color}
         style="relative top-41 z-2"
       />
-      <EyesComponent
-        eyeColor={user?.avatar?.eyes.color || "#000"}
+      <Eyes
+        eyeColor={user?.avatar?.eyes.color}
         style="relative top-11 z-1"
       />
-      <FaceComponent skinColor={user?.avatar?.skin.color || "#000"} />
-      <ShirtComponent shirtColor={user?.avatar?.shirt.color || "#000"} />
+      <WomanFace skinColor={user?.avatar?.skin.color} />
+      <WomanShirt shirtColor={user?.avatar?.shirt.color} />
     </View>
   );
 };
