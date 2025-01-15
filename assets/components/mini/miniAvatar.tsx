@@ -1,4 +1,6 @@
 import React from 'react';
+import Male from './male';
+import Female from './female';
 
 type AvatarProps = {
   user: {
@@ -19,9 +21,9 @@ type AvatarProps = {
 const MiniAvatar = ({ user }: AvatarProps) => {
 
   return user?.avatar.gender === 'male' ? (
-    <MiniMAvatar user={user} />
+    <Male user={user} />
   ) : (
-    <MiniFAvatar user={user} />
+    <Female user={user} />
   );
 };
 
