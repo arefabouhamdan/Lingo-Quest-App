@@ -47,9 +47,9 @@ const AddFriend = () => {
         </Text>
       )}
       <FlatList
-        data={users || []}
-        renderItem={({ item }) => <User name={item.name || item} />}
-        keyExtractor={(item, index) => item.id?.toString() || index.toString()}
+        data={users}
+        renderItem={({ item }) => <User name={item.name} user={item}/>}
+        keyExtractor={(index) => index.toString()}
         style={tw`mt-5 w-11/12`}
       />
       {!users && (
