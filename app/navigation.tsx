@@ -10,6 +10,7 @@ import Tutor from "./auth/tutor";
 import ChooseLanguage from "./auth/chooseLanguage";
 import Home from "./student/home";
 import Levels from "./student/levels";
+import Test from "./student/test";
 import Leaderboard from "./student/leaderboard";
 import Profile from "./student/profile";
 import Friends from "./student/friends";
@@ -19,7 +20,7 @@ import Level2 from "./levels/Level2";
 import TutorHome from "./tutor/TutorHome";
 import TutorProfile from "./tutor/TutorProfile";
 import CreateAvatar from "./auth/createAvatar";
-import Test from "./tutor/Test";
+import TestCorrection from "./tutor/TestCorrection";
 import { useStorage } from "@/hooks/useStorage";
 import AddFriend from "./student/addFriend";
 
@@ -152,6 +153,7 @@ const Navigation = () => {
       <Stack.Screen name="Levels" component={Levels} />
       <Stack.Screen name="Level1" component={Level1} />
       <Stack.Screen name="Level2" component={Level2} />
+      <Stack.Screen name="Test" component={Test} />
       <Stack.Screen name="Leaderboard" component={Leaderboard} />
       <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="Friends" component={Friends} />
@@ -160,7 +162,7 @@ const Navigation = () => {
       {/* Tutor */}
       <Stack.Screen name="TutorHome" component={TutorHome} />
       <Stack.Screen name="TutorProfile" component={TutorProfile} />
-      <Stack.Screen name="Test" component={Test} />
+      <Stack.Screen name="TestCorrection" component={TestCorrection} />
     </Stack.Navigator>
   );
 };
