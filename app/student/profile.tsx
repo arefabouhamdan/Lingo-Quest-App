@@ -97,7 +97,7 @@ const Profile = () => {
               style={tw`h-26 w-22`}
             />
             <Text style={tw`${themeTextStyle} text-xl my-2`}>
-              {user?.streak} days
+              {user?.played} days
             </Text>
           </View>
           <View
