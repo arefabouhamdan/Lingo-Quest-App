@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Search from "@/assets/components/Search";
 import User from "@/assets/components/User";
 import React from "react";
@@ -8,17 +9,19 @@ import Back from "@/assets/components/Back";
 import { useStorage } from "@/hooks/useStorage";
 
 const Friends = () => {
+  const [search, setSearch] = useState("");
   const { themeViewStyle, themeTextStyle } = useTheme();
   const { user } = useStorage();
+  const friends = user?.friends.filter((input) => input.includes(search));
 
   return (
     <SafeAreaView style={tw`${themeViewStyle} flex-1 items-center`}>
       <Back text="Friends" />
       <View style={tw`mt-5 w-11/12`}>
-        <Search text="Lost your friend? Search for him" />
+        <Search text="Lost your friend? Search for him" setSearch={setSearch}/>
       </View>
       <FlatList
-        data={user?.friends}
+        data={friends}
         renderItem={({ item }) => <User name={item} />}
         style={tw`mt-5 w-11/12`}
       />
