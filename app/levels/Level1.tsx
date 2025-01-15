@@ -20,14 +20,14 @@ const Level1 = () => {
     <SafeAreaView style={tw`${themeViewStyle}flex-1 items-center`}>
       <Back text="Level 1" background setModalVisible={setModalVisible}/>
       <AlertModal modalVisible={modalVisible} setModalVisible={setModalVisible}/>
-      <View style={tw`w-full h-3/4 items-center justify-start`}>
+      <View style={tw`w-full h-1/2 items-center justify-start`}>
         <Image
           source={require("@/assets/images/game/coffeeshop-night-1.png")}
           style={tw`w-full h-full relative`}
         />
         <Image
           source={require("@/assets/images/game/Barista.png")}
-          style={tw`flex-1 w-55 h-100 absolute bottom-0`}
+          style={tw`flex-1 w-39 h-70 absolute bottom-0`}
         />
       </View>
       <TouchableOpacity
