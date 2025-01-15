@@ -9,9 +9,9 @@ type LeaderListProps = {
 }
 
 const LeaderList= ({ data } : LeaderListProps) => {
-  const { themeTextStyle } = useTheme();
+
   return (
-    <View style={tw`w-11/12 flex-1 border border-gray-200 rounded-lg `}>
+    <View style={tw`w-11/12 flex-1 border border-gray-200 rounded-lg mb-4`}>
         <FlatList
           data={data}
           renderItem={({ item }) => (
