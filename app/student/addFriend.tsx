@@ -1,5 +1,5 @@
 import { View, Text, SafeAreaView, FlatList } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useTheme } from '@/hooks/useTheme'
 import Back from '@/assets/components/Back'
 import Search from '@/assets/components/Search'
@@ -9,13 +9,17 @@ import tw from 'twrnc'
 
 const AddFriend = () => {
   const { user } = useStorage();
+  const [search, setSearch] = useState("");
   const { themeViewStyle, themeTextStyle } = useTheme();
+  useEffect(() => {
+    console.log(search);
+  }, [search]);
 
   return (
     <SafeAreaView style={tw`${themeViewStyle} flex-1 items-center`}>
        <Back text="Add Friend" />
       <View style={tw`mt-5 w-11/12`}>
-        <Search text="Enter name" />
+        <Search text="Enter name" setSearch={setSearch}/>
       </View>
       <FlatList
         data={user?.friends}

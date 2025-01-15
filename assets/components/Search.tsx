@@ -6,9 +6,10 @@ import tw from "twrnc";
 
 type SearchProps = {
   text: string;
+  setSearch: (text: string) => void;
 };
 
-const Search = ({ text } : SearchProps) => {
+const Search = ({ text, setSearch } : SearchProps) => {
   const { themeViewStyle } = useTheme();
   const colorScheme = useColorScheme();
 
@@ -21,6 +22,7 @@ const Search = ({ text } : SearchProps) => {
         style={tw`flex-1 text-base`}
         placeholder={text}
         placeholderTextColor="#999"
+        onChangeText={(text) => setSearch(text)}
       />
     </View>
   );
