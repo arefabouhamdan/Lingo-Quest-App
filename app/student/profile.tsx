@@ -22,7 +22,7 @@ const Profile = () => {
   const { logout } = useStorage();
   const handleLogout = () => {
     logout();
-    navigation.navigate("Login");
+    navigation.navigate("Welcome" as never);
   }
 
   const { user } = useStorage();
@@ -56,12 +56,14 @@ const Profile = () => {
             <Text style={tw`${themeTextStyle} text-lg font-medium mt-2`}>
               ID {user?._id}
             </Text>
-            <Text style={tw`${themeTextStyle} text-lg font-medium `}>
-              No. Friends{"  "}
-              <Text style={tw`text-sky-400 font-extrabold`}>
-                {user?.friends.length}
+            <TouchableOpacity onPress={() => navigation.navigate("Friends" as never)}>
+              <Text style={tw`${themeTextStyle} text-lg font-medium `}>
+                No. Friends{"  "}
+                <Text style={tw`text-sky-400 font-extrabold`}>
+                  {user?.friends.length}
+                </Text>
               </Text>
-            </Text>
+            </TouchableOpacity>
           </View>
           <Text style={tw`${themeTextStyle} text-lg font-medium`}>
             Joined {user?.createdAt}
@@ -72,7 +74,7 @@ const Profile = () => {
         <Button
           text="Add Friend"
           image="add-outline"
-          press="Friends"
+          press=""
           type="submit"
         />
       </View>
