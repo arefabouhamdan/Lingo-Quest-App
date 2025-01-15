@@ -25,10 +25,13 @@ export const useLogin = () => {
     onSuccess: async (data) => {
       try {
         await AsyncStorage.setItem('user', JSON.stringify(data));
+        console.log("Login data stored securely:", data);
+        
         navigation.navigate("Home" as never);
       } catch (error) {
         console.error("Error storing login data securely:", error);
       }
+        
     },
   });
 };

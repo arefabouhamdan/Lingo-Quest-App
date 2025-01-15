@@ -47,7 +47,7 @@ const Levels = () => {
     <SafeAreaView
       style={tw`${themeViewStyle} flex-1 items-center justify-center`}
     >
-      <LanguageBar user={user}/>
+      <LanguageBar/>
 
       <FlatList
         data={levelsData}
