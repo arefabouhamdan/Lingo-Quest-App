@@ -10,7 +10,7 @@ type SearchProps = {
 };
 
 const Search = ({ text, setSearch } : SearchProps) => {
-  const { themeViewStyle } = useTheme();
+  const { themeViewStyle, themeTextStyle } = useTheme();
   const colorScheme = useColorScheme();
 
   return (
@@ -19,7 +19,7 @@ const Search = ({ text, setSearch } : SearchProps) => {
     >
       <Icon name="search" size={20} color={colorScheme == 'light' ? '#000' : '#fff'} style={tw`mr-2`} />
       <TextInput
-        style={tw`flex-1 text-base`}
+        style={tw`${themeTextStyle} flex-1 text-base`}
         placeholder={text}
         placeholderTextColor="#999"
         onChangeText={(text) => setSearch(text)}
