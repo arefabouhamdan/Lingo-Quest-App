@@ -12,12 +12,14 @@ import Back from "@/assets/components/Back";
 import Icon from "react-native-vector-icons/Ionicons";
 import tw from "twrnc";
 import AlertModal from "@/assets/components/alertModal";
+import Progress from "@/assets/components/progress";
 
 const Level1 = () => {
   const { themeViewStyle, themeTextStyle } = useTheme();
   const [modalVisible, setModalVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [isFocused, setIsFocused] = useState(false);
+  const stage = 3;
 
   return (
     <SafeAreaView style={tw`${themeViewStyle}flex-1 items-center`}>
@@ -35,6 +37,11 @@ const Level1 = () => {
           source={require("@/assets/images/game/Barista.png")}
           style={tw`flex-1 w-39 h-70 absolute bottom-0`}
         />
+      </View>
+      <View style={tw`w-11/12 flex-row items-center justify-between mt-5`}>
+        {[...Array(5)].map((_, index) => (
+          index < stage ? <Progress key={index} passed /> : <Progress key={index} />
+        ))}
       </View>
       <View
         style={tw`w-11/12 h-1/4 flex-row items-center justify-between mt-5 border border-gray-200 rounded `}
