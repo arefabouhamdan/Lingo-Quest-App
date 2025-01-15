@@ -36,7 +36,7 @@ const Profile = () => {
       >
         <Icons name="log-out-sharp" size={36} color={"#fff"}/>
       </TouchableOpacity>
-      {/* <Avatar/> */}
+      <Avatar user={user}/>
       <View
         style={tw`flex flex-row px-3 justify-between items-center w-full mt-5`}
       >

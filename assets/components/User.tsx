@@ -6,6 +6,8 @@ import { useColorScheme } from "react-native";
 import { useNavigation } from "expo-router";
 import tw from "twrnc";
 import FriendModal from "./friendModal";
+import Avatar from "./Avatar";
+import { useStorage } from "@/hooks/useStorage";
 
 type UserProps = {
   name: string;
@@ -16,6 +18,7 @@ type UserProps = {
 };
 
 const User = ({ name, info, avatar, navigateTo, tutor }: UserProps) => {
+  const { user } = useStorage();
   const [modalVisible, setModalVisible] = useState(false);
   const navigation = useNavigation();
   const colorScheme = useColorScheme();
@@ -38,10 +41,7 @@ const User = ({ name, info, avatar, navigateTo, tutor }: UserProps) => {
         }}
       >
         <View style={tw`flex flex-row items-center gap-5`}>
-          <Image
-            source={require("@/assets/images/character/Aref.png")}
-            style={tw`w-7 h-10`}
-          />
+          <Avatar user={user} />
           <View>
             <Text style={tw`${themeTextStyle} text-xl font-extrabold`}>
               {name}

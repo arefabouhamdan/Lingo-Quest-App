@@ -19,12 +19,11 @@ type AvatarProps = {
 
 
 const Avatar = ({ user }: AvatarProps) => {
-  const { avatar } = user;
 
-  return avatar.gender === 'male' ? (
-    <MaleAvatar avatar={avatar} />
+  return user?.avatar.gender === 'male' ? (
+    <MaleAvatar user={user} />
   ) : (
-    <FemaleAvatar avatar={avatar} />
+    <FemaleAvatar user={user} />
   );
 };
 
