@@ -15,9 +15,9 @@ type AvatarProps = {
       gender: string;
       background: { color: string };
       hair: { color: string; style: string };
-      skin: { color: string; style: string };
-      eyes: { color: string; style: string };
-      shirt: { color: string; style: string };
+      skin: { color: string; };
+      eyes: { color: string; };
+      shirt: { color: string; };
     };
   };
 };
@@ -41,7 +41,7 @@ const FemaleAvatar = ({ user }: AvatarProps) => {
       ]}
     >
       <HairComponent
-        hairColor={user?.avatar?.hair.color}
+        hairColor={user?.avatar?.hair.color || "#000"}
         style="relative top-41 z-2"
       />
       <Eyes

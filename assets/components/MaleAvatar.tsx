@@ -7,8 +7,6 @@ import ManHairThree from "../images/character/manHairThree";
 import MaleFace from "../images/character/maleFace";
 import ManShirt from "../images/character/manShirt";
 import Eyes from "../images/character/Eyes";
-import MaleEyes from "../images/character/maleEyes";
-
 type AvatarProps = {
   user: {
     type: string;
@@ -16,9 +14,9 @@ type AvatarProps = {
       gender: string;
       background: { color: string };
       hair: { color: string; style: string };
-      skin: { color: string; style: string };
-      eyes: { color: string; style: string };
-      shirt: { color: string; style: string };
+      skin: { color: string; };
+      eyes: { color: string; };
+      shirt: { color: string; };
     };
   };
 };
