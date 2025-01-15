@@ -8,6 +8,7 @@ import axios from "axios";
 import User from "@/assets/components/User";
 import { useStorage } from "@/hooks/useStorage";
 import tw from "twrnc";
+import { BASE_URL } from "@/assets/utils/baseUrl";
 
 const AddFriend = () => {
   const [search, setSearch] = useState("");
@@ -15,7 +16,7 @@ const AddFriend = () => {
   const { user } = useStorage();
 
   const fetchUsers = async () => {
-    const response = await axios.get(`http://192.168.1.102:3000/users`);
+    const response = await axios.get(`${BASE_URL}/users`);
     return response.data;
   };
 
@@ -49,7 +50,7 @@ const AddFriend = () => {
       <FlatList
         data={users}
         renderItem={({ item }) => <User name={item.name} user={item}/>}
-        keyExtractor={(index) => index.toString()}
+        keyExtractor={(item, index) => item._id.toString() || index.toString()}
         style={tw`mt-5 w-11/12`}
       />
       {!users && (

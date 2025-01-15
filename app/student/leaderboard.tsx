@@ -4,18 +4,19 @@ import { useQuery } from "react-query";
 import axios from "axios";
 import { useTheme } from "@/hooks/useTheme";
 import { useColorScheme } from "react-native";
-import { useFocusEffect } from "@react-navigation/native"; // <- import useFocusEffect
+import { useFocusEffect } from "@react-navigation/native";
 import Rank from "@/assets/components/rank";
 import tw from "twrnc";
 import LeaderList from "@/assets/components/leaderList";
-import BottomBar from "@/assets/components/bottomBar";
+import { BASE_URL } from "@/assets/utils/baseUrl";
 
 const Leaderboard = () => {
   const [topThree, setTopThree] = useState<any[]>([]);
   const [rest, setRest] = useState<any[]>([]);
+  
 
   const fetchUsers = async () => {
-    const response = await axios.get(`http://192.168.1.102:3000/users`);
+    const response = await axios.get(`${BASE_URL}/users`);
     return response.data;
   };
 

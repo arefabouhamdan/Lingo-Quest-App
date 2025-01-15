@@ -3,6 +3,7 @@ import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useStorage } from "./useStorage";
 import { useNavigation } from "@react-navigation/native";
+import { BASE_URL } from "@/assets/utils/baseUrl";
 
 interface LoginCredentials {
   name: string;
@@ -16,14 +17,14 @@ interface name {
 const login = async (credentials: LoginCredentials) => {
   
   const response = await axios.post(
-    "http://192.168.1.102:3000/users/login",
+    `${BASE_URL}/users/login`,
     credentials
   );
   return response.data;
 };
 
 const fetchUserByName = async (name: string) => {
-  const response = await axios.get(`http://192.168.1.102:3000/users/${name}`);
+  const response = await axios.get(`${BASE_URL}/users/${name}`);
   return response.data;
 };
 
