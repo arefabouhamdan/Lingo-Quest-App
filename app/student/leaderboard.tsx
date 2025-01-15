@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Text, SafeAreaView, View, Image } from "react-native";
 import { useQuery } from "react-query";
 import axios from "axios";
@@ -10,6 +10,9 @@ import LeaderList from "@/assets/components/leaderList";
 import BottomBar from "@/assets/components/bottomBar";
 
 const Leaderboard = () => {
+  const [topThree, setTopThree] = useState<any[]>([]);
+  const [rest, setRest] = useState<any[]>([]);
+
   const fetchUsers = async () => {
     const response = await axios.get(`http://192.168.1.102:3000/users`);
     return response.data;
@@ -24,14 +27,18 @@ const Leaderboard = () => {
   );
 
   useEffect(() => {
-    refetch();
-  }, []);
+    const fetchData = async () => {
+      const { data: fetchedData } = await refetch();
+      if (fetchedData) {
+        setTopThree(fetchedData.slice(0, 3));
+        setRest(fetchedData.slice(3, 50));
+      }
+    };
+    fetchData();
+  }, [refetch]);
 
   const colorScheme = useColorScheme();
   const { themeViewStyle, themeTextStyle } = useTheme();
-  const rank = "Silver";
-  const topThree = data?.slice(0, 3);
-  const rest = data?.slice(3, 50);
 
   return (
     <SafeAreaView
@@ -55,8 +62,18 @@ const Leaderboard = () => {
           Top 50 Leaderboard
         </Text>
       </View>
-      {/* <Rank data={topThree}/> */}
-      <LeaderList data={rest} isLoading={isLoading}/>
+      {isLoading ? (
+        <View style={tw`flex-1 items-center justify-center`}>
+          <Text style={tw`${themeTextStyle} text-lg font-bold`}>
+            Loading...
+          </Text>
+        </View>
+      ) : (
+        <>
+          <Rank data={topThree} />
+          <LeaderList data={rest} />
+        </>
+      )}
     </SafeAreaView>
   );
 };
