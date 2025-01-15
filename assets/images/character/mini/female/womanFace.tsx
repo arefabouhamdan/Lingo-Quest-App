@@ -7,7 +7,7 @@ type SkinProps = {
 
 const WomanFace = ({ skinColor }: SkinProps, props: SvgProps) => {
   return (
-    <Svg width={72} height={71} fill="none"  viewBox="0 0 72 71"  {...props}>
+    <Svg width={18} height={18} fill="none" viewBox="0 0 72 71" {...props}>
       <Path
         fill={ skinColor }
         d="M0 20C0 8.954 8.954 0 20 0h32c11.046 0 20 8.954 20 20v21c0 16.569-13.431 30-30 30H30C13.431 71 0 57.569 0 41V20Z"
