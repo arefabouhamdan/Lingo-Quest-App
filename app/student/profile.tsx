@@ -74,7 +74,7 @@ const Profile = () => {
         <Button
           text="Add Friend"
           image="add-outline"
-          press=""
+          press="AddFriend"
           type="submit"
         />
       </View>
