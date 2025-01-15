@@ -19,6 +19,18 @@ const Test1 = () => {
           What is the capital of France?
         </Text>
       </View>
+      <TouchableOpacity style={tw`w-11/12 h-1/15 mt-5 bg-sky-400 justify-center rounded px-3`}>
+        <Text style={tw`text-white font-bold text-xl`}>Answer 1</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={tw`w-11/12 h-1/15 mt-5 bg-sky-400 justify-center rounded px-3`}>
+        <Text style={tw`text-white font-bold text-xl`}>Answer 2</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={tw`w-11/12 h-1/15 mt-5 bg-sky-400 justify-center rounded px-3`}>
+        <Text style={tw`text-white font-bold text-xl`}>Answer 3</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={tw`w-11/12 h-1/15 mt-5 bg-sky-400 justify-center rounded px-3`}>
+        <Text style={tw`text-white font-bold text-xl`}>Answer 4</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
