@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal, Text, TouchableOpacity, View, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { useTheme } from "../../hooks/useTheme";
+import { useTheme } from "../../../hooks/useTheme";
 import tw from "twrnc";
 import Icon from "react-native-vector-icons/Ionicons";
 

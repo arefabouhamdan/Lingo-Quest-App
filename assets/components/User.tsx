@@ -5,7 +5,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 import { useColorScheme } from "react-native";
 import { useNavigation } from "expo-router";
 import tw from "twrnc";
-import FriendModal from "./friendModal";
+import FriendModal from "../components/modals/friendModal";
 import { useStorage } from "@/hooks/useStorage";
 import MiniAvatar from "./mini/miniAvatar";
 

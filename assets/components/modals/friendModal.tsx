@@ -1,8 +1,8 @@
 import React from "react";
 import { Modal, Text, TouchableOpacity, View, Image } from "react-native";
-import { useTheme } from "../../hooks/useTheme";
+import { useTheme } from "../../../hooks/useTheme";
 import tw from "twrnc";
-import Avatar from "./Avatar";
+import Avatar from "../Avatar";
 import Icon from "react-native-vector-icons/Ionicons";
 
 type FriendModalProps = {

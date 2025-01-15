@@ -11,7 +11,7 @@ import { useTheme } from "@/hooks/useTheme";
 import Back from "@/assets/components/Back";
 import Icon from "react-native-vector-icons/Ionicons";
 import tw from "twrnc";
-import AlertModal from "@/assets/components/alertModal";
+import AlertModal from "@/assets/components/modals/alertModal";
 import Progress from "@/assets/components/progress";
 
 const Level1 = () => {

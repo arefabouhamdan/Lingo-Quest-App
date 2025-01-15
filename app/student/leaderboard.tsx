@@ -55,7 +55,7 @@ const Leaderboard = () => {
           Top 50 Leaderboard
         </Text>
       </View>
-      <Rank data={topThree}/>
+      {/* <Rank data={topThree}/> */}
       <LeaderList data={rest} isLoading={isLoading}/>
     </SafeAreaView>
   );
