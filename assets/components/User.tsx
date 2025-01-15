@@ -6,8 +6,8 @@ import { useColorScheme } from "react-native";
 import { useNavigation } from "expo-router";
 import tw from "twrnc";
 import FriendModal from "./friendModal";
-import Avatar from "./Avatar";
 import { useStorage } from "@/hooks/useStorage";
+import MiniAvatar from "./mini/miniAvatar";
 
 type UserProps = {
   name: string;
@@ -41,7 +41,7 @@ const User = ({ name, info, avatar, navigateTo, tutor }: UserProps) => {
         }}
       >
         <View style={tw`flex flex-row items-center gap-5`}>
-          <Avatar user={user} />
+          <MiniAvatar user={user} />
           <View>
             <Text style={tw`${themeTextStyle} text-xl font-extrabold`}>
               {name}
