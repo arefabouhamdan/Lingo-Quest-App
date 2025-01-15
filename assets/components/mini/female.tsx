@@ -1,11 +1,11 @@
 import React from "react";
 import { View } from "react-native";
 import tw from "twrnc";
-import WomanHairTwo from "../../images/character/womanHairTwo";
-import WomanHairThree from "../../images/character/womanHairThree";
-import WomanFace from "../../images/character/womanFace";
-import WomanShirt from "../../images/character/womanShirt";
-import Eyes from "../../images/character/Eyes";
+import WomanHairTwo from "../../images/character/mini/female/womanHairTwo";
+import WomanHairThree from "../../images/character/mini/female/womanHairThree";
+import WomanFace from "../../images/character/mini/female/womanFace";
+import WomanShirt from "../../images/character/mini/female/womanShirt";
+import Eyes from "../../images/character/mini/Eyes";
 
 type AvatarProps = {
   user: {
@@ -35,17 +35,16 @@ const Female = ({ user }: AvatarProps) => {
   return (
     <View
       style={[
-        tw`flex flex-col items-center justify-end w-full h-1/3`,
-        { backgroundColor: user?.avatar?.background.color},
+        tw`flex flex-col items-center justify-end`,
       ]}
     >
       <HairComponent
         hairColor={user?.avatar?.hair.color || "#000"}
-        style="relative top-41 z-2"
+        style="relative top-10 z-2"
       />
       <Eyes
         eyeColor={user?.avatar?.eyes.color}
-        style="relative top-11 z-1"
+        style="relative top-2.5 z-1"
       />
       <WomanFace skinColor={user?.avatar?.skin.color} />
       <WomanShirt shirtColor={user?.avatar?.shirt.color} />
