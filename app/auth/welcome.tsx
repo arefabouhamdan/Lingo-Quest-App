@@ -17,7 +17,7 @@ const Welcome = () => {
       navigation.navigate("Login" as never);
     }
     else if (user.type == "user") {
-      navigation.navigate("Home" as never);
+      navigation.navigate("MainHome" as never);
     }
     else if (user.type == "tutor") {
       navigation.navigate("TutorHome" as never);
