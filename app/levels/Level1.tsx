@@ -49,7 +49,9 @@ const Level1 = () => {
           onBlur={() => setIsFocused(false)}
         />
       </View>
-    
+      <TouchableOpacity style={tw`w-48 h-14 bg-sky-400 flex items-center justify-center rounded mt-5`}>
+        <Text style={tw`text-lg font-bold text-white`}>Send Message</Text>
+      </TouchableOpacity>
       {/* <TouchableOpacity
         style={tw`w-48 h-14 bg-white flex flex-row justify-center items-center gap-2.5 rounded my-auto border-r-4 border-b-4 border-sky-400 `}
       >
