@@ -1,12 +1,12 @@
 import React from "react";
 import { View } from "react-native";
 import tw from "twrnc";
-import ManHairOne from "../../images/character/manHairOne";
-import ManHairTwo from "../../images/character/manHairTwo";
-import ManHairThree from "../../images/character/manHairThree";
-import MaleFace from "../../images/character/maleFace";
-import ManShirt from "../../images/character/manShirt";
-import Eyes from "../../images/character/Eyes";
+import ManHairOne from "../../images/character/mini/male/manHairOne";
+import ManHairTwo from "../../images/character/mini/male/manHairTwo";
+import ManHairThree from "../../images/character/mini/male/manHairThree";
+import MaleFace from "../../images/character/mini/male/maleFace";
+import ManShirt from "../../images/character/mini/male/manShirt";
+import Eyes from "../../images/character/mini/Eyes";
 
 type AvatarProps = {
   user: {
@@ -43,7 +43,7 @@ const Male = ({ user }: AvatarProps) => {
     >
       <HairComponent hairColor={user?.avatar?.hair.color} style="relative top-17 z-2" />
       <Eyes eyeColor={user?.avatar?.eyes.color} style="relative top-14.5 z-1" />
-      <MaleFace skinColor={user?.avatar?.skin.color} />
+      <MaleFace skinColor={user?.avatar?.skin.color} style="relative top-17 z-2"/>
       <ManShirt shirtColor={user?.avatar?.shirt.color} />
     </View>
   );

@@ -1,13 +1,15 @@
 import * as React from "react";
 import Svg, { SvgProps, Path } from "react-native-svg";
+import tw from "twrnc";
 
 type ManFaceProps = {
   skinColor: string;
+  style: string;
 };
 
-const MaleFace = ({ skinColor }: ManFaceProps, props: SvgProps) => {
+const MaleFace = ({ skinColor, style }: ManFaceProps, props: SvgProps) => {
   return (
-    <Svg width={99} height={85} fill="none" {...props}>
+    <Svg width={99} height={85} fill="none"  {...props} style={tw`${style || ''}`}>
       <Path
         fill={ skinColor }
         d="M7 20C7 8.954 15.954 0 27 0h45c11.046 0 20 8.954 20 20v45c0 11.046-8.954 20-20 20H27C15.954 85 7 76.046 7 65V20Z"

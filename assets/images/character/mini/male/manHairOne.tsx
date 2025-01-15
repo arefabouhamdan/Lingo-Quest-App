@@ -15,7 +15,7 @@ type ManHairOneProps = {
 
 const ManHairOne = ({ hairColor, style }: ManHairOneProps, props: SvgProps) => {
   return (
-    <Svg width={85} height={60} fill="none"  viewBox="0 0 85 60"  {...props}  style={tw`${style || ''}`}>
+    <Svg width={45} height={60} fill="none"  viewBox="0 0 85 1"  {...props}  style={tw`${style || ''}`}>
       
       <Path
         fill={ hairColor }
