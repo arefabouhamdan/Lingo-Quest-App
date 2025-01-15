@@ -38,13 +38,13 @@ const Male = ({ user }: AvatarProps) => {
   return (
     <View
       style={[
-        tw`flex flex-col items-center justify-end w-full h-1/3`,
+        tw`flex flex-col items-center justify-end`,
       ]}
     >
-      <HairComponent hairColor={user?.avatar?.hair.color} style="relative top-17 z-2" />
-      <Eyes eyeColor={user?.avatar?.eyes.color} style="relative top-14.5 z-1" />
-      <MaleFace skinColor={user?.avatar?.skin.color} style="relative top-17 z-2"/>
-      <ManShirt shirtColor={user?.avatar?.shirt.color} />
+      <HairComponent hairColor={user?.avatar?.hair.color} style="relative top-4 z-2" />
+      <Eyes eyeColor={user?.avatar?.eyes.color} style="relative top-3.5 z-1" />
+      <MaleFace skinColor={user?.avatar?.skin.color} style=""/>
+      <ManShirt shirtColor={user?.avatar?.shirt.color} style=""/>
     </View>
   );
 };
