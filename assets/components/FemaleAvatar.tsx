@@ -40,7 +40,7 @@ const FemaleAvatar = ({ user }: AvatarProps) => {
       ]}
     >
       <HairComponent
-        hairColor={user?.avatar?.hair.color || "#000"}
+        hairColor={user?.avatar?.hair.color}
         style="relative top-41 z-2"
       />
       <Eyes
