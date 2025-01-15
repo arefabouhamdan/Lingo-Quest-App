@@ -4,33 +4,36 @@ import { useTheme } from "../../../hooks/useTheme";
 import tw from "twrnc";
 import Avatar from "../Avatar";
 import Icon from "react-native-vector-icons/Ionicons";
+import axios from "axios";
+import { useQuery } from "react-query";
+import { languages } from "@/assets/utils/languages";
 
 type FriendModalProps = {
   modalVisible: boolean;
   setModalVisible: (modalVisible: boolean) => void;
+  name: string;
 };
 
-const user = {
-  name: "Aref",
-  id: "1234",
-  joined: "01-09-2021",
-  streak: "20",
-  xp: "12000",
-  type: "student",
-  avatar: {
-    gender: "male",
-    background: { color: "#4FC0E8" },
-    hair: { color: "#674238", style: "ManHairOne" },
-    skin: { color: "#E7BC98", style: "MaleFace" },
-    eyes: { color: "#1E81C8", style: "Eyes" },
-    shirt: { color: "#484848", style: "ManShirt" },
-  },
-  friends: ["Aref", "Bilal", "Hassan", "Ali"],
-};
-
-const FriendModal = ({ modalVisible, setModalVisible }: FriendModalProps) => {
+const FriendModal = ({
+  modalVisible,
+  setModalVisible,
+  name,
+}: FriendModalProps) => {
   const { themeViewStyle, themeTextStyle } = useTheme();
-  const { name, id, joined, friends } = user;
+
+  const fetchUserByName = async (name: string) => {
+    const response = await axios.get(`http://192.168.1.102:3000/users/${name}`);
+    return response.data;
+  };
+
+  const { data, isLoading } = useQuery(
+    ["user", name],
+    () => fetchUserByName(name),
+    {
+      enabled: modalVisible && !!name,
+      retry: false,
+    }
+  );
 
   return (
     <Modal
@@ -45,7 +48,7 @@ const FriendModal = ({ modalVisible, setModalVisible }: FriendModalProps) => {
         <View
           style={tw`${themeViewStyle} border-4 border-white rounded-2 w-92 h-130 flex flex-col items-center`}
         >
-          <Avatar user={user} />
+          <Avatar user={data} />
           <View
             style={tw`flex flex-row px-3 justify-between items-center w-full mt-5`}
           >
@@ -54,26 +57,15 @@ const FriendModal = ({ modalVisible, setModalVisible }: FriendModalProps) => {
             </Text>
             <Image
               style={tw`h-4.4 w-6`}
-              source={require("@/assets/images/flags/German.png")}
+              source={
+                languages.find((lang) => lang.name === data?.language)?.source
+              }
             />
           </View>
           <View style={tw`flex flex-row justify-between items-center w-full`}>
             <View style={tw`flex flex-col px-3`}>
-              <View
-                style={tw`flex flex-row items-center mt-5 w-full justify-between`}
-              >
-                <Text style={tw`${themeTextStyle} text-lg font-medium mt-2`}>
-                  ID {id}
-                </Text>
-                <Text style={tw`${themeTextStyle} text-lg font-medium `}>
-                  No. Friends{"  "}
-                  <Text style={tw`text-sky-400 font-extrabold`}>
-                    {friends.length}
-                  </Text>
-                </Text>
-              </View>
               <Text style={tw`${themeTextStyle} text-lg font-medium`}>
-                Joined {joined}
+                Joined {data?.createdAt?.split("T")[0]}
               </Text>
             </View>
           </View>

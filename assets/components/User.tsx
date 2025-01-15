@@ -29,6 +29,7 @@ const User = ({ name, info, user, navigateTo, tutor }: UserProps) => {
       <FriendModal
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
+        name={name}
       />
       <TouchableOpacity
         style={tw`flex flex-row items-center gap-5 p-4 rounded border border-gray-200 mb-4 h-20 justify-between`}
