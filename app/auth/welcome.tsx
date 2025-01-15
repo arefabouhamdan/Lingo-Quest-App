@@ -1,13 +1,28 @@
+import React, { useEffect } from "react";
 import { Text, Image, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useTheme } from "../../hooks/useTheme";
 import { useNavigation } from "@react-navigation/native";
 import tw from "twrnc";
 import Button from "../../assets/components/Button";
+import { useStorage } from "../../hooks/useStorage";
 
 const Welcome = () => {
   const { themeTextStyle, themeViewStyle } = useTheme();
   const navigation = useNavigation();
+  const { user } = useStorage();
+
+  useEffect(() => {
+    if (!user) {
+      navigation.navigate("Login" as never);
+    }
+    else if (user.type == "user") {
+      navigation.navigate("Home" as never);
+    }
+    else if (user.type == "tutor") {
+      navigation.navigate("TutorHome" as never);
+    }
+  }, [user, navigation]);
 
   return (
     <SafeAreaView

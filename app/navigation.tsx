@@ -134,11 +134,10 @@ const HomeStackScreen = () => {
 
 const Navigation = () => {
   const { user } = useStorage();
+
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-
-      {/* Student */}
-      <Stack.Screen name="Home" component={HomeStackScreen} />
+      {/* Authentication */}
       <Stack.Screen name="Welcome" component={Welcome} />
       <Stack.Screen name="Choose" component={Choose} />
       <Stack.Screen name="Login" component={Login} />
@@ -146,6 +145,9 @@ const Navigation = () => {
       <Stack.Screen name="CreateAvatar" component={CreateAvatar} />
       <Stack.Screen name="Student" component={Student} />
       <Stack.Screen name="Tutor" component={Tutor} />
+
+      {/* Student */}
+      <Stack.Screen name="Home" component={HomeStackScreen} />
       <Stack.Screen name="Vocab" component={Vocab} />
       <Stack.Screen name="Levels" component={Levels} />
       <Stack.Screen name="Level1" component={Level1} />
@@ -159,7 +161,6 @@ const Navigation = () => {
       <Stack.Screen name="TutorHome" component={TutorHome} />
       <Stack.Screen name="TutorProfile" component={TutorProfile} />
       <Stack.Screen name="Test" component={Test} />
-
     </Stack.Navigator>
   );
 };
