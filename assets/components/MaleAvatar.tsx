@@ -37,7 +37,7 @@ const MaleAvatar = ({ user }: AvatarProps) => {
   return (
     <View
       style={[
-        tw`flex flex-col items-center justify-end w-full h-1/3`,
+        tw`flex flex-col items-center justify-end w-full h-2/5`,
         { backgroundColor: user?.avatar?.background.color },
       ]}
     >
