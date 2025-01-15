@@ -21,7 +21,7 @@ const Levels = () => {
         data={levelsData}
         renderItem={({ item, index }) => (
           <Level
-            status={item.status}
+            status={user?.level >= index + 1 ? "active" : "inactive"}
             level={item.level}
             type={item.type}
           />
