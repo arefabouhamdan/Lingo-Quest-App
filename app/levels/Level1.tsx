@@ -19,7 +19,8 @@ const Level1 = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [isFocused, setIsFocused] = useState(false);
-  const stage = 3;
+  const numberOfStages = 5;
+  const stage = 0;
 
   return (
     <SafeAreaView style={tw`${themeViewStyle}flex-1 items-center`}>
