@@ -1,12 +1,16 @@
-import { useMutation } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useStorage } from "./useStorage";
 import { useNavigation } from "@react-navigation/native";
-import Navigation from "@/app/navigation";
 
 interface LoginCredentials {
   name: string;
   password: string;
+}
+
+interface name {
+  name: string;
 }
 
 const login = async (credentials: LoginCredentials) => {
@@ -15,6 +19,11 @@ const login = async (credentials: LoginCredentials) => {
     "http://192.168.1.102:3000/users/login",
     credentials
   );
+  return response.data;
+};
+
+const fetchUserByName = async (name: string) => {
+  const response = await axios.get(`http://192.168.1.102:3000/users/${name}`);
   return response.data;
 };
 
@@ -35,3 +44,19 @@ export const useLogin = () => {
     },
   });
 };
+
+export const refetchUser = () => {
+  const { user } = useStorage();
+  return useQuery(["user", user?.name], () => fetchUserByName(user?.name), {
+    enabled: !!user?.name,
+    retry: false,
+    onSuccess: async (data) => {
+      try {
+        await AsyncStorage.setItem('user', JSON.stringify(data));
+        console.log("User data stored securely:", data);
+      } catch (error) {
+        console.error("Error storing user data securely:", error);
+      }
+    }
+  });
+}

@@ -12,7 +12,6 @@ import tw from "twrnc";
 import Avatar from "@/assets/components/Avatar";
 import { languages } from "@/assets/utils/languages";
 import Icons from "react-native-vector-icons/Ionicons";
-import BottomBar from "@/assets/components/bottomBar";
 import { useNavigation } from "@react-navigation/native";
 import { useStorage } from "@/hooks/useStorage";
 
