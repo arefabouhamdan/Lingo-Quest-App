@@ -7,6 +7,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 import axios from "axios";
 import { useQuery } from "react-query";
 import { languages } from "@/assets/utils/languages";
+import { BASE_URL } from "@/assets/utils/baseUrl";
 
 type FriendModalProps = {
   modalVisible: boolean;
@@ -22,7 +23,7 @@ const FriendModal = ({
   const { themeViewStyle, themeTextStyle } = useTheme();
 
   const fetchUserByName = async (name: string) => {
-    const response = await axios.get(`http://192.168.1.102:3000/users/${name}`);
+    const response = await axios.get(`${BASE_URL}/users/${name}`);
     return response.data;
   };
 
