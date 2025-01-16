@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   SafeAreaView,
   Image,
@@ -18,6 +18,7 @@ import { useMutation } from "react-query";
 import axios from "axios";
 import { BASE_URL } from "@/assets/utils/baseUrl";
 import { useStorage } from "@/hooks/useStorage";
+import { useQuery } from "react-query";
 
 const Level1 = () => {
   const { themeViewStyle, themeTextStyle } = useTheme();
@@ -32,41 +33,40 @@ const Level1 = () => {
   const { user } = useStorage();
   const language = user?.language;
 
-  const {
-    mutate: sendMessage,
-    data : aiResponse,
-    isLoading,
-  } = useMutation(
+  const { mutate: sendMessage, data: aiResponse } = useMutation(
     async ({
       input,
       history,
     }: {
       input: string;
-      history: { role: string; content: string }[];
+      history: { role: string; parts: [{ text: string }] }[];
     }) => {
       const response = await axios.post(`${BASE_URL}/ai`, {
         input,
         history,
       });
-
-      return response.data;
+      const cleanedResponse = await response.data.split('```json')[1].split('```')[0].trim();
+      return cleanedResponse;
     },
     {
       onSuccess: (aiResponse) => {
         setChatHistory((prevHistory) => [
           ...prevHistory,
-          { role: "model", content: aiResponse },
+          { role: "model", parts: [{ text: aiResponse }]  },
         ]);
       },
     }
   );
+  
+  const jsonResponse = JSON.parse(aiResponse)
+  console.log("jsonResponse", jsonResponse.status)
 
   const handleSendMessage = () => {
     if (!inputValue.trim()) return;
 
     const updatedHistory = [
       ...chatHistory,
-      { role: "user", content: inputValue },
+      { role: "user", parts: [{ text: inputValue }] },
     ];
 
     sendMessage({
@@ -76,6 +76,32 @@ const Level1 = () => {
     setInputValue("");
     setChatHistory(updatedHistory);
   };
+
+  const fetchLevel = async () => {
+    const response = await axios.get(`${BASE_URL}/levels/1`);
+    return response.data;
+  };
+
+  const { data: levelData, isLoading } = useQuery(
+    ["Level", 1],
+    () => fetchLevel(),
+    {
+      retry: false,
+    }
+  );
+
+  useEffect(() => {
+    if (levelData && language) {
+      setChatHistory((prevHistory) => [
+        {
+          role: "user",
+          parts: [{ text: `You are a ${language} speaking${levelData.message}.` }],
+        },
+        ...prevHistory,
+        
+      ]);
+    }
+  }, [levelData, language]);
 
   return (
     <SafeAreaView style={tw`${themeViewStyle}flex-1 items-center`}>
@@ -104,7 +130,7 @@ const Level1 = () => {
           index < stage ? (
             <Progress key={index} passed />
           ) : (
-            <Progress key={index} />
+            <Progress key={index} passed={false}/>
           )
         )}
       </View>
