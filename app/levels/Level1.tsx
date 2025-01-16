@@ -14,6 +14,10 @@ import tw from "twrnc";
 import AlertModal from "@/assets/components/modals/alertModal";
 import Progress from "@/assets/components/progress";
 import Congrats from "@/assets/components/modals/congrats";
+import { useMutation } from "react-query";
+import axios from "axios";
+import { BASE_URL } from "@/assets/utils/baseUrl";
+import { useStorage } from "@/hooks/useStorage";
 
 const Level1 = () => {
   const { themeViewStyle, themeTextStyle } = useTheme();
@@ -23,6 +27,28 @@ const Level1 = () => {
   const [isFocused, setIsFocused] = useState(false);
   const numberOfStages = 5;
   const stage = 0;
+  const { user } = useStorage();
+  const language = user?.language;
+
+  const {
+    mutate: sendMessage,
+    data,
+    isLoading,
+  } = useMutation(
+    async ({ input }: { input: string }) => {
+
+      const response = await axios.post(
+        `${BASE_URL}/ai/1/German"`,
+        { input }
+      );
+      const aiResponse = await JSON.parse(response.data)
+      return aiResponse;
+    },
+  );
+
+  const handleSendMessage = () => {
+    sendMessage({ input: inputValue });
+  };
 
   return (
     <SafeAreaView style={tw`${themeViewStyle}flex-1 items-center`}>
@@ -31,7 +57,11 @@ const Level1 = () => {
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
       />
-      <Congrats level={1} modalVisible={isModalVisible} setModalVisible={setIsModalVisible}/>
+      <Congrats
+        level={1}
+        modalVisible={isModalVisible}
+        setModalVisible={setIsModalVisible}
+      />
       <View style={tw`w-full h-1/2 items-center justify-start`}>
         <Image
           source={require("@/assets/images/game/coffeeshop-night-1.png")}
@@ -43,9 +73,13 @@ const Level1 = () => {
         />
       </View>
       <View style={tw`w-11/12 flex-row items-center justify-between mt-5`}>
-        {[...Array(5)].map((_, index) => (
-          index < stage ? <Progress key={index} passed /> : <Progress key={index} />
-        ))}
+        {[...Array(numberOfStages)].map((_, index) =>
+          index < stage ? (
+            <Progress key={index} passed />
+          ) : (
+            <Progress key={index} />
+          )
+        )}
       </View>
       <View
         style={tw`w-11/12 h-1/4 flex-row items-center justify-between mt-5 border border-gray-200 rounded `}
@@ -61,11 +95,16 @@ const Level1 = () => {
         />
       </View>
       <View style={tw`flex-row items-center justify-between gap-5`}>
-        <TouchableOpacity style={tw`w-48 h-14 bg-sky-400 flex items-center justify-center rounded mt-5`}>
+        <TouchableOpacity
+          style={tw`w-48 h-14 bg-sky-400 flex items-center justify-center rounded mt-5`}
+          onPress={handleSendMessage}
+        >
           <Text style={tw`text-lg font-bold text-white`}>Send Message</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={tw`w-20 h-14 bg-sky-400 flex items-center justify-center rounded mt-5`}
-          onPress={() => setIsModalVisible(true)}>
+        <TouchableOpacity
+          style={tw`w-20 h-14 bg-sky-400 flex items-center justify-center rounded mt-5`}
+          onPress={() => setIsModalVisible(true)}
+        >
           <Text style={tw`text-lg font-bold text-white`}>Skip</Text>
         </TouchableOpacity>
       </View>
