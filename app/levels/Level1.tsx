@@ -24,30 +24,57 @@ const Level1 = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
+  const [stage, setStage] = useState(0);
   const [isFocused, setIsFocused] = useState(false);
+  const [chatHistory, setChatHistory] = useState<any[]>([]);
+
   const numberOfStages = 5;
-  const stage = 0;
   const { user } = useStorage();
   const language = user?.language;
 
   const {
     mutate: sendMessage,
-    data,
+    data : aiResponse,
     isLoading,
   } = useMutation(
-    async ({ input }: { input: string }) => {
+    async ({
+      input,
+      history,
+    }: {
+      input: string;
+      history: { role: string; content: string }[];
+    }) => {
+      const response = await axios.post(`${BASE_URL}/ai`, {
+        input,
+        history,
+      });
 
-      const response = await axios.post(
-        `${BASE_URL}/ai/1/German"`,
-        { input }
-      );
-      const aiResponse = await JSON.parse(response.data)
-      return aiResponse;
+      return response.data;
     },
+    {
+      onSuccess: (aiResponse) => {
+        setChatHistory((prevHistory) => [
+          ...prevHistory,
+          { role: "model", content: aiResponse },
+        ]);
+      },
+    }
   );
 
   const handleSendMessage = () => {
-    sendMessage({ input: inputValue });
+    if (!inputValue.trim()) return;
+
+    const updatedHistory = [
+      ...chatHistory,
+      { role: "user", content: inputValue },
+    ];
+
+    sendMessage({
+      input: inputValue,
+      history: updatedHistory,
+    });
+    setInputValue("");
+    setChatHistory(updatedHistory);
   };
 
   return (
@@ -98,8 +125,11 @@ const Level1 = () => {
         <TouchableOpacity
           style={tw`w-48 h-14 bg-sky-400 flex items-center justify-center rounded mt-5`}
           onPress={handleSendMessage}
+          disabled={isLoading}
         >
-          <Text style={tw`text-lg font-bold text-white`}>Send Message</Text>
+          <Text style={tw`text-lg font-bold text-white`}>
+            {isLoading ? "Sending..." : "Send Message"}
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={tw`w-20 h-14 bg-sky-400 flex items-center justify-center rounded mt-5`}
@@ -108,12 +138,6 @@ const Level1 = () => {
           <Text style={tw`text-lg font-bold text-white`}>Skip</Text>
         </TouchableOpacity>
       </View>
-      {/* <TouchableOpacity
-        style={tw`w-48 h-14 bg-white flex flex-row justify-center items-center gap-2.5 rounded my-auto border-r-4 border-b-4 border-sky-400 `}
-      >
-        <Icon name="mic-outline" color="#4EC0E8" size={36} />
-        <Text style={tw`text-xl font-medium`}>Push to talk</Text>
-      </TouchableOpacity> */}
     </SafeAreaView>
   );
 };
