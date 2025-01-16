@@ -35,7 +35,7 @@ const Choose = () => {
           </Text>
           <TouchableOpacity
             onPress={() => {
-              handlePress("student");
+              handlePress("user");
             }}
           >
             <Button text="Student" type="submit" />
