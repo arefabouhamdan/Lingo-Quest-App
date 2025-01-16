@@ -25,7 +25,6 @@ const Test1 = () => {
       retry: false,
     }
   );
-  
 
   const [index, setIndex] = useState<number>(0);
   const [answers, setAnswers] = useState<string[]>([]);
@@ -35,22 +34,24 @@ const Test1 = () => {
     newAnswers[index] = choice;
     setAnswers(newAnswers);
   };
-  
+
   const handleIncrement = () => {
-    index <= question?.data.length - 1 ? setIndex(index + 1): null;
-  }
+    index <= question?.data.length - 1 ? setIndex(index + 1) : null;
+  };
   const handleDecrement = () => {
     index == 0 ? null : setIndex(index - 1);
-  }
+  };
 
   const { themeViewStyle, themeTextStyle } = useTheme();
   const prevStyle = index == 0 ? "opacity-50" : "opacity-100";
-  const nextStyle = index < question?.data.length - 1 ? "opacity-100" : "opacity-50";
+  const nextStyle =
+    index < question?.data.length - 1 ? "opacity-100" : "opacity-50";
   const buttonStyle =
     "w-23 h-11 bg-sky-400 flex justify-center items-center rounded-2 my-auto border-sky-600";
   const textStyle = "text-white text-xl font-medium";
   const answerStyle =
     "w-11/12 h-1/15 mt-5 bg-sky-400 justify-center rounded px-3";
+  const disabledStyle = answers.length !== question?.data.length && "opacity-50";
 
   return isLoading ? (
     <View style={tw`w-85 h-80 flex flex-col items-center justify-center`}>
@@ -60,7 +61,7 @@ const Test1 = () => {
     <SafeAreaView style={tw`${themeViewStyle} flex-1 items-center`}>
       <Back text="Test 1" background />
       <View
-        style={tw`w-full h-2/5 bg-sky-400 items-start justify-center gap-5`}
+        style={tw`w-full h-2/7 bg-sky-400 items-start justify-center gap-5`}
       >
         <Text style={tw`${themeTextStyle} text-3xl font-bold text-white px-3`}>
           Question {index + 1}:
@@ -71,23 +72,37 @@ const Test1 = () => {
           {question?.data[index].content}
         </Text>
       </View>
-      {question?.data[index].choices.map((choice: string, choiceIndex: number) => (
-        <TouchableOpacity
-          key={choiceIndex}
-          style={tw`${answerStyle}`}
-          onPress={() => handleChoiceSelect(choice)}
-        >
-          <Text style={tw`${textStyle}`}>{choice}</Text>
-        </TouchableOpacity>
-      ))}
+      {question?.data[index].choices.map(
+        (choice: string, choiceIndex: number) => (
+          <TouchableOpacity
+            key={choiceIndex}
+            style={tw`${answerStyle}`}
+            onPress={() => handleChoiceSelect(choice)}
+          >
+            <Text style={tw`${textStyle}`}>{choice}</Text>
+          </TouchableOpacity>
+        )
+      )}
       <View style={tw`h-1/15 flex-row my-auto px-3 gap-5`}>
-        <TouchableOpacity style={tw`${buttonStyle} ${prevStyle}`} onPress={handleDecrement} disabled={index == 0}>
+        <TouchableOpacity
+          style={tw`${buttonStyle} ${prevStyle}`}
+          onPress={handleDecrement}
+          disabled={index == 0}
+        >
           <Text style={tw`${textStyle}`}>Prev</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={tw`${buttonStyle} ${nextStyle}`} onPress={handleIncrement} disabled={index == question?.data.length - 1}>
+        <TouchableOpacity
+          style={tw`${buttonStyle} ${nextStyle}`}
+          onPress={handleIncrement}
+          disabled={index == question?.data.length - 1}
+        >
           <Text style={tw`${textStyle}`}>Next</Text>
         </TouchableOpacity>
       </View>
+      <TouchableOpacity
+        style={tw`${disabledStyle} w-52 bg-sky-400 rounded-2 h-14 my-auto flex flex-row justify-center items-center gap-5`}
+        disabled={answers.length !== question?.data.length}
+      ><Text style={tw`${textStyle}`}>Submit</Text></TouchableOpacity>
     </SafeAreaView>
   );
 };
