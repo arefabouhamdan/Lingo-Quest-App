@@ -28,6 +28,7 @@ const Level1 = () => {
   const [stage, setStage] = useState(0);
   const [isFocused, setIsFocused] = useState(false);
   const [chatHistory, setChatHistory] = useState<any[]>([]);
+  const [jsonResponse, setJsonResponse] = useState<any>();
 
   const numberOfStages = 5;
   const { user } = useStorage();
@@ -52,18 +53,33 @@ const Level1 = () => {
       return cleanedResponse;
     },
     {
-      onSuccess: (aiResponse) => {
-        setChatHistory((prevHistory) => [
-          ...prevHistory,
-          { role: "model", parts: [{ text: aiResponse }] },
-        ]);
+      onSuccess: (returnedData) => {
+        try {
+          const parsed = JSON.parse(returnedData);
+          setJsonResponse(parsed);
+          setChatHistory((prevHistory) => [
+            ...prevHistory,
+            { role: "model", parts: [{ text: parsed?.message ?? "" }] },
+          ]);
+        } catch (error) {
+          console.error("Failed to parse JSON:", error);
+          setJsonResponse(null);
+          setChatHistory((prevHistory) => [
+            ...prevHistory,
+            { role: "model", parts: [{ text: returnedData }] },
+          ]);
+        }
       },
     }
   );
-  let jsonResponse;
-  if (aiResponse) {
-    jsonResponse = JSON.parse(aiResponse);
-  }
+
+  console.log(jsonResponse?.message);
+
+  useEffect(() => {
+    if (jsonResponse?.status === "success") {
+      setStage((prevStage) => prevStage + 1);
+    }
+  }, [jsonResponse]);
 
   const handleSendMessage = () => {
     if (!inputValue.trim()) return;
@@ -79,9 +95,6 @@ const Level1 = () => {
     });
     setInputValue("");
     setChatHistory(updatedHistory);
-    // if(jsonResponse?.status == "success") {
-    //   setStage((prevStage) => prevStage + 1);
-    // }
   };
 
   const fetchLevel = async () => {
@@ -124,6 +137,15 @@ const Level1 = () => {
         setModalVisible={setIsModalVisible}
       />
       <View style={tw`w-full h-1/2 items-center justify-start`}>
+        {jsonResponse?.message && (
+          <View
+            style={tw`absolute top-5 z-20 w-11/12 h-1/4 bg-white rounded p-5 justify-center`}
+          >
+            <Text style={tw`text-center text-2xl font-bold`}>
+              {jsonResponse?.message}
+            </Text>
+          </View>
+        )}
         <Image
           source={require("@/assets/images/game/coffeeshop-night-1.png")}
           style={tw`w-full h-full relative`}
