@@ -57,7 +57,7 @@ const Test1 = () => {
         style={tw`w-full h-2/5 bg-sky-400 items-start justify-center gap-5`}
       >
         <Text style={tw`${themeTextStyle} text-3xl font-bold text-white px-3`}>
-          Question:
+          Question {index + 1}:
         </Text>
         <Text
           style={tw`${themeTextStyle} text-3xl font-medium text-white px-3`}
