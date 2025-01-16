@@ -144,8 +144,8 @@ const Navigation = () => {
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="ChooseLanguage" component={ChooseLanguage} />
       <Stack.Screen name="CreateAvatar" component={CreateAvatar} />
-      <Stack.Screen name="Student" component={Student} />
-      <Stack.Screen name="Tutor" component={Tutor} />
+      <Stack.Screen name="student" component={Student} />
+      <Stack.Screen name="tutor" component={Tutor} />
 
       {/* Student */}
       <Stack.Screen name="MainHome" component={HomeStackScreen} />

@@ -14,7 +14,7 @@ const Welcome = () => {
 
   useEffect(() => {
     if (!user) {
-      navigation.navigate("Login" as never);
+      navigation.navigate("Welcome" as never);
     }
     else if (user.type == "user") {
       navigation.navigate("MainHome" as never);
@@ -35,7 +35,6 @@ const Welcome = () => {
         />
         <View>
           <Button text="Login" press="Login" type="login" image=''/>
-          <Button text="Login with Google" press="" type="login" image='logo-google'/>
         </View>
       </View>
       <Text onPress={() => navigation.navigate('Choose' as never)} style={tw`${themeTextStyle} my-auto`}>
