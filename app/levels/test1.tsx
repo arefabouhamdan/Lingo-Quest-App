@@ -52,6 +52,7 @@ const Test1 = () => {
   const answerStyle =
     "w-11/12 h-1/15 mt-5 bg-sky-400 justify-center rounded px-3";
   const disabledStyle = answers.length !== question?.data.length && "opacity-50";
+  const selectedAnswerStyle = "bg-sky-600";
 
   return isLoading ? (
     <View style={tw`w-85 h-80 flex flex-col items-center justify-center`}>
@@ -76,7 +77,7 @@ const Test1 = () => {
         (choice: string, choiceIndex: number) => (
           <TouchableOpacity
             key={choiceIndex}
-            style={tw`${answerStyle}`}
+            style={tw`${answerStyle} ${answers[index] === choice && selectedAnswerStyle}`}
             onPress={() => handleChoiceSelect(choice)}
           >
             <Text style={tw`${textStyle}`}>{choice}</Text>
