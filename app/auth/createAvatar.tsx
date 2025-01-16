@@ -5,14 +5,26 @@ import tw from "twrnc";
 import Tabs from "@/assets/components/tabs";
 import CustomizeAvatar from "@/assets/components/customizeAvatar";
 import Button from "@/assets/components/Button";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from "@react-navigation/native";
 
 const CreateAvatar = () => {
+  const navigation = useNavigation();
   const [hairColor, setHairColor] = useState("#4B3621");
   const [eyeColor, setEyeColor] = useState("#0F52BA");
   const [skinColor, setSkinColor] = useState("#F5CBA7");
   const [shirtColor, setShirtColor] = useState("#000000");
   const [backgroundColor, setBackgroundColor] = useState("#ADD8E6");
   const [gender, setGender] = useState("male");
+
+  const handlePress = async (avatar) => {
+    try {
+      await AsyncStorage.setItem('user_avatar', JSON.stringify(avatar));
+      navigation.navigate(`ChooseLanguage` as never);
+    } catch (error) {
+      console.log("Error saving user role:", error);
+    }
+  };
 
   const { themeViewStyle } = useTheme();
   const buttonStyle =
@@ -53,9 +65,29 @@ const CreateAvatar = () => {
         setShirtColor={setShirtColor}
         setBackgroundColor={setBackgroundColor}
       />
-      <View style={tw`flex flex-row justify-center items-center my-5`}>
-        <Button text="Continue" press="ChooseLanguage" type="submit" />
-      </View>
+      <TouchableOpacity style={tw`flex flex-row justify-center items-center my-5`} onPress={() => {
+        const avatar = {
+          background: {
+            color: backgroundColor,
+          },
+          hair: {
+            color: hairColor,
+          },
+          skin: {
+            color: skinColor,
+          },
+          eyes: {
+            color: eyeColor,
+          },
+          shirt: {
+            color: shirtColor,
+          },
+          gender: gender,
+        };
+        handlePress(avatar);
+      }}>
+        <Button text="Continue" type="submit" />
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
