@@ -45,21 +45,25 @@ const Level1 = () => {
         input,
         history,
       });
-      const cleanedResponse = await response.data.split('```json')[1].split('```')[0].trim();
+      const cleanedResponse = await response.data
+        .split("```json")[1]
+        .split("```")[0]
+        .trim();
       return cleanedResponse;
     },
     {
       onSuccess: (aiResponse) => {
         setChatHistory((prevHistory) => [
           ...prevHistory,
-          { role: "model", parts: [{ text: aiResponse }]  },
+          { role: "model", parts: [{ text: aiResponse }] },
         ]);
       },
     }
   );
-  
-  const jsonResponse = JSON.parse(aiResponse)
-  console.log("jsonResponse", jsonResponse.status)
+  let jsonResponse;
+  if (aiResponse) {
+    jsonResponse = JSON.parse(aiResponse);
+  }
 
   const handleSendMessage = () => {
     if (!inputValue.trim()) return;
@@ -75,6 +79,9 @@ const Level1 = () => {
     });
     setInputValue("");
     setChatHistory(updatedHistory);
+    // if(jsonResponse?.status == "success") {
+    //   setStage((prevStage) => prevStage + 1);
+    // }
   };
 
   const fetchLevel = async () => {
@@ -95,10 +102,11 @@ const Level1 = () => {
       setChatHistory((prevHistory) => [
         {
           role: "user",
-          parts: [{ text: `You are a ${language} speaking${levelData.message}.` }],
+          parts: [
+            { text: `You are a ${language} speaking${levelData.message}.` },
+          ],
         },
         ...prevHistory,
-        
       ]);
     }
   }, [levelData, language]);
@@ -130,7 +138,7 @@ const Level1 = () => {
           index < stage ? (
             <Progress key={index} passed />
           ) : (
-            <Progress key={index} passed={false}/>
+            <Progress key={index} passed={false} />
           )
         )}
       </View>
