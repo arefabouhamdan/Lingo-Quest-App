@@ -27,8 +27,14 @@ const Test1 = () => {
   );
   
 
-  const [index, setIndex] = useState(0);
-  console.log("index", index)
+  const [index, setIndex] = useState<number>(0);
+  const [answers, setAnswers] = useState<string[]>([]);
+
+  const handleChoiceSelect = (choice: string) => {
+    const newAnswers = [...answers];
+    newAnswers[index] = choice;
+    setAnswers(newAnswers);
+  };
   
   const handleIncrement = () => {
     index <= question?.data.length - 1 ? setIndex(index + 1): null;
@@ -65,18 +71,15 @@ const Test1 = () => {
           {question?.data[index].content}
         </Text>
       </View>
-      <TouchableOpacity style={tw`${answerStyle}`}>
-        <Text style={tw`${textStyle}`}>{question?.data[index].choices[0]}</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={tw`${answerStyle}`}>
-        <Text style={tw`${textStyle}`}>{question?.data[index].choices[1]}</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={tw`${answerStyle}`}>
-        <Text style={tw`${textStyle}`}>{question?.data[index].choices[2]}</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={tw`${answerStyle}`}>
-        <Text style={tw`${textStyle}`}>{question?.data[index].choices[3]}</Text>
-      </TouchableOpacity>
+      {question?.data[index].choices.map((choice: string, choiceIndex: number) => (
+        <TouchableOpacity
+          key={choiceIndex}
+          style={tw`${answerStyle}`}
+          onPress={() => handleChoiceSelect(choice)}
+        >
+          <Text style={tw`${textStyle}`}>{choice}</Text>
+        </TouchableOpacity>
+      ))}
       <View style={tw`h-1/15 flex-row my-auto px-3 gap-5`}>
         <TouchableOpacity style={tw`${buttonStyle} ${prevStyle}`} onPress={handleDecrement} disabled={index == 0}>
           <Text style={tw`${textStyle}`}>Prev</Text>
