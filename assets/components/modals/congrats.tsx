@@ -9,9 +9,10 @@ type FriendModalProps = {
   modalVisible: boolean;
   setModalVisible: (modalVisible: boolean) => void;
   level: number;
+  test?: boolean;
 };
 
-const Congrats = ({ modalVisible, setModalVisible, level }: FriendModalProps) => {
+const Congrats = ({ modalVisible, setModalVisible, level, test }: FriendModalProps) => {
   const { themeViewStyle, themeTextStyle } = useTheme();
   const navigation = useNavigation();
   const handleLeave = () => {
@@ -33,7 +34,7 @@ const Congrats = ({ modalVisible, setModalVisible, level }: FriendModalProps) =>
         >
           <View style={tw`flex flex-col items-center justify-center gap-10`}>
             <Text style={tw`${themeTextStyle} text-xl font-bold `}>
-              Congrats you completed Level {level}!
+              Congrats you completed {test ? `Test` : `Level`} {level}!
             </Text>
             <TouchableOpacity
               style={tw`w-52 bg-sky-400 rounded-2 h-14 my-auto flex flex-row justify-center items-center gap-5`}

@@ -8,6 +8,7 @@ import { useStorage } from "@/hooks/useStorage";
 import { useQuery } from "react-query";
 import axios from "axios";
 import { BASE_URL } from "@/assets/utils/baseUrl";
+import Congrats from "@/assets/components/modals/congrats";
 
 const Test1 = () => {
   const { user } = useStorage();
@@ -42,6 +43,8 @@ const Test1 = () => {
     index == 0 ? null : setIndex(index - 1);
   };
 
+  const [modalVisible, setModalVisible] = useState(false);
+
   const { themeViewStyle, themeTextStyle } = useTheme();
   const prevStyle = index == 0 ? "opacity-50" : "opacity-100";
   const nextStyle =
@@ -61,6 +64,7 @@ const Test1 = () => {
   ) : (
     <SafeAreaView style={tw`${themeViewStyle} flex-1 items-center`}>
       <Back text="Test 1" background />
+      <Congrats level={1} modalVisible={modalVisible} setModalVisible={setModalVisible} test/>
       <View
         style={tw`w-full h-2/7 bg-sky-400 items-start justify-center gap-5`}
       >
@@ -103,6 +107,7 @@ const Test1 = () => {
       <TouchableOpacity
         style={tw`${disabledStyle} w-52 bg-sky-400 rounded-2 h-14 my-auto flex flex-row justify-center items-center gap-5`}
         disabled={answers.length !== question?.data.length}
+        onPress={() => setModalVisible(true)}
       ><Text style={tw`${textStyle}`}>Submit</Text></TouchableOpacity>
     </SafeAreaView>
   );
