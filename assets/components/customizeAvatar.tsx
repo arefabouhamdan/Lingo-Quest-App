@@ -41,14 +41,14 @@ const CustomizeAvatar = ({
     >
       {gender === "female" ? (
         <>
-          <WomanHairTwo hairColor={hairColor} style="relative top-50 z-2" />
-          <Eyes eyeColor={eyeColor} style="relative top-20 z-1" />
+          <WomanHairTwo hairColor={hairColor} style="relative top-41 z-2" />
+          <Eyes eyeColor={eyeColor} style="relative top-11 z-1" />
           <WomanFace skinColor={skinColor} />
           <WomanShirt shirtColor={shirtColor} />
         </>
       ) : (
         <>
-          <ManHairOne hairColor={hairColor} style="relative top-26 z-2" />
+          <ManHairOne hairColor={hairColor} style="relative top-18 z-2" />
           <Eyes eyeColor={eyeColor} style="relative top-14.5 z-1" />
           <MaleFace skinColor={skinColor} />
           <ManShirt shirtColor={shirtColor} />
