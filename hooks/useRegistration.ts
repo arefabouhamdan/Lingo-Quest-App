@@ -1,6 +1,5 @@
 import { useMutation } from "react-query";
 import axios from "axios";
-import { useNavigation } from "@react-navigation/native";
 import { BASE_URL } from "@/assets/utils/baseUrl";
 
 interface RegisterData {
@@ -18,11 +17,9 @@ const register = async (credentials: RegisterData) => {
 };
 
 export const useRegister = () => {
-  const navigation = useNavigation();
   return useMutation(register, {
     onSuccess: (response) => {
       console.log("Registration successful!", response.data);
-      {response.data.type === "user" ? navigation.navigate("MainHome" as never) : navigation.navigate("TutorHome" as never)}
     },
     onError: (error: any) => {
       console.error("Registration failed:", error);
