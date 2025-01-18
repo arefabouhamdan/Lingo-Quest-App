@@ -1,9 +1,13 @@
 import * as React from "react";
 import Svg, { SvgProps, Path } from "react-native-svg";
 
-const SvgComponent = (props: SvgProps, status: SvgProps) => {
+type LivesProps = {
+  status?: boolean;
+}
+
+const Lives = ({status}: LivesProps) => {
   return (
-    <Svg width={31} height={34} fill="none" {...props}>
+    <Svg width={31} height={34} fill="none">
       <Path
         fill={status ? "red": "transparent"}
         stroke="#fff"
@@ -16,4 +20,4 @@ const SvgComponent = (props: SvgProps, status: SvgProps) => {
   );
 };
 
-export default SvgComponent;
+export default Lives;

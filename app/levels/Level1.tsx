@@ -29,7 +29,8 @@ const Level1 = () => {
   const [stage, setStage] = useState(0);
   const [isFocused, setIsFocused] = useState(false);
   const [chatHistory, setChatHistory] = useState<any[]>([]);
-  const [jsonResponse, setJsonResponse] = useState<any>();
+  const [jsonResponse, setJsonResponse] = useState();
+  const [lives, setLives] = useState(0);
 
   const numberOfStages = 5;
   const { user } = useStorage();
@@ -137,16 +138,21 @@ const Level1 = () => {
         modalVisible={isModalVisible}
         setModalVisible={setIsModalVisible}
       />
-      <View style={tw`w-full h-1/2 items-center justify-start`}>
+      <View style={tw`w-full h-1/1.8 items-center justify-start`}>
         {jsonResponse?.message && (
           <View
-            style={tw`absolute top-5 z-20 w-11/12 h-1/4 bg-white rounded p-5 justify-center`}
+            style={tw`absolute top-20 z-20 w-11/12 h-1/4 bg-white rounded p-5 justify-center`}
           >
             <Text style={tw`text-center text-2xl font-bold`}>
               {jsonResponse?.message}
             </Text>
           </View>
         )}
+        <View style={tw`absolute flex-row-reverse gap-2 top-5 right-5 z-20`}>
+          {[...Array(3)].map((_, index) => (
+            <Lives key={index} status={index < lives} />
+          ))}
+        </View>
         <Image
           source={require("@/assets/images/game/coffeeshop-night-1.png")}
           style={tw`w-full h-full relative`}
@@ -156,7 +162,6 @@ const Level1 = () => {
           style={tw`flex-1 w-39 h-70 absolute bottom-0`}
         />
       </View>
-      <Lives />
       <View style={tw`w-11/12 flex-row items-center justify-between mt-5`}>
         {[...Array(numberOfStages)].map((_, index) =>
           index < stage ? (
@@ -167,7 +172,7 @@ const Level1 = () => {
         )}
       </View>
       <View
-        style={tw`w-11/12 h-1/4 flex-row items-center justify-between mt-5 border border-gray-200 rounded `}
+        style={tw`w-11/12 h-1/5 flex-row items-center justify-between mt-5 border border-gray-200 rounded `}
       >
         <TextInput
           style={tw`${themeTextStyle} flex-1 text-center px-3 pt-4 font-bold text-2xl`}
@@ -181,19 +186,14 @@ const Level1 = () => {
       </View>
       <View style={tw`flex-row items-center justify-between gap-5`}>
         <TouchableOpacity
-          style={tw`w-48 h-14 bg-sky-400 flex items-center justify-center rounded mt-5`}
+          style={tw`w-48 h-14 bg-sky-400 flex-row gap-5 items-center justify-center rounded mt-5`}
           onPress={handleSendMessage}
           disabled={isLoading}
         >
+          <Icon name="paper-plane" size={20} color="white" />
           <Text style={tw`text-lg font-bold text-white`}>
             {isLoading ? "Sending..." : "Send Message"}
           </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={tw`w-20 h-14 bg-sky-400 flex items-center justify-center rounded mt-5`}
-          onPress={() => setIsModalVisible(true)}
-        >
-          <Text style={tw`text-lg font-bold text-white`}>Skip</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
