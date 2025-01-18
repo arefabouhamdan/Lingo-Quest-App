@@ -7,9 +7,11 @@ import { useRegister } from "@/hooks/useRegistration";
 import Button from "../../assets/components/Button";
 import Back from "@/assets/components/Back";
 import { languages } from "../../assets/utils/languages";
+import { useNavigation } from "@react-navigation/native";
 import tw from "twrnc";
 
 const ChooseLanguage = () => {
+  const navigation = useNavigation();
   const [type, setType] = useState("");
   const [userAvatar, setUserAvatar] = useState([]);
   const [userName, setUserName] = useState("");
@@ -46,7 +48,6 @@ const ChooseLanguage = () => {
   const handlePress = async (selectedLanguage: string) => {
     try {
       await AsyncStorage.setItem("user_language", selectedLanguage);
-      if (userAvatar) {
         registerMutation.mutate({
           name: userName,
           email: userEmail,
@@ -55,7 +56,7 @@ const ChooseLanguage = () => {
           avatar: userAvatar,
           language: selectedLanguage,
         });
-      }
+        {type === "user" ? navigation.navigate("MainHome" as never) : navigation.navigate("TutorHome" as never)}
     } catch (error) {
       console.log("Error saving user language:", error);
     }
