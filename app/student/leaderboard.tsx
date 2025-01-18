@@ -41,6 +41,8 @@ const Leaderboard = () => {
     }, [refetch])
   );
 
+  const users = rest.filter((user) => user?.type !== "tutor" && user?.type !== "admin");
+
   const colorScheme = useColorScheme();
   const { themeViewStyle, themeTextStyle } = useTheme();
 
@@ -75,7 +77,7 @@ const Leaderboard = () => {
       ) : (
         <>
           <Rank data={topThree} />
-          <LeaderList data={rest} />
+          <LeaderList data={users} />
         </>
       )}
     </SafeAreaView>
