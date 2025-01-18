@@ -42,7 +42,7 @@ const User = ({ name, info, user, navigateTo, tutor }: UserProps) => {
         }}
       >
         <View style={tw`flex flex-row items-center gap-5`}>
-          <MiniAvatar user={user} />
+          {user && <MiniAvatar user={user} />}
           <View>
             <Text style={tw`${themeTextStyle} text-xl font-extrabold`}>
               {name}
