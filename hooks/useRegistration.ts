@@ -1,6 +1,7 @@
 import { useMutation } from "react-query";
 import axios from "axios";
 import { BASE_URL } from "@/assets/utils/baseUrl";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface RegisterData {
   name: string;
@@ -18,8 +19,9 @@ const register = async (credentials: RegisterData) => {
 
 export const useRegister = () => {
   return useMutation(register, {
-    onSuccess: (response) => {
-      console.log("Registration successful!", response.data);
+    onSuccess: async (response) => {
+      console.log("Registration successful!", JSON.stringify(response));
+      await AsyncStorage.setItem("user", JSON.stringify(response));
     },
     onError: (error: any) => {
       console.error("Registration failed:", error);
