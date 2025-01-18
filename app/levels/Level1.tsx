@@ -20,6 +20,7 @@ import { BASE_URL } from "@/assets/utils/baseUrl";
 import { useStorage } from "@/hooks/useStorage";
 import { useQuery } from "react-query";
 import Lives from "@/assets/components/lives";
+import LoseModal from "@/assets/components/modals/loseModal";
 
 const Level1 = () => {
   const { themeViewStyle, themeTextStyle } = useTheme();
@@ -30,7 +31,8 @@ const Level1 = () => {
   const [isFocused, setIsFocused] = useState(false);
   const [chatHistory, setChatHistory] = useState<any[]>([]);
   const [jsonResponse, setJsonResponse] = useState();
-  const [lives, setLives] = useState(0);
+  const [lives, setLives] = useState(3);
+  const [loseModalVisible, setLoseModalVisible] = useState(false);
 
   const numberOfStages = 5;
   const { user } = useStorage();
@@ -74,14 +76,20 @@ const Level1 = () => {
       },
     }
   );
-
-  console.log(jsonResponse?.message);
-
   useEffect(() => {
-    if (jsonResponse?.status === "success") {
+    if (jsonResponse?.status === "success" && stage <= numberOfStages) {
       setStage((prevStage) => prevStage + 1);
+      if (stage === numberOfStages) {
+        setIsModalVisible(true);
+      }
+    } else if (jsonResponse?.status === "failed") {
+      setLives((prevLives) => prevLives - 1);
+      if (lives === 0) {
+        setLoseModalVisible(true);
+      }
     }
   }, [jsonResponse]);
+  console.log(jsonResponse)
 
   const handleSendMessage = () => {
     if (!inputValue.trim()) return;
@@ -138,6 +146,7 @@ const Level1 = () => {
         modalVisible={isModalVisible}
         setModalVisible={setIsModalVisible}
       />
+      <LoseModal modalVisible={loseModalVisible} setModalVisible={setLoseModalVisible}/>
       <View style={tw`w-full h-1/1.8 items-center justify-start`}>
         {jsonResponse?.message && (
           <View
