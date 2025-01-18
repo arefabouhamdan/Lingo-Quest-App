@@ -80,7 +80,7 @@ const FriendModal = ({
               style={tw`absolute top-5 right-5`}
               onPress={() => setModalVisible(!modalVisible)}
             >
-              <Icon name="close-outline" color="white" size={36} />
+              <Icon name="close-outline" color="black" size={36} />
             </TouchableOpacity>
             <TouchableOpacity
               style={tw`w-52 bg-sky-400 rounded-2 h-14 my-auto flex flex-row justify-center items-center gap-5`}
