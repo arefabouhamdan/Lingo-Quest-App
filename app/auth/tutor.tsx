@@ -31,12 +31,6 @@ const Tutor = () => {
           </View>
           <View>
             <Text style={tw`${themeTextStyle} text-xl font-bold`}>
-              Phone Number
-            </Text>
-            <Input placeholder="Enter your phone number" />
-          </View>
-          <View>
-            <Text style={tw`${themeTextStyle} text-xl font-bold`}>
               Password
             </Text>
             <Input placeholder="Enter your password" />
