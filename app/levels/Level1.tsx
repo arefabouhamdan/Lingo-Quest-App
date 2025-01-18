@@ -22,7 +22,7 @@ import { useQuery } from "react-query";
 import Lives from "@/assets/components/lives";
 import LoseModal from "@/assets/components/modals/loseModal";
 import HintModal from "@/assets/components/modals/hintModal";
-import { useUpdate } from "@/hooks/useUpdate";
+import { useUpdate } from "@/hooks/useUpdateXp";
 
 const Level1 = () => {
   const { themeViewStyle, themeTextStyle } = useTheme();
