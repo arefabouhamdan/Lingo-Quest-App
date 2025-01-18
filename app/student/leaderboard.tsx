@@ -32,9 +32,10 @@ const Leaderboard = () => {
     useCallback(() => {
       const fetchData = async () => {
         const { data: fetchedData } = await refetch();
-        if (fetchedData) {
-          setTopThree(fetchedData.slice(0, 3));
-          setRest(fetchedData.slice(3, 50));
+        const sortedData = fetchedData.sort((a: any, b: any) => b.xp - a.xp);
+        if (sortedData) {
+          setTopThree(sortedData.slice(0, 3));
+          setRest(sortedData.slice(3, 50));
         }
       };
       fetchData();
