@@ -9,8 +9,37 @@ import { languages } from "../../assets/utils/languages";
 import tw from "twrnc";
 
 const ChooseLanguage = () => {
-  const [language, setLanguage] = useState("english");
+  const [type, setType] = useState("");
+  const [userAvatar, setUserAvatar] = useState([]);
+  const [userName, setUserName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [userPassword, setUserPassword] = useState("");
+  const [language, setLanguage] = useState("");
   const { themeTextStyle, themeViewStyle } = useTheme();
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const userType = await AsyncStorage.getItem("user_type");
+        const storedAvatar = await AsyncStorage.getItem("user_avatar");
+        const storedLanguage = await AsyncStorage.getItem("user_language");
+        const storedName = await AsyncStorage.getItem("user_name");
+        const storedEmail = await AsyncStorage.getItem("user_email");
+        const storedPassword = await AsyncStorage.getItem("user_password");
+
+        if (userType) setType(userType);
+        if (storedAvatar) setUserAvatar(JSON.parse(storedAvatar));
+        if (storedLanguage) setLanguage(storedLanguage);
+        if (storedName) setUserName(storedName);
+        if (storedEmail) setUserEmail(storedEmail);
+        if (storedPassword) setUserPassword(storedPassword);
+      } catch (error) {
+        console.log("Error fetching user data:", error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
 
   const handlePress = async (selectedLanguage: string) => {
     try {
