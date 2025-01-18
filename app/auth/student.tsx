@@ -55,7 +55,7 @@ const Student = () => {
             <Text style={tw`${themeTextStyle} text-xl font-bold`}>
               Password
             </Text>
-            <Input placeholder="Enter your password" onChange={(password) => {
+            <Input placeholder="Enter your password" pass onChange={(password) => {
               setPassword(password);
             }}/>
           </View>

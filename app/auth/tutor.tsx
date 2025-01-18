@@ -1,13 +1,30 @@
-import React from "react";
-import { View, Text, Image, SafeAreaView, TextInput } from "react-native";
+import React, { useState} from "react";
+import { View, Text, Image, SafeAreaView, TouchableOpacity } from "react-native";
 import { useTheme } from "@/hooks/useTheme";
 import Button from "@/assets/components/Button";
 import Back from "@/assets/components/Back";
 import tw from "twrnc";
 import Input from "@/assets/components/Input";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from "@react-navigation/native";
 
 const Tutor = () => {
+  const navigation = useNavigation();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const { themeViewStyle, themeTextStyle } = useTheme();
+  const handlePress = async (name: string, email: string, password: string) => {
+    try {
+      await AsyncStorage.setItem("user_name", name);
+      await AsyncStorage.setItem("user_email", email);
+      await AsyncStorage.setItem("user_password", password);
+      navigation.navigate(`CreateAvatar` as never);
+    } catch (error) {
+      console.log("Error saving user role:", error);
+    }
+  };
+
   return (
     <SafeAreaView
       style={tw`${themeViewStyle} flex-1 items-center`}
@@ -23,23 +40,30 @@ const Tutor = () => {
             <Text style={tw`${themeTextStyle} text-xl font-bold`}>
               Username
             </Text>
-            <Input placeholder="Enter your username" />
+            <Input placeholder="Enter your username" onChange={(name) => {
+              setName(name);
+            }}/>
           </View>
           <View>
             <Text style={tw`${themeTextStyle} text-xl font-bold`}>Email</Text>
-            <Input placeholder="Enter your email" />
+            <Input placeholder="Enter your email" onChange={(email) => {
+              setEmail(email);
+            }}/>
           </View>
           <View>
             <Text style={tw`${themeTextStyle} text-xl font-bold`}>
               Password
             </Text>
-            <Input placeholder="Enter your password" />
+            <Input placeholder="Enter your password" pass onChange={(pass) => {
+              setPassword(pass);
+            }}/>
           </View>
-          <Button
-            text="Continue"
-            press="CreateAvatar"
-            type="submit"
-          />
+          <TouchableOpacity onPress={() => handlePress(name, email, password)}>
+            <Button
+              text="Continue"
+              type="submit"
+            />
+          </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>
