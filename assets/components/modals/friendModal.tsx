@@ -8,6 +8,8 @@ import axios from "axios";
 import { useQuery } from "react-query";
 import { languages } from "@/assets/utils/languages";
 import { BASE_URL } from "@/assets/utils/baseUrl";
+import { useUpdate } from "@/hooks/useUpdateFriend";
+import { useStorage } from "@/hooks/useStorage";
 
 type FriendModalProps = {
   modalVisible: boolean;
@@ -20,6 +22,8 @@ const FriendModal = ({
   setModalVisible,
   name,
 }: FriendModalProps) => {
+  const updateMutation = useUpdate();
+  const { user } = useStorage();
   const { themeViewStyle, themeTextStyle } = useTheme();
 
   const fetchUserByName = async (name: string) => {
@@ -35,6 +39,18 @@ const FriendModal = ({
       retry: false,
     }
   );
+
+  const handlePress = () => {
+    updateMutation.mutate(
+      {
+        username: user?.name,
+        friends: [...user?.friends, name],
+      }
+
+    );
+    setModalVisible(!modalVisible);
+  }
+  
 
   return (
     <Modal
@@ -84,7 +100,7 @@ const FriendModal = ({
             </TouchableOpacity>
             <TouchableOpacity
               style={tw`w-52 bg-sky-400 rounded-2 h-14 my-auto flex flex-row justify-center items-center gap-5`}
-              onPress={() => console.log("Friend Added")}
+              onPress={() => handlePress()}
             >
               <Icon name="add-outline" color="white" size={26} />
               <Text style={tw`text-white font-bold text-lg`}>Add Friend</Text>
