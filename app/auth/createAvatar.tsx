@@ -17,9 +17,34 @@ const CreateAvatar = () => {
   const [backgroundColor, setBackgroundColor] = useState("#ADD8E6");
   const [gender, setGender] = useState("male");
 
-  const handlePress = async (avatar) => {
+  const handlePress = async (
+    backgroundColor: string,
+    hairColor: string,
+    skinColor: string,
+    eyeColor: string,
+    shirtColor: string,
+    gender: string
+  ) => {
     try {
-      await AsyncStorage.setItem('user_avatar', JSON.stringify(avatar));
+      const avatar = {
+        background: {
+          color: backgroundColor,
+        },
+        hair: {
+          color: hairColor,
+        },
+        skin: {
+          color: skinColor,
+        },
+        eyes: {
+          color: eyeColor,
+        },
+        shirt: {
+          color: shirtColor,
+        },
+        gender: gender,
+      };
+      await AsyncStorage.setItem("user_avatar", JSON.stringify(avatar));
       navigation.navigate(`ChooseLanguage` as never);
     } catch (error) {
       console.log("Error saving user role:", error);
@@ -65,27 +90,19 @@ const CreateAvatar = () => {
         setShirtColor={setShirtColor}
         setBackgroundColor={setBackgroundColor}
       />
-      <TouchableOpacity style={tw`flex flex-row justify-center items-center my-5`} onPress={() => {
-        const avatar = {
-          background: {
-            color: backgroundColor,
-          },
-          hair: {
-            color: hairColor,
-          },
-          skin: {
-            color: skinColor,
-          },
-          eyes: {
-            color: eyeColor,
-          },
-          shirt: {
-            color: shirtColor,
-          },
-          gender: gender,
-        };
-        handlePress(avatar);
-      }}>
+      <TouchableOpacity
+        style={tw`flex flex-row justify-center items-center my-5`}
+        onPress={() => {
+          handlePress(
+            backgroundColor,
+            hairColor,
+            skinColor,
+            eyeColor,
+            shirtColor,
+            gender
+          );
+        }}
+      >
         <Button text="Continue" type="submit" />
       </TouchableOpacity>
     </SafeAreaView>
