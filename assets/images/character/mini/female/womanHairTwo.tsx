@@ -9,7 +9,7 @@ type HairProps = {
 
 const WomanHairTwo = ({ hairColor, style }: HairProps, props: SvgProps) => {
   return (
-    <Svg width={36} height={38} fill="none" viewBox="0 0 142 148" {...props} style={tw`${style || ''}`}>
+    <Svg width={36} height={38} fill="none" viewBox="0 0 144 135" {...props} style={tw`${style || ''}`}>
       <Path
         fill={ hairColor }
         fillRule="evenodd"

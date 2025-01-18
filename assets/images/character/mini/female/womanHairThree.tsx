@@ -13,7 +13,7 @@ const WomanHairThree = ({ hairColor, style }: HairProps, props: SvgProps) => {
       width={35}
       height={37}
       fill="none"
-      viewBox="0 0 138 147"
+      viewBox="0 0 140 140"
       {...props}
       style={tw`${style || ""}`}
     >

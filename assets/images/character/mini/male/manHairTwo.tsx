@@ -16,10 +16,10 @@ type ManHairTwoProps = {
 const ManHairTwo = ({ hairColor, style }: ManHairTwoProps, props: SvgProps) => {
   return (
     <Svg
-      width={21}
+      width={22}
       height={15}
       fill="none"
-      viewBox="0 0 85 60"
+      viewBox="0 0 85 50"
       {...props}
       style={tw`${style || ""}`}
     >
