@@ -148,6 +148,12 @@ const Level1 = () => {
             </Text>
           </View>
         )}
+        <TouchableOpacity
+          style={tw`flex items-center justify-center rounded absolute z-20 top-4 left-5`}
+          onPress={() => setIsModalVisible(true)}
+        >
+          <Icon name="bulb" size={36} color="white" />
+        </TouchableOpacity>
         <View style={tw`absolute flex-row-reverse gap-2 top-5 right-5 z-20`}>
           {[...Array(3)].map((_, index) => (
             <Lives key={index} status={index < lives} />
