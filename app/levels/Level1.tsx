@@ -22,19 +22,21 @@ import { useQuery } from "react-query";
 import Lives from "@/assets/components/lives";
 import LoseModal from "@/assets/components/modals/loseModal";
 import HintModal from "@/assets/components/modals/hintModal";
+import { useUpdate } from "@/hooks/useUpdate";
 
 const Level1 = () => {
   const { themeViewStyle, themeTextStyle } = useTheme();
   const [modalVisible, setModalVisible] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  const [stage, setStage] = useState(0);
+  const [stage, setStage] = useState(4);
   const [isFocused, setIsFocused] = useState(false);
   const [chatHistory, setChatHistory] = useState<any[]>([]);
   const [jsonResponse, setJsonResponse] = useState();
   const [lives, setLives] = useState(3);
   const [loseModalVisible, setLoseModalVisible] = useState(false);
   const [hintModalVisible, setHintModalVisible] = useState(false);
+  const updateMutation = useUpdate();
 
   const numberOfStages = 5;
   const { user } = useStorage();
@@ -83,6 +85,29 @@ const Level1 = () => {
       setStage((prevStage) => prevStage + 1);
       if (stage == numberOfStages - 1) {
         setIsModalVisible(true);
+        if (user) {
+          if (lives === 3) {
+            updateMutation.mutate({
+              level: user.level > 1 ? user.level : 2,
+              username: user.name,
+              xp: user.xp + 20,
+            });
+          }
+          else if (lives === 2) {
+            updateMutation.mutate({
+              level: user.level > 1 ? user.level : 2,
+              username: user.name,
+              xp: user.xp + 10,
+            });
+          }
+          else if (lives === 1) {
+            updateMutation.mutate({
+              level: user.level > 1 ? user.level : 2,
+              username: user.name,
+              xp: user.xp + 5,
+            });
+          }
+        }
       }
     } else if (jsonResponse?.status === "failed") {
       if (lives === 1) {
@@ -147,8 +172,14 @@ const Level1 = () => {
         modalVisible={isModalVisible}
         setModalVisible={setIsModalVisible}
       />
-      <HintModal modalVisible={hintModalVisible} setModalVisible={setHintModalVisible}/>
-      <LoseModal modalVisible={loseModalVisible} setModalVisible={setLoseModalVisible}/>
+      <HintModal
+        modalVisible={hintModalVisible}
+        setModalVisible={setHintModalVisible}
+      />
+      <LoseModal
+        modalVisible={loseModalVisible}
+        setModalVisible={setLoseModalVisible}
+      />
       <View style={tw`w-full h-1/1.8 items-center justify-start`}>
         {jsonResponse?.message && (
           <View
