@@ -10,10 +10,10 @@ const Tutor = () => {
   const { themeViewStyle, themeTextStyle } = useTheme();
   return (
     <SafeAreaView
-      style={tw`${themeViewStyle} flex-1 items-center justify-center`}
+      style={tw`${themeViewStyle} flex-1 items-center`}
     >
       <Back />
-      <View style={tw`flex flex-col items-center my-30`}>
+      <View style={tw`flex flex-col items-center my-auto`}>
         <Image
           source={require("@/assets/images/game/guide-no-tutor.png")}
           style={tw`w-48 h-50 mb-5`}

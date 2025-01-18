@@ -26,10 +26,10 @@ const Student = () => {
   };
   return (
     <SafeAreaView
-      style={tw`${themeViewStyle} flex-1 items-center justify-center`}
+      style={tw`${themeViewStyle} flex-1 items-center`}
     >
       <Back />
-      <View style={tw`flex flex-col items-center my-30`}>
+      <View style={tw`flex flex-col items-center justify-center my-auto`}>
         <Image
           source={require("@/assets/images/game/guide-no-student.png")}
           style={tw`w-48 h-68 mb-5`}
