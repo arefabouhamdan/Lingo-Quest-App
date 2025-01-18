@@ -21,18 +21,20 @@ import { useStorage } from "@/hooks/useStorage";
 import { useQuery } from "react-query";
 import Lives from "@/assets/components/lives";
 import LoseModal from "@/assets/components/modals/loseModal";
+import HintModal from "@/assets/components/modals/hintModal";
 
 const Level1 = () => {
   const { themeViewStyle, themeTextStyle } = useTheme();
   const [modalVisible, setModalVisible] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  const [stage, setStage] = useState(0);
+  const [stage, setStage] = useState(4);
   const [isFocused, setIsFocused] = useState(false);
   const [chatHistory, setChatHistory] = useState<any[]>([]);
   const [jsonResponse, setJsonResponse] = useState();
   const [lives, setLives] = useState(3);
   const [loseModalVisible, setLoseModalVisible] = useState(false);
+  const [hintModalVisible, setHintModalVisible] = useState(false);
 
   const numberOfStages = 5;
   const { user } = useStorage();
@@ -79,17 +81,16 @@ const Level1 = () => {
   useEffect(() => {
     if (jsonResponse?.status === "success" && stage <= numberOfStages) {
       setStage((prevStage) => prevStage + 1);
-      if (stage === numberOfStages) {
+      if (stage == numberOfStages - 1) {
         setIsModalVisible(true);
       }
     } else if (jsonResponse?.status === "failed") {
-      setLives((prevLives) => prevLives - 1);
-      if (lives === 0) {
+      if (lives === 1) {
         setLoseModalVisible(true);
       }
+      setLives((prevLives) => prevLives - 1);
     }
   }, [jsonResponse]);
-  console.log(jsonResponse)
 
   const handleSendMessage = () => {
     if (!inputValue.trim()) return;
@@ -146,6 +147,7 @@ const Level1 = () => {
         modalVisible={isModalVisible}
         setModalVisible={setIsModalVisible}
       />
+      <HintModal modalVisible={hintModalVisible} setModalVisible={setHintModalVisible}/>
       <LoseModal modalVisible={loseModalVisible} setModalVisible={setLoseModalVisible}/>
       <View style={tw`w-full h-1/1.8 items-center justify-start`}>
         {jsonResponse?.message && (
@@ -159,7 +161,7 @@ const Level1 = () => {
         )}
         <TouchableOpacity
           style={tw`flex items-center justify-center rounded absolute z-20 top-4 left-5`}
-          onPress={() => setIsModalVisible(true)}
+          onPress={() => setHintModalVisible(true)}
         >
           <Icon name="bulb" size={36} color="white" />
         </TouchableOpacity>
