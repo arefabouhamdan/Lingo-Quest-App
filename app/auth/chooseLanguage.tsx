@@ -3,6 +3,7 @@ import { Text, Image, View, FlatList, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useTheme } from "../../hooks/useTheme";
+import { useRegister } from "@/hooks/useRegistration";
 import Button from "../../assets/components/Button";
 import Back from "@/assets/components/Back";
 import { languages } from "../../assets/utils/languages";
@@ -16,6 +17,7 @@ const ChooseLanguage = () => {
   const [userPassword, setUserPassword] = useState("");
   const [language, setLanguage] = useState("");
   const { themeTextStyle, themeViewStyle } = useTheme();
+  const registerMutation = useRegister();
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -44,6 +46,16 @@ const ChooseLanguage = () => {
   const handlePress = async (selectedLanguage: string) => {
     try {
       await AsyncStorage.setItem("user_language", selectedLanguage);
+      if (userAvatar) {
+        registerMutation.mutate({
+          name: userName,
+          email: userEmail,
+          password: userPassword,
+          type: type,
+          avatar: userAvatar,
+          language: selectedLanguage,
+        });
+      }
     } catch (error) {
       console.log("Error saving user language:", error);
     }
