@@ -19,6 +19,7 @@ import axios from "axios";
 import { BASE_URL } from "@/assets/utils/baseUrl";
 import { useStorage } from "@/hooks/useStorage";
 import { useQuery } from "react-query";
+import Lives from "@/assets/components/lives";
 
 const Level1 = () => {
   const { themeViewStyle, themeTextStyle } = useTheme();
@@ -155,6 +156,7 @@ const Level1 = () => {
           style={tw`flex-1 w-39 h-70 absolute bottom-0`}
         />
       </View>
+      <Lives />
       <View style={tw`w-11/12 flex-row items-center justify-between mt-5`}>
         {[...Array(numberOfStages)].map((_, index) =>
           index < stage ? (
