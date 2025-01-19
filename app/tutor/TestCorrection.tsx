@@ -1,6 +1,7 @@
 import Back from "@/assets/components/Back";
 import React, { useState } from "react";
 import { View, Text, SafeAreaView, TouchableOpacity } from "react-native";
+import { useRoute } from "@react-navigation/native";
 import { useTheme } from "@/hooks/useTheme";
 import Icon from "react-native-vector-icons/Ionicons";
 import tw from "twrnc";
@@ -12,6 +13,8 @@ type TestProps = {
 
 const TestCorrection = ({ student, level }: TestProps) => {
   const { themeViewStyle } = useTheme();
+  const route = useRoute();
+  const { student, level } = route.params as TestProps;
 
   const tests = [
     {
@@ -42,65 +45,7 @@ const TestCorrection = ({ student, level }: TestProps) => {
           answer: "Madrid",
         },
       ],
-    },
-    {
-      student: "Oday",
-      testData: [
-        {
-          id: 1,
-          response_type: "voice",
-          question: "What is the capital of France?",
-          answer: "Lyon",
-        },
-        {
-          id: 2,
-          response_type: "text",
-          question: "What is the capital of Germany?",
-          answer: "Munich",
-        },
-        {
-          id: 3,
-          response_type: "voice",
-          question: "What is the capital of Italy?",
-          answer: "Rome",
-        },
-        {
-          id: 4,
-          response_type: "text",
-          question: "What is the capital of Spain?",
-          answer: "Madrid",
-        },
-      ],
-    },
-    {
-      student: "Rony",
-      testData: [
-        {
-          id: 1,
-          response_type: "voice",
-          question: "What is the capital of France?",
-          answer: "Nice",
-        },
-        {
-          id: 2,
-          response_type: "text",
-          question: "What is the capital of Germany?",
-          answer: "Dusseldorf",
-        },
-        {
-          id: 3,
-          response_type: "voice",
-          question: "What is the capital of Italy?",
-          answer: "Rome",
-        },
-        {
-          id: 4,
-          response_type: "text",
-          question: "What is the capital of Spain?",
-          answer: "Madrid",
-        },
-      ],
-    },
+    }
   ];
 
   const studentData = tests.find((test) => test.student === "Aref");

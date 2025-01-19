@@ -27,13 +27,11 @@ const TutorHome = () => {
     logout();
     navigation.navigate("Welcome" as never);
   };
-  
 
   const handleRefresh = () => {
     refetch();
-  }
+  };
 
-  
   const fetchResults = async () => {
     const response = await axios.get(`${BASE_URL}/results`);
     return response.data;
@@ -46,7 +44,6 @@ const TutorHome = () => {
       enabled: true,
     }
   );
-
 
   const borderStyle = `${themeViewStyle} flex items-center p-5 justify-center gap-5 mt-10 rounded-lg w-11/12 h-30 border border-gray-200`;
   return (
@@ -70,12 +67,9 @@ const TutorHome = () => {
         <FlatList
           data={data}
           renderItem={({ item }) => (
-            <User
-              name={item.student}
-              info={`Level ${item.level}`}
-              tutor
-              navigateTo="TestCorrection"
-            />
+            <TouchableOpacity onPress={() => navigation.navigate("TestCorrection", item)}>
+              <User name={item.student} info={`Level ${item.level}`} tutor />
+            </TouchableOpacity>
           )}
           style={tw`mt-10 w-11/12`}
         />
@@ -85,7 +79,10 @@ const TutorHome = () => {
         <TouchableOpacity style={tw`mb-10`} onPress={handlePress}>
           <Button text="Logout" type="submit" />
         </TouchableOpacity>
-        <TouchableOpacity style={tw`bg-sky-400 rounded-2 self-center w-14 h-14 flex justify-center items-center mb-5`} onPress={handleRefresh}>
+        <TouchableOpacity
+          style={tw`bg-sky-400 rounded-2 self-center w-14 h-14 flex justify-center items-center mb-5`}
+          onPress={handleRefresh}
+        >
           <Icon name="refresh" size={30} color="white" />
         </TouchableOpacity>
       </View>

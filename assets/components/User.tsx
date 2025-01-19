@@ -34,12 +34,9 @@ const User = ({ name, info, user, navigateTo, tutor }: UserProps) => {
       <TouchableOpacity
         style={tw`flex flex-row items-center gap-5 p-4 rounded border border-gray-200 mb-4 h-20 justify-between`}
         onPress={() => {
-          if (tutor && navigateTo) {
-            navigation.navigate(navigateTo as never);
-          } else {
-            setModalVisible((prev) => !prev);
-          }
+          setModalVisible((prev) => !prev);
         }}
+        disabled={tutor}
       >
         <View style={tw`flex flex-row items-center gap-5`}>
           {user && <MiniAvatar user={user} />}
