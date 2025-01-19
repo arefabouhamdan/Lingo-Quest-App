@@ -13,31 +13,30 @@ const Welcome = () => {
   const { user } = useStorage();
 
   useEffect(() => {
-   if (user?.type == "student") {
+    if (user?.type == "student") {
       navigation.navigate("MainHome" as never);
     }
     if (user?.type == "tutor") {
       navigation.navigate("TutorHome" as never);
     }
-  }, [user]); 
+  }, [user]);
 
   return (
     <SafeAreaView
       style={tw`${themeViewStyle} flex-1 items-center justify-center`}
     >
       <View style={tw`flex flex-col items-center my-auto gap-20`}>
+      
         <Image
-          source={require('../../assets/images/game/guide-no-hello.png')}
+          source={require("../../assets/images/game/guide-no-hello.png")}
           style={tw`w-48 h-60 mb-5`}
         />
-        <View>
-          <Button text="Get Started" press="Login" type="login" image=''/>
-
+        <View style={tw`flex items-center gap-2`}>
+          <Button text="Get Started" press="Login" type="login" image="" />
         </View>
       </View>
-
     </SafeAreaView>
   );
-}
+};
 
 export default Welcome;

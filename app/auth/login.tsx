@@ -57,6 +57,7 @@ const Login = () => {
               error={loginMutation.isError}
             />
           </View>
+          {loginMutation.isError && (<Text style={tw`text-red-500 text-sm`}>Username or password are incorrect</Text>)}
           <TouchableOpacity onPress={handleLogin}>
             <Button
               text={loginMutation.isLoading ? "Logging in..." : "Login"}
