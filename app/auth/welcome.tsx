@@ -31,12 +31,11 @@ const Welcome = () => {
           style={tw`w-48 h-60 mb-5`}
         />
         <View>
-          <Button text="Login" press="Login" type="login" image=''/>
+          <Button text="Get Started" press="Login" type="login" image=''/>
+
         </View>
       </View>
-      <Text onPress={() => navigation.navigate('Choose' as never)} style={tw`${themeTextStyle} my-auto`}>
-        Don't have an account? <Text style={tw`text-sky-400 font-bold`}>Sign Up</Text>
-      </Text>
+
     </SafeAreaView>
   );
 }

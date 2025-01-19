@@ -29,7 +29,7 @@ const Tutor = () => {
     <SafeAreaView
       style={tw`${themeViewStyle} flex-1 items-center`}
     >
-      <Back />
+      <Back text="Add Credentials" background/>
       <View style={tw`flex flex-col items-center my-auto`}>
         <Image
           source={require("@/assets/images/game/guide-no-tutor.png")}

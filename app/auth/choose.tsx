@@ -23,7 +23,7 @@ const Choose = () => {
     <SafeAreaView
       style={tw`${themeViewStyle} flex-1 items-center justify-center`}
     >
-      <Back />
+      <Back text="Choose Role" background/>
       <View style={tw`flex flex-col items-center my-auto gap-20`}>
         <Image
           source={require("../../assets/images/game/guide-choose.png")}

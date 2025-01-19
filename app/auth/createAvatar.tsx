@@ -7,6 +7,7 @@ import CustomizeAvatar from "@/assets/components/customizeAvatar";
 import Button from "@/assets/components/Button";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
+import Back from "@/assets/components/Back";
 
 const CreateAvatar = () => {
   const navigation = useNavigation();
@@ -57,6 +58,7 @@ const CreateAvatar = () => {
   const fontStyle = "font-bold text-lg py-2 text-white";
   return (
     <SafeAreaView style={tw`${themeViewStyle} flex-1`}>
+      <Back text="Create Avatar" background/>
       <View style={tw`flex flex-row justify-between items-center px-5 my-5`}>
         <TouchableOpacity
           style={tw`${buttonStyle} bg-sky-400 border-sky-600`}

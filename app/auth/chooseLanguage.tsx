@@ -64,8 +64,8 @@ const ChooseLanguage = () => {
 
   return (
     <SafeAreaView style={tw`${themeViewStyle} flex-1`}>
-      <Back />
-      <View style={tw`flex items-center`}>
+      <Back text="Choose Language" background/>
+      <View style={tw`flex items-center mt-10`}>
         <Image
           source={require("../../assets/images/game/guide-choose.png")}
           style={tw`w-52 h-68 mb-5`}

@@ -27,9 +27,9 @@ const Login = () => {
 
   return (
     <SafeAreaView
-      style={tw`${themeViewStyle} flex-1 items-center justify-center`}
+      style={tw`${themeViewStyle} flex-1 items-center`}
     >
-      <Back />
+      <Back text="LogIn" background/>
       <View style={tw`flex flex-col items-center my-30`}>
         <Image
           source={require("@/assets/images/game/guide.png")}
@@ -43,7 +43,7 @@ const Login = () => {
             <Input
               placeholder="Enter your username"
               onChange={(text) => setName(text)}
-              error={loginMutation.isError }
+              error={loginMutation.isError}
             />
           </View>
           <View>
@@ -54,7 +54,7 @@ const Login = () => {
               placeholder="Enter your password"
               onChange={(text) => setPassword(text)}
               pass
-              error={loginMutation.isError }
+              error={loginMutation.isError}
             />
           </View>
           <TouchableOpacity onPress={handleLogin}>
@@ -62,11 +62,17 @@ const Login = () => {
               text={loginMutation.isLoading ? "Logging in..." : "Login"}
             />
           </TouchableOpacity>
+          <Text
+            onPress={() => navigation.navigate("Choose" as never)}
+            style={tw`${themeTextStyle} my-auto`}
+          >
+            Don't have an account?{" "}
+            <Text style={tw`text-sky-400 font-bold`}>Sign Up</Text>
+          </Text>
         </View>
       </View>
     </SafeAreaView>
   );
 };
-
 
 export default Login;
