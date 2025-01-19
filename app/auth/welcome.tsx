@@ -26,11 +26,19 @@ const Welcome = () => {
       style={tw`${themeViewStyle} flex-1 items-center justify-center`}
     >
       <View style={tw`flex flex-col items-center my-auto gap-20`}>
-      
+        <View style={tw`flex flex-col items-center gap-2`}>
+          <Text style={tw`${themeTextStyle} my-auto text-3xl font-bold`}>
+            Welcome to Lingo Quest
+          </Text>
+          <Text style={tw`${themeTextStyle} text-xl font-bold`}>
+            Let's start your learning journey
+          </Text>
+        </View>
         <Image
           source={require("../../assets/images/game/guide-no-hello.png")}
           style={tw`w-48 h-60 mb-5`}
         />
+        
         <View style={tw`flex items-center gap-2`}>
           <Button text="Get Started" press="Login" type="login" image="" />
         </View>

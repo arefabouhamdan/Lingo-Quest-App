@@ -56,7 +56,7 @@ const TutorHome = () => {
           Number of Tests
         </Text>
         <Text style={tw`${themeTextStyle} text-3xl font-bold`}>
-          {data?.length}
+          {data.filter((item) => !item.corrected && item.language == user?.language)?.length}
         </Text>
       </View>
       {isLoading ? (
