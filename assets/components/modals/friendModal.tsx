@@ -41,16 +41,14 @@ const FriendModal = ({
   );
 
   const handlePress = () => {
-    updateMutation.mutate(
-      {
-        username: user?.name,
-        friends: [...user?.friends, name],
-      }
-
-    );
+    updateMutation.mutate({
+      username: user?.name,
+      friends: user?.friends.includes(name)
+        ? user?.friends.filter((friend) => friend !== name)
+        : [...user?.friends, name],
+    });
     setModalVisible(!modalVisible);
-  }
-  
+  };
 
   return (
     <Modal

@@ -18,6 +18,7 @@ export const useUpdate = () => {
   return useMutation(update, {
     onSuccess: async (response) => {
       console.log("Updated successful!", JSON.stringify(response));
+      await AsyncStorage.clear();
       await AsyncStorage.setItem("user", JSON.stringify(response));
     },
     onError: (error: any) => {
