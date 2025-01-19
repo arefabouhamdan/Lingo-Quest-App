@@ -19,6 +19,8 @@ const TestCorrection = () => {
   const { themeViewStyle } = useTheme();
   const route = useRoute();
   const { student, level } = route.params as TestProps;
+  const [index, setIndex] = useState(0);
+  const [answers, setAnswers] = useState<boolean[]>([]);
 
   const fetchTest = async (student: string, level: number) => {
     const response = await axios.get(`${BASE_URL}/results/${student}/${level}`);
@@ -33,7 +35,24 @@ const TestCorrection = () => {
     }
   );
 
-  const [index, setIndex] = useState(0);
+  const updateAnswer = (value: boolean) => {
+    setAnswers((prev) => {
+      const updatedAnswers = [...prev];
+      updatedAnswers[index] = value;
+      return updatedAnswers;
+    });
+  };
+
+  const handleCorrect = () => {
+    updateAnswer(true);
+    incrementIndex();
+  };
+
+  const handleWrong = () => {
+    updateAnswer(false);
+    incrementIndex();
+  };
+
   const prevStyle = index === 0 ? "opacity-50" : "opacity-100";
   const nextStyle =
     results && index === results?.responses[0].questions.length - 1
@@ -61,7 +80,7 @@ const TestCorrection = () => {
       return prev - 1;
     });
   };
-  console.log();
+  console.log(answers);
 
   return (
     <SafeAreaView style={tw`${themeViewStyle} flex-1 items-center`}>
@@ -101,11 +120,11 @@ const TestCorrection = () => {
                 </View>
               </View>
               <View style={tw`flex flex-row gap-10`}>
-                <TouchableOpacity>
-                  <Icon name="checkmark" size={36} color={"white"}/>
+                <TouchableOpacity onPress={handleCorrect}>
+                  <Icon name="checkmark" size={36} color={"white"} />
                 </TouchableOpacity>
-                <TouchableOpacity>
-                  <Icon name="close-outline" size={36} color={"white"}/>
+                <TouchableOpacity onPress={handleWrong}>
+                  <Icon name="close-outline" size={36} color={"white"} />
                 </TouchableOpacity>
               </View>
             </>
@@ -127,7 +146,11 @@ const TestCorrection = () => {
             <Text style={tw`${textStyle}`}>Next</Text>
           </TouchableOpacity>
         </View>
-        <TouchableOpacity style={tw`flex justify-center items-center`} onPress={() => {}} >
+        <TouchableOpacity
+          style={tw`flex justify-center items-center`}
+          onPress={() => {}}
+          disabled={answers.length !== results?.responses[0].questions.length}
+        >
           <Button text="Submit" />
         </TouchableOpacity>
       </View>
