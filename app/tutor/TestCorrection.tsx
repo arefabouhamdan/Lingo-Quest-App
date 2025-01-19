@@ -8,6 +8,7 @@ import { useQuery } from "react-query";
 import { useTheme } from "@/hooks/useTheme";
 import Icon from "react-native-vector-icons/Ionicons";
 import tw from "twrnc";
+import Button from "@/assets/components/Button";
 
 type TestProps = {
   student: string;
@@ -71,31 +72,41 @@ const TestCorrection = () => {
         >
           {isLoading ? (
             <View>
-              <Text>Loading...</Text>
+              <Text style={tw`text-white font-bold text-2xl`}>Loading...</Text>
             </View>
           ) : (
             <>
-              <View
-                style={tw`flex justify-center items-center w-20 h-20 bg-white rounded-full`}
-              >
-                <Icon
-                  name="chatbox-ellipses-outline"
-                  color="#4EC0E8"
-                  size={36}
-                />
+              <View style={tw`flex flex-col items-center justify-center`}>
+                <View
+                  style={tw`flex justify-center items-center w-20 h-20 bg-white rounded-full`}
+                >
+                  <Icon
+                    name="chatbox-ellipses-outline"
+                    color="#4EC0E8"
+                    size={36}
+                  />
+                </View>
+                <View
+                  style={tw`flex flex-col items-center justify-center p-5 gap-5`}
+                >
+                  <Text style={tw`text-2xl font-bold text-white`}>
+                    Question {index + 1}
+                  </Text>
+                  <Text style={tw`text-2xl font-medium text-white`}>
+                    {results?.responses[0]?.questions[index]}
+                  </Text>
+                  <Text style={tw`text-2xl font-bold text-white`}>
+                    {results?.responses[0]?.answers[index]}
+                  </Text>
+                </View>
               </View>
-              <View
-                style={tw`flex flex-col items-center justify-center p-5 mb-20`}
-              >
-                <Text style={tw`text-2xl font-bold text-white`}>
-                  Question {index + 1}
-                </Text>
-                <Text style={tw`text-lg font-medium text-white`}>
-                  {results?.responses[0]?.questions[index]}
-                </Text>
-                <Text style={tw`text-xl font-bold text-white`}>
-                  {results?.responses[0]?.answers[index]}
-                </Text>
+              <View style={tw`flex flex-row gap-10`}>
+                <TouchableOpacity>
+                  <Icon name="checkmark" size={36} color={"white"}/>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                  <Icon name="close-outline" size={36} color={"white"}/>
+                </TouchableOpacity>
               </View>
             </>
           )}
@@ -116,6 +127,9 @@ const TestCorrection = () => {
             <Text style={tw`${textStyle}`}>Next</Text>
           </TouchableOpacity>
         </View>
+        <TouchableOpacity style={tw`flex justify-center items-center`} onPress={() => {}} >
+          <Button text="Submit" />
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
