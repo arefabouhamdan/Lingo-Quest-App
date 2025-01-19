@@ -23,10 +23,6 @@ const login = async (credentials: LoginCredentials) => {
   return response.data;
 };
 
-const fetchUserByName = async (name: string) => {
-  const response = await axios.get(`${BASE_URL}/users/${name}`);
-  return response.data;
-};
 
 export const useLogin = () => {
   const navigation = useNavigation();
@@ -34,8 +30,8 @@ export const useLogin = () => {
     mutationFn: login,
     onSuccess: async (data) => {
       try {
-        await AsyncStorage.setItem('user', JSON.stringify(data));
-        console.log("Login data stored securely:", data);
+        await AsyncStorage.setItem('user', JSON.stringify(data.user));
+        console.log("Login data stored securely:", data.user);
         
         navigation.navigate("MainHome" as never);
       } catch (error) {
@@ -46,18 +42,3 @@ export const useLogin = () => {
   });
 };
 
-export const refetchUser = () => {
-  const { user } = useStorage();
-  return useQuery(["user", user?.name], () => fetchUserByName(user?.name), {
-    enabled: !!user?.name,
-    retry: false,
-    onSuccess: async (data) => {
-      try {
-        await AsyncStorage.setItem('user', JSON.stringify(data));
-        console.log("User data stored securely:", data);
-      } catch (error) {
-        console.error("Error storing user data securely:", error);
-      }
-    }
-  });
-}
