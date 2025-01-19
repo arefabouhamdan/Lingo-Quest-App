@@ -15,7 +15,7 @@ type UserProps = {
   avatar?: string;
   navigateTo?: string;
   tutor?: boolean;
-  user: any;
+  user?: any;
 };
 
 const User = ({ name, info, user, navigateTo, tutor }: UserProps) => {
@@ -35,7 +35,7 @@ const User = ({ name, info, user, navigateTo, tutor }: UserProps) => {
         style={tw`flex flex-row items-center gap-5 p-4 rounded border border-gray-200 mb-4 h-20 justify-between`}
         onPress={() => {
           if (tutor && navigateTo) {
-            navigation.navigate(navigateTo, { userName: name });
+            navigation.navigate(navigateTo as never);
           } else {
             setModalVisible((prev) => !prev);
           }
