@@ -29,7 +29,7 @@ const Level1 = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  const [stage, setStage] = useState(0);
+  const [stage, setStage] = useState(3);
   const [isFocused, setIsFocused] = useState(false);
   const [chatHistory, setChatHistory] = useState<any[]>([]);
   const [jsonResponse, setJsonResponse] = useState();
@@ -175,6 +175,7 @@ const Level1 = () => {
       <HintModal
         modalVisible={hintModalVisible}
         setModalVisible={setHintModalVisible}
+        hint={jsonResponse?.hint}
       />
       <LoseModal
         modalVisible={loseModalVisible}
