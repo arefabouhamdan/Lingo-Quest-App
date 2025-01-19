@@ -9,10 +9,11 @@ import { useTheme } from "@/hooks/useTheme";
 import Icon from "react-native-vector-icons/Ionicons";
 import tw from "twrnc";
 import Button from "@/assets/components/Button";
+import { useResult } from "@/hooks/useResult";
 
 type TestProps = {
   student: string;
-  level: number;
+  level: string;
 };
 
 const TestCorrection = () => {
@@ -21,8 +22,9 @@ const TestCorrection = () => {
   const { student, level } = route.params as TestProps;
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState<boolean[]>([]);
+  const updateResult = useResult();
 
-  const fetchTest = async (student: string, level: number) => {
+  const fetchTest = async (student: string, level: string) => {
     const response = await axios.get(`${BASE_URL}/results/${student}/${level}`);
     return response.data;
   };
@@ -51,6 +53,19 @@ const TestCorrection = () => {
   const handleWrong = () => {
     updateAnswer(false);
     incrementIndex();
+  };
+
+  const handleSubmit = () => {
+    updateResult.mutate({
+      student : student,
+      level : level,
+      responses: {
+        questions: results?.responses[0].questions,
+        answers: results?.responses[0].answers,
+        correct: answers,
+      },
+      corrected: true,
+    });
   };
 
   const prevStyle = index === 0 ? "opacity-50" : "opacity-100";
@@ -148,7 +163,7 @@ const TestCorrection = () => {
         </View>
         <TouchableOpacity
           style={tw`flex justify-center items-center`}
-          onPress={() => {}}
+          onPress={handleSubmit}
           disabled={answers.length !== results?.responses[0].questions.length}
         >
           <Button text="Submit" />

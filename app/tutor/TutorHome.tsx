@@ -44,6 +44,8 @@ const TutorHome = () => {
       enabled: true,
     }
   );
+  console.log(data);
+  
 
   const borderStyle = `${themeViewStyle} flex items-center p-5 justify-center gap-5 mt-10 rounded-lg w-11/12 h-30 border border-gray-200`;
   return (
