@@ -3,7 +3,7 @@ import { Modal, Text, TouchableOpacity, View, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useTheme } from "../../../hooks/useTheme";
 import tw from "twrnc";
-import Icon from "react-native-vector-icons/Ionicons";
+import Trophy from "../../../assets/images/game/guide-trophy";
 
 type FriendModalProps = {
   modalVisible: boolean;
@@ -30,9 +30,10 @@ const Congrats = ({ modalVisible, setModalVisible, level, test }: FriendModalPro
         style={tw`flex-1 justify-center items-center bg-black bg-opacity-50`}
       >
         <View
-          style={tw`${themeViewStyle} border-4 border-white rounded-2 w-85 h-80 flex flex-col items-center justify-center`}
+          style={tw`${themeViewStyle} border-4 border-white rounded-2 w-85 h-120 flex flex-col items-center justify-center`}
         >
           <View style={tw`flex flex-col items-center justify-center gap-10`}>
+            <Trophy />
             <Text style={tw`${themeTextStyle} text-xl font-bold `}>
               Congrats you completed {test ? `Test` : `Level`} {level}!
             </Text>
