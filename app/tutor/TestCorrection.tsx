@@ -76,7 +76,6 @@ const TestCorrection = () => {
   const buttonStyle =
     "w-23 h-11 bg-sky-400 flex justify-center items-center rounded-2 my-auto border-sky-600";
   const textStyle = "text-white text-xl font-medium";
-  console.log(results?.responses[0].questions.length);
 
   const incrementIndex = () => {
     if (results && index === results?.responses[0].questions.length - 1) {
@@ -95,7 +94,6 @@ const TestCorrection = () => {
       return prev - 1;
     });
   };
-  console.log(answers);
 
   return (
     <SafeAreaView style={tw`${themeViewStyle} flex-1 items-center`}>

@@ -22,6 +22,7 @@ const TutorHome = () => {
   const { themeViewStyle, themeTextStyle } = useTheme();
   const { logout } = useStorage();
   const navigation = useNavigation();
+  const { user } = useStorage();
 
   const handlePress = () => {
     logout();
@@ -44,7 +45,6 @@ const TutorHome = () => {
       enabled: true,
     }
   );
-  console.log(data);
   
 
   const borderStyle = `${themeViewStyle} flex items-center p-5 justify-center gap-5 mt-10 rounded-lg w-11/12 h-30 border border-gray-200`;
@@ -67,7 +67,7 @@ const TutorHome = () => {
         </View>
       ) : (
         <FlatList
-          data={data}
+          data={data.filter((item) => !item.corrected && item.language == user?.language)}
           renderItem={({ item }) => (
             <TouchableOpacity onPress={() => navigation.navigate("TestCorrection", item)}>
               <User name={item.student} info={`Level ${item.level}`} tutor />
