@@ -16,6 +16,7 @@ import Button from "@/assets/components/Button";
 import axios from "axios";
 import { useQuery } from "react-query";
 import { BASE_URL } from "@/assets/utils/baseUrl";
+import Icon from "react-native-vector-icons/Ionicons";
 
 const TutorHome = () => {
   const { themeViewStyle, themeTextStyle } = useTheme();
@@ -27,18 +28,25 @@ const TutorHome = () => {
     navigation.navigate("Welcome" as never);
   };
   
+
+  const handleRefresh = () => {
+    refetch();
+  }
+
+  
   const fetchResults = async () => {
     const response = await axios.get(`${BASE_URL}/results`);
     return response.data;
   };
 
-  const { data, isLoading } = useQuery(
+  const { data, isLoading, refetch } = useQuery(
     ["userLeaderboard"],
     fetchResults,
     {
       enabled: true,
     }
   );
+
 
   const borderStyle = `${themeViewStyle} flex items-center p-5 justify-center gap-5 mt-10 rounded-lg w-11/12 h-30 border border-gray-200`;
   return (
@@ -73,9 +81,14 @@ const TutorHome = () => {
         />
       )}
 
-      <TouchableOpacity style={tw`mb-10`} onPress={handlePress}>
-        <Button text="Logout" type="submit" />
-      </TouchableOpacity>
+      <View style={tw`flex-row justify-center items-center w-full mt-10 gap-5`}>
+        <TouchableOpacity style={tw`mb-10`} onPress={handlePress}>
+          <Button text="Logout" type="submit" />
+        </TouchableOpacity>
+        <TouchableOpacity style={tw`bg-sky-400 rounded-2 self-center w-14 h-14 flex justify-center items-center mb-5`} onPress={handleRefresh}>
+          <Icon name="refresh" size={30} color="white" />
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 };
