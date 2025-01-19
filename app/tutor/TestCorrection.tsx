@@ -6,16 +6,12 @@ import Icon from "react-native-vector-icons/Ionicons";
 import tw from "twrnc";
 
 type TestProps = {
-  route: {
-    params: {
-      userName: string;
-    };
-  };
+  student: string;
+  level: number;
 };
 
-const Test = ({ route }: TestProps) => {
+const TestCorrection = ({ student, level }: TestProps) => {
   const { themeViewStyle } = useTheme();
-  const { userName } = route.params;
 
   const tests = [
     {
@@ -107,7 +103,7 @@ const Test = ({ route }: TestProps) => {
     },
   ];
 
-  const studentData = tests.find((test) => test.student === userName);
+  const studentData = tests.find((test) => test.student === "Aref");
   const [index, setIndex] = useState(0);
   const prevStyle = index === 0 ? "opacity-50" : "opacity-100";
   const nextStyle =
@@ -137,53 +133,46 @@ const Test = ({ route }: TestProps) => {
   };
 
   return (
-    <SafeAreaView style={tw`${themeViewStyle} flex-1 items-center justify-center`}>
+    <SafeAreaView style={tw`${themeViewStyle} flex-1 items-center`}>
       <Back />
-      <View
-        style={tw`flex flex-col items-center justify-around m-5 w-96 h-100 bg-sky-400 rounded-2 border-sky-600`}
-      >
-        {studentData?.testData[index]?.response_type === "voice" ? (
-          <View
-            style={tw`flex justify-center items-center w-20 h-20 bg-white rounded-full`}
-          >
-            <Icon name="mic-outline" color="#4EC0E8" size={36} />
-          </View>
-        ) : (
+      <View style={tw`my-auto gap-10`}>
+        <View
+          style={tw`flex flex-col items-center justify-around w-90 h-100 bg-sky-400 rounded-2`}
+        >
           <View
             style={tw`flex justify-center items-center w-20 h-20 bg-white rounded-full`}
           >
             <Icon name="chatbox-ellipses-outline" color="#4EC0E8" size={36} />
           </View>
-        )}
-        <View style={tw`flex flex-col items-center justify-center p-5 mb-20`}>
-          <Text style={tw`text-2xl font-bold text-white`}>
-            Question {studentData?.testData[index].id}
-          </Text>
-          <Text style={tw`text-lg font-medium text-white`}>
-            {studentData?.testData[index]?.question}
-          </Text>
-          <Text style={tw`text-xl font-bold text-white`}>
-            {studentData?.testData[index]?.answer}
-          </Text>
+          <View style={tw`flex flex-col items-center justify-center p-5 mb-20`}>
+            <Text style={tw`text-2xl font-bold text-white`}>
+              Question {studentData?.testData[0].id}
+            </Text>
+            <Text style={tw`text-lg font-medium text-white`}>
+              {studentData?.testData[0]?.question}
+            </Text>
+            <Text style={tw`text-xl font-bold text-white`}>
+              {studentData?.testData[0]?.answer}
+            </Text>
+          </View>
         </View>
-      </View>
-
-      <View style={tw`flex flex-row gap-4 justify-center`}>
-        <TouchableOpacity
-          onPress={decrementIndex}
-          style={tw`${prevStyle} ${buttonStyle}`}
-        >
-          <Text style={tw`${textStyle}`}>Prev</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={incrementIndex}
-          style={tw`${nextStyle} ${buttonStyle}`}
-        >
-          <Text style={tw`${textStyle}`}>Next</Text>
-        </TouchableOpacity>
+        <View style={tw`flex flex-row gap-4 justify-center`}>
+          <TouchableOpacity
+            onPress={decrementIndex}
+            style={tw`${prevStyle} ${buttonStyle}`}
+          >
+            <Text style={tw`${textStyle}`}>Prev</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={incrementIndex}
+            style={tw`${nextStyle} ${buttonStyle}`}
+          >
+            <Text style={tw`${textStyle}`}>Next</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </SafeAreaView>
   );
 };
 
-export default Test;
+export default TestCorrection;
