@@ -13,16 +13,13 @@ const Welcome = () => {
   const { user } = useStorage();
 
   useEffect(() => {
-    if (!user) {
-      navigation.navigate("Welcome" as never);
-    }
-    else if (user.type == "user") {
+   if (user?.type == "student") {
       navigation.navigate("MainHome" as never);
     }
-    else if (user.type == "tutor") {
+    if (user?.type == "tutor") {
       navigation.navigate("TutorHome" as never);
     }
-  }, [user, navigation]);
+  }, [user]); 
 
   return (
     <SafeAreaView
