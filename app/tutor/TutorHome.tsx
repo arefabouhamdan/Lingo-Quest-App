@@ -1,18 +1,28 @@
 import LanguageBar from "@/assets/components/languageBar";
 import React from "react";
-import { View, Text, SafeAreaView, FlatList } from "react-native";
+import { View, Text, SafeAreaView, FlatList, TouchableOpacity } from "react-native";
 import { useTheme } from "@/hooks/useTheme";
 import tw from "twrnc";
 import User from "@/assets/components/User";
+import { useStorage } from "@/hooks/useStorage";
+import { useNavigation } from "@react-navigation/native";
+import Button from "@/assets/components/Button";
 
 const TutorHome = () => {
   const { themeViewStyle, themeTextStyle } = useTheme();
+  const { logout } = useStorage();
+  const navigation = useNavigation();
+
+  const handlePress = () => {
+    logout();
+    navigation.navigate("Welcome" as never);
+  }
   const data = [
     { name: "Aref", level: "A1" },
     { name: "Bilal", level: "B1" },
     { name: "Hassan", level: "C1" },
     { name: "Ali", level: "A2" },
-  ];
+  ]
 
   const borderStyle = `${themeViewStyle} flex items-center p-5 justify-center gap-5 mt-10 rounded-lg w-11/12 h-30 border border-gray-200`;
   return (
@@ -31,6 +41,9 @@ const TutorHome = () => {
         )}
         style={tw`mt-10 w-11/12`}
       />
+      <TouchableOpacity style={tw`mb-10`} onPress={handlePress}>
+        <Button text="Logout" type="submit"/>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
