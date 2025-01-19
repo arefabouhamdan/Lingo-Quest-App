@@ -15,14 +15,9 @@ interface name {
 }
 
 const login = async (credentials: LoginCredentials) => {
-  
-  const response = await axios.post(
-    `${BASE_URL}/users/login`,
-    credentials
-  );
+  const response = await axios.post(`${BASE_URL}/users/login`, credentials);
   return response.data;
 };
-
 
 export const useLogin = () => {
   const navigation = useNavigation();
@@ -30,15 +25,14 @@ export const useLogin = () => {
     mutationFn: login,
     onSuccess: async (data) => {
       try {
-        await AsyncStorage.setItem('user', JSON.stringify(data.user));
+        await AsyncStorage.setItem("user", JSON.stringify(data.user));
         console.log("Login data stored securely:", data.user);
-        
-        navigation.navigate("MainHome" as never);
+        data.user.type === "user"
+          ? navigation.navigate("MainHome" as never)
+          : navigation.navigate("TutorHome" as never);
       } catch (error) {
         console.error("Error storing login data securely:", error);
       }
-        
     },
   });
 };
-
