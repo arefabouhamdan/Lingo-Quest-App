@@ -11,7 +11,7 @@ interface TestData {
 }
 
 const test = async (data: TestData) => {
-  const response = await axios.post(`${BASE_URL}/users`, data);
+  const response = await axios.post(`${BASE_URL}/results`, data);
   return response.data;
 };
 

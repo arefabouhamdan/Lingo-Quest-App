@@ -9,10 +9,16 @@ import { useQuery } from "react-query";
 import axios from "axios";
 import { BASE_URL } from "@/assets/utils/baseUrl";
 import Congrats from "@/assets/components/modals/congrats";
+import { useTest } from "@/hooks/useTest";
+import { useNavigation } from "@react-navigation/native";
 
 const Test1 = () => {
   const { user } = useStorage();
+  const testMutation = useTest();
   const userLanguage = user?.language;
+
+  const [index, setIndex] = useState<number>(0);
+  const [answers, setAnswers] = useState<string[]>([]);
   const fetchUserByName = async (language: string) => {
     const response = await axios.get(`${BASE_URL}/tests/${language}/1`);
     return response.data;
@@ -27,9 +33,6 @@ const Test1 = () => {
     }
   );
 
-  const [index, setIndex] = useState<number>(0);
-  const [answers, setAnswers] = useState<string[]>([]);
-
   const handleChoiceSelect = (choice: string) => {
     const newAnswers = [...answers];
     newAnswers[index] = choice;
@@ -43,6 +46,20 @@ const Test1 = () => {
     index == 0 ? null : setIndex(index - 1);
   };
 
+  const handleSubmit = () => {
+    testMutation.mutate({
+      student: user?.name,
+      language: user?.language,
+      responses: {
+        questions: question?.data.map((q) => q.content),
+        answers,
+        correct: question?.data.map((q, i) => q.choices.indexOf(answers[i]) === 0),
+      },
+      corrected: false,
+    });
+    setModalVisible(true);
+  };
+
   const [modalVisible, setModalVisible] = useState(false);
 
   const { themeViewStyle, themeTextStyle } = useTheme();
@@ -54,7 +71,8 @@ const Test1 = () => {
   const textStyle = "text-white text-xl font-medium";
   const answerStyle =
     "w-11/12 h-1/15 mt-5 bg-sky-400 justify-center rounded px-3";
-  const disabledStyle = answers.length !== question?.data.length && "opacity-50";
+  const disabledStyle =
+    answers.length !== question?.data.length ? "opacity-50" : "";
   const selectedAnswerStyle = "bg-sky-600";
 
   return isLoading ? (
@@ -64,7 +82,12 @@ const Test1 = () => {
   ) : (
     <SafeAreaView style={tw`${themeViewStyle} flex-1 items-center`}>
       <Back text="Test 1" background />
-      <Congrats level={1} modalVisible={modalVisible} setModalVisible={setModalVisible} test/>
+      <Congrats
+        level={1}
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+        test
+      />
       <View
         style={tw`w-full h-2/7 bg-sky-400 items-start justify-center gap-5`}
       >
@@ -81,7 +104,9 @@ const Test1 = () => {
         (choice: string, choiceIndex: number) => (
           <TouchableOpacity
             key={choiceIndex}
-            style={tw`${answerStyle} ${answers[index] === choice && selectedAnswerStyle}`}
+            style={tw`${answerStyle} ${
+              answers[index] === choice ? selectedAnswerStyle : ""
+            }`}
             onPress={() => handleChoiceSelect(choice)}
           >
             <Text style={tw`${textStyle}`}>{choice}</Text>
@@ -107,8 +132,10 @@ const Test1 = () => {
       <TouchableOpacity
         style={tw`${disabledStyle} w-52 bg-sky-400 rounded-2 h-14 my-auto flex flex-row justify-center items-center gap-5`}
         disabled={answers.length !== question?.data.length}
-        onPress={() => setModalVisible(true)}
-      ><Text style={tw`${textStyle}`}>Submit</Text></TouchableOpacity>
+        onPress={handleSubmit}
+      >
+        <Text style={tw`${textStyle}`}>Submit</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
