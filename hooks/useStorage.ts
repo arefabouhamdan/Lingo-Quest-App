@@ -24,6 +24,7 @@ export const useStorage = () => {
   const logout = async () => {
     try {
       await AsyncStorage.removeItem('user');
+      await AsyncStorage.removeItem('token');
       setUser(null);
     } catch (error) {
       console.error('Error during logout:', error);
