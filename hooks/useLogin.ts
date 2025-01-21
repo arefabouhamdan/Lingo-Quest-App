@@ -26,7 +26,7 @@ export const useLogin = () => {
     onSuccess: async (data) => {
       try {
         await AsyncStorage.setItem("user", JSON.stringify(data.user));
-        console.log("Login data stored securely:", data.user);
+        await AsyncStorage.setItem("token", JSON.stringify(data.token));
         data.user.type === "user"
           ? navigation.navigate("MainHome" as never)
           : navigation.navigate("TutorHome" as never);
