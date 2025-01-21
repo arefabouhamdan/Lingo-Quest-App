@@ -20,8 +20,8 @@ const register = async (credentials: RegisterData) => {
 export const useRegister = () => {
   return useMutation(register, {
     onSuccess: async (response) => {
-      console.log("Registration successful!", JSON.stringify(response));
-      await AsyncStorage.setItem("user", JSON.stringify(response));
+      await AsyncStorage.setItem("user", JSON.stringify(response.user));
+      await AsyncStorage.setItem("token", JSON.stringify(response.token));
     },
     onError: (error: any) => {
       console.error("Registration failed:", error);
