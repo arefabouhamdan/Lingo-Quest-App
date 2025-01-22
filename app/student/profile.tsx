@@ -49,6 +49,8 @@ const Profile = () => {
         fetchData();
       }, [refetch])
     );
+    console.log(data);
+    
 
   return (
     <SafeAreaView style={tw`${themeViewStyle} flex-1`}>

@@ -18,11 +18,47 @@ import { useQuery } from "react-query";
 import { BASE_URL } from "@/assets/utils/baseUrl";
 import Icon from "react-native-vector-icons/Ionicons";
 
-const TutorHome = () => {
+interface TestResult {
+  id: string;
+  student: string;
+  level: number;
+  corrected: boolean;
+  language: string;
+}
+
+const TutorHome: React.FC = () => {
   const { themeViewStyle, themeTextStyle } = useTheme();
-  const { logout } = useStorage();
+  const { logout, user } = useStorage();
   const navigation = useNavigation();
-  const { user } = useStorage();
+
+  const fetchResults = async (): Promise<TestResult[]> => {
+    try {
+      const response = await axios.get(`${BASE_URL}/results`);
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching results:', error);
+      throw error;
+    }
+  };
+
+  const { 
+    data = [], 
+    isLoading, 
+    isError,
+    refetch 
+  } = useQuery<TestResult[]>(
+    ["userLeaderboard"],
+    fetchResults,
+    {
+      enabled: true,
+    }
+  );
+
+  const filteredTests = React.useMemo(() => {
+    return data.filter(
+      (item) => !item.corrected && item.language === user?.language
+    );
+  }, [data, user?.language]);
 
   const handlePress = () => {
     logout();
@@ -33,47 +69,47 @@ const TutorHome = () => {
     refetch();
   };
 
-  const fetchResults = async () => {
-    const response = await axios.get(`${BASE_URL}/results`);
-    return response.data;
-  };
-
-  const { data, isLoading, refetch } = useQuery(
-    ["userLeaderboard"],
-    fetchResults,
-    {
-      enabled: true,
-    }
+  const borderStyle = tw.style(
+    themeViewStyle,
+    'flex items-center p-5 justify-center gap-5 mt-10 rounded-lg w-11/12 h-30 border border-gray-200'
   );
-  
 
-  const borderStyle = `${themeViewStyle} flex items-center p-5 justify-center gap-5 mt-10 rounded-lg w-11/12 h-30 border border-gray-200`;
   return (
     <SafeAreaView style={tw`${themeViewStyle} flex-1 items-center`}>
       <LanguageBar />
-      <View style={tw`${borderStyle}`}>
+      <View style={borderStyle}>
         <Text style={tw`${themeTextStyle} text-xl font-bold`}>
           Number of Tests
         </Text>
         <Text style={tw`${themeTextStyle} text-3xl font-bold`}>
-          {data.filter((item) => !item.corrected && item.language == user?.language)?.length}
+          {filteredTests.length}
         </Text>
       </View>
       {isLoading ? (
-        <View style={tw`${borderStyle}`}>
-          <Text style={tw`${themeTextStyle} text-xl font-bold`}>
-            Loading ...
-          </Text>
+        <View style={tw`flex-1 justify-center`}>
+          <Text style={tw`${themeTextStyle} text-center`}>Loading...</Text>
         </View>
       ) : (
         <FlatList
-          data={data.filter((item) => !item.corrected && item.language == user?.language)}
+          data={filteredTests}
           renderItem={({ item }) => (
-            <TouchableOpacity onPress={() => navigation.navigate("TestCorrection", item)}>
-              <User name={item.student} info={`Level ${item.level}`} tutor />
+            <TouchableOpacity 
+            key={item.id}
+              onPress={() => navigation.navigate("TestCorrection" as never, item as never)}
+            >
+              <User 
+                name={item.student} 
+                info={`Level ${item.level}`} 
+                tutor 
+              />
             </TouchableOpacity>
           )}
           style={tw`mt-10 w-11/12`}
+          ListEmptyComponent={() => (
+            <Text style={tw`${themeTextStyle} text-center mt-5`}>
+              No tests available for correction
+            </Text>
+          )}
         />
       )}
 
