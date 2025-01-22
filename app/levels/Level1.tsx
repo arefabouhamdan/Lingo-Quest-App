@@ -7,22 +7,24 @@ import {
   TextInput,
   Text,
 } from "react-native";
+import {
+  useUpdate,
+} from "@/hooks/useUpdateXp";
 import { useTheme } from "@/hooks/useTheme";
+import { useStorage } from "@/hooks/useStorage";
+
 import Back from "@/assets/components/Back";
 import Icon from "react-native-vector-icons/Ionicons";
 import tw from "twrnc";
 import AlertModal from "@/assets/components/modals/alertModal";
 import Progress from "@/assets/components/progress";
 import Congrats from "@/assets/components/modals/congrats";
-import { useMutation } from "react-query";
-import axios from "axios";
-import { BASE_URL } from "@/assets/utils/baseUrl";
-import { useStorage } from "@/hooks/useStorage";
-import { useQuery } from "react-query";
 import Lives from "@/assets/components/lives";
 import LoseModal from "@/assets/components/modals/loseModal";
 import HintModal from "@/assets/components/modals/hintModal";
-import { useUpdate } from "@/hooks/useUpdateXp";
+import { useMutation, useQuery } from "react-query";
+import axios from "axios";
+import { BASE_URL } from "@/assets/utils/baseUrl";
 
 const Level1 = () => {
   const { themeViewStyle, themeTextStyle } = useTheme();
@@ -31,33 +33,31 @@ const Level1 = () => {
   const [inputValue, setInputValue] = useState("");
   const [stage, setStage] = useState(0);
   const [isFocused, setIsFocused] = useState(false);
-  const [chatHistory, setChatHistory] = useState<any[]>([]);
-  const [jsonResponse, setJsonResponse] = useState();
+  const [chatHistory, setChatHistory] = useState<Array<{ role: string; parts: Array<{ text: string }> }>>([]);
+  const [jsonResponse, setJsonResponse] = useState<any>(null);
   const [lives, setLives] = useState(3);
   const [loseModalVisible, setLoseModalVisible] = useState(false);
   const [hintModalVisible, setHintModalVisible] = useState(false);
   const updateMutation = useUpdate();
-
   const numberOfStages = 4;
   const { user } = useStorage();
   const language = user?.language;
 
-  const { mutate: sendMessage, data: aiResponse } = useMutation(
+  const { mutate: sendMessage, isLoading: isSending } = useMutation(
     async ({
       input,
       history,
     }: {
       input: string;
-      history: { role: string; parts: [{ text: string }] }[];
+      history: Array<{ role: string; parts: Array<{ text: string }> }>;
     }) => {
       const response = await axios.post(`${BASE_URL}/ai`, {
-        input,
+        input: input.trim(),
         history,
       });
-      const cleanedResponse = await response.data
-        .split("```json")[1]
-        .split("```")[0]
-        .trim();
+
+      const responseData = response.data;
+      const cleanedResponse = responseData.split("```json")[1]?.split("```")[0]?.trim();
       return cleanedResponse;
     },
     {
@@ -71,42 +71,23 @@ const Level1 = () => {
           ]);
         } catch (error) {
           console.error("Failed to parse JSON:", error);
-          setJsonResponse(null);
-          setChatHistory((prevHistory) => [
-            ...prevHistory,
-            { role: "model", parts: [{ text: returnedData }] },
-          ]);
         }
-      },
+      }
     }
   );
+
   useEffect(() => {
     if (jsonResponse?.status === "success" && stage <= numberOfStages) {
       setStage((prevStage) => prevStage + 1);
-      if (stage == numberOfStages - 1) {
+      if (stage === numberOfStages - 1) {
         setIsModalVisible(true);
         if (user) {
-          if (lives === 3) {
-            updateMutation.mutate({
-              level: user.level > 1 ? user.level : 2,
-              username: user.name,
-              xp: user.xp + 20,
-            });
-          }
-          else if (lives === 2) {
-            updateMutation.mutate({
-              level: user.level > 1 ? user.level : 2,
-              username: user.name,
-              xp: user.xp + 10,
-            });
-          }
-          else if (lives === 1) {
-            updateMutation.mutate({
-              level: user.level > 1 ? user.level : 2,
-              username: user.name,
-              xp: user.xp + 5,
-            });
-          }
+          const xpReward = lives === 3 ? 20 : lives === 2 ? 10 : 5;
+          updateMutation.mutate({
+            level: user.level > 1 ? user.level : 2,
+            username: user.name,
+            xp: user.xp + xpReward,
+          });
         }
       }
     } else if (jsonResponse?.status === "failed") {
@@ -118,29 +99,26 @@ const Level1 = () => {
   }, [jsonResponse]);
 
   const handleSendMessage = () => {
-    if (!inputValue.trim()) return;
+    if (!inputValue.trim()) {
+      return;
+    }
 
     const updatedHistory = [
       ...chatHistory,
-      { role: "user", parts: [{ text: inputValue }] },
+      { role: "user", parts: [{ text: inputValue.trim() }] },
     ];
 
     sendMessage({
-      input: inputValue,
+      input: inputValue.trim(),
       history: updatedHistory,
     });
     setInputValue("");
     setChatHistory(updatedHistory);
   };
 
-  const fetchLevel = async () => {
-    const response = await axios.get(`${BASE_URL}/levels/1`);
-    return response.data;
-  };
-
   const { data: levelData, isLoading } = useQuery(
     ["Level", 1],
-    () => fetchLevel(),
+    () => axios.get(`${BASE_URL}/levels/1`).then(response => response.data),
     {
       retry: false,
     }
@@ -148,14 +126,11 @@ const Level1 = () => {
 
   useEffect(() => {
     if (levelData && language) {
-      setChatHistory((prevHistory) => [
+      setChatHistory([
         {
           role: "user",
-          parts: [
-            { text: `You are a ${language} speaking${levelData.message}.` },
-          ],
+          parts: [{ text: `You are a ${language} speaking${levelData.message}.` }],
         },
-        ...prevHistory,
       ]);
     }
   }, [levelData, language]);
@@ -191,12 +166,14 @@ const Level1 = () => {
             </Text>
           </View>
         )}
-        {jsonResponse?.hint && <TouchableOpacity
-          style={tw`flex items-center justify-center rounded absolute z-20 top-4 left-5`}
-          onPress={() => setHintModalVisible(true)}
-        >
-          <Icon name="bulb" size={36} color="white" />
-        </TouchableOpacity>}
+        {jsonResponse?.hint && (
+          <TouchableOpacity
+            style={tw`flex items-center justify-center rounded absolute z-20 top-4 left-5`}
+            onPress={() => setHintModalVisible(true)}
+          >
+            <Icon name="bulb" size={36} color="white" />
+          </TouchableOpacity>
+        )}
         <View style={tw`absolute flex-row-reverse gap-2 top-5 right-5 z-20`}>
           {[...Array(3)].map((_, index) => (
             <Lives key={index} status={index < lives} />
@@ -212,16 +189,12 @@ const Level1 = () => {
         />
       </View>
       <View style={tw`w-11/12 flex-row items-center justify-between mt-5`}>
-        {[...Array(numberOfStages)].map((_, index) =>
-          index < stage ? (
-            <Progress key={index} passed />
-          ) : (
-            <Progress key={index} passed={false} />
-          )
-        )}
+        {[...Array(numberOfStages)].map((_, index) => (
+          <Progress key={index} passed={index < stage} />
+        ))}
       </View>
       <View
-        style={tw`w-11/12 h-1/5 flex-row items-center justify-between mt-5 border border-gray-200 rounded `}
+        style={tw`w-11/12 h-1/5 flex-row items-center justify-between mt-5 border border-gray-200 rounded`}
       >
         <TextInput
           style={tw`${themeTextStyle} flex-1 text-center px-3 pt-4 font-bold text-2xl`}
@@ -235,13 +208,13 @@ const Level1 = () => {
       </View>
       <View style={tw`flex-row items-center justify-between gap-5`}>
         <TouchableOpacity
-          style={tw`w-48 h-14 bg-sky-400 flex-row gap-5 items-center justify-center rounded mt-5`}
+          style={tw`w-48 h-14 bg-sky-400 flex-row gap-5 items-center justify-center rounded mt-5 ${(isLoading || isSending) ? 'opacity-50' : ''}`}
           onPress={handleSendMessage}
-          disabled={isLoading}
+          disabled={isLoading || isSending}
         >
           <Icon name="paper-plane" size={20} color="white" />
           <Text style={tw`text-lg font-bold text-white`}>
-            {isLoading ? "Sending..." : "Send Message"}
+            {isSending ? "Sending..." : "Send Message"}
           </Text>
         </TouchableOpacity>
       </View>
