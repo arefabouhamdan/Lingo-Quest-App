@@ -1,7 +1,6 @@
-import { useMutation, useQuery } from "react-query";
+import { useMutation } from "react-query";
 import axios from "axios";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useStorage } from "./useStorage";
+import * as SecureStore from "expo-secure-store";
 import { useNavigation } from "@react-navigation/native";
 import { BASE_URL } from "@/assets/utils/baseUrl";
 
@@ -25,8 +24,8 @@ export const useLogin = () => {
     mutationFn: login,
     onSuccess: async (data) => {
       try {
-        await AsyncStorage.setItem("user", JSON.stringify(data.user));
-        await AsyncStorage.setItem("token", JSON.stringify(data.token));
+        await SecureStore.setItemAsync("user", JSON.stringify(data.user));
+        await SecureStore.setItemAsync("token", JSON.stringify(data.token));
         data.user.type === "user"
           ? navigation.navigate("MainHome" as never)
           : navigation.navigate("TutorHome" as never);
