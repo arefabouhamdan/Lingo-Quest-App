@@ -24,7 +24,8 @@ const Levels = () => {
     ["user", user?.name],
     () => fetchUserByName(user?.name),
     {
-      enabled: false,
+      enabled: true,
+      retry: true,
     }
   );
 
@@ -36,7 +37,8 @@ const Levels = () => {
         fetchData();
       }, [refetch])
     );
-
+    console.log(data);
+    
   return (
     <SafeAreaView
       style={tw`${themeViewStyle} flex-1 items-center justify-center`}

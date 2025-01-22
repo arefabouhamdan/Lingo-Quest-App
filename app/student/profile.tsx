@@ -37,7 +37,8 @@ const Profile = () => {
     ["user", user?.name],
     () => fetchUserByName(user?.name),
     {
-      enabled: false,
+      enabled: true,
+      retry: true,
     }
   );
 
