@@ -1,7 +1,7 @@
 import { useMutation } from "react-query";
 import axios from "axios";
 import { BASE_URL } from "@/assets/utils/baseUrl";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import * as SecureStore from "expo-secure-store";
 
 interface TestData {
   student: string;
@@ -19,7 +19,7 @@ export const useTest = () => {
   return useMutation(test, {
     onSuccess: async (response) => {
       console.log("Test submitted successfully!", JSON.stringify(response));
-      await AsyncStorage.setItem("user", JSON.stringify(response));
+      await SecureStore.setItemAsync("user", JSON.stringify(response));
     },
     onError: (error: any) => {
       console.error("Submit failed:", error);
