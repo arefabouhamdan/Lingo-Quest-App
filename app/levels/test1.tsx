@@ -15,6 +15,8 @@ const Test1 = () => {
   const { user } = useStorage();
   const testMutation = useTest();
   const userLanguage = user?.language;
+  // console.log(user);
+  
 
   const [index, setIndex] = useState<number>(0);
   const [answers, setAnswers] = useState<string[]>([]);
@@ -32,6 +34,9 @@ const Test1 = () => {
     }
   );
 
+  // console.log(question.data[0].content);
+  
+
   const handleChoiceSelect = (choice: string) => {
     const newAnswers = [...answers];
     newAnswers[index] = choice;
@@ -44,8 +49,6 @@ const Test1 = () => {
   const handleDecrement = () => {
     index == 0 ? null : setIndex(index - 1);
   };
-
-  console.log(question.data[2].content);
   
 
   const handleSubmit = () => {
@@ -56,7 +59,7 @@ const Test1 = () => {
       responses: {
         questions: question?.data.map((q) => q.content),
         answers,
-        correct: question?.data.map((q, i) => q.choices.indexOf(answers[i]) === 0),
+        correct: [],
       },
       corrected: false,
     }

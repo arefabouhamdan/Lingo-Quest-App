@@ -11,7 +11,6 @@ const Welcome = () => {
   const { themeTextStyle, themeViewStyle } = useTheme();
   const navigation = useNavigation();
   const { user } = useStorage();
-  console.log("user", user?.type)
 
   useEffect(() => {
     if (user?.type == "user") {
@@ -39,7 +38,6 @@ const Welcome = () => {
           source={require("../../assets/images/game/guide-no-hello.png")}
           style={tw`w-48 h-60 mb-5`}
         />
-        
         <View style={tw`flex items-center gap-2`}>
           <Button text="Get Started" press="Login" type="login" image="" />
         </View>

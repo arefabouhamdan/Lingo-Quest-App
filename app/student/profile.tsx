@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import {
   Text,
   SafeAreaView,
@@ -14,6 +14,10 @@ import { languages } from "@/assets/utils/languages";
 import Icons from "react-native-vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
 import { useStorage } from "@/hooks/useStorage";
+import { useQuery } from "react-query";
+import axios from "axios";
+import { BASE_URL } from "@/assets/utils/baseUrl";
+import { useFocusEffect } from "@react-navigation/native";
 
 const Profile = () => {
   const { themeViewStyle, themeTextStyle } = useTheme();
@@ -23,8 +27,28 @@ const Profile = () => {
     logout();
     navigation.navigate("Welcome" as never);
   };
-
   const { user } = useStorage();
+  const fetchUserByName = async (name: string) => {
+    const response = await axios.get(`${BASE_URL}/users/${name}`);
+    return response.data;
+  };
+  
+  const { data, isLoading, refetch } = useQuery(
+    ["user", user?.name],
+    () => fetchUserByName(user?.name),
+    {
+      enabled: false,
+    }
+  );
+
+  useFocusEffect(
+      useCallback(() => {
+        const fetchData = async () => {
+          const { data } = await refetch();
+        };
+        fetchData();
+      }, [refetch])
+    );
 
   return (
     <SafeAreaView style={tw`${themeViewStyle} flex-1`}>
@@ -34,17 +58,17 @@ const Profile = () => {
       >
         <Icons name="log-out-sharp" size={36} color={"#fff"} />
       </TouchableOpacity>
-      <Avatar user={user} />
+      <Avatar user={data} />
       <View
         style={tw`flex flex-row px-3 justify-between items-center w-full mt-5`}
       >
         <Text style={tw`${themeTextStyle} text-2xl font-bold text-left `}>
-          {user?.name}
+          {data?.name}
         </Text>
         <Image
           style={tw`h-4.4 w-6`}
           source={
-            languages.find((lang) => lang.name === user?.language)?.source
+            languages.find((lang) => lang.name === data?.language)?.source
           }
         />
       </View>
@@ -54,7 +78,7 @@ const Profile = () => {
             style={tw`flex flex-row items-center mt-5 w-full justify-between`}
           >
             <Text style={tw`${themeTextStyle} text-lg font-medium`}>
-              Joined {user?.createdAt.split("T")[0]}
+              Joined {data?.createdAt.split("T")[0]}
             </Text>
             <TouchableOpacity
               onPress={() => navigation.navigate("Friends" as never)}
@@ -62,7 +86,7 @@ const Profile = () => {
               <Text style={tw`${themeTextStyle} text-lg font-medium `}>
                 No. Friends{"  "}
                 <Text style={tw`text-sky-400 font-extrabold`}>
-                  {user?.friends.length}
+                  {data?.friends.length}
                 </Text>
               </Text>
             </TouchableOpacity>
@@ -96,7 +120,7 @@ const Profile = () => {
               style={tw`h-26 w-22`}
             />
             <Text style={tw`${themeTextStyle} text-xl my-2`}>
-              {user?.played} days
+              {data?.played} days
             </Text>
           </View>
           <View
@@ -109,7 +133,7 @@ const Profile = () => {
               source={require("@/assets/images/icons/bolt.png")}
               style={tw`h-26 w-19`}
             />
-            <Text style={tw`${themeTextStyle} text-xl my-2`}>{user?.xp} XP</Text>
+            <Text style={tw`${themeTextStyle} text-xl my-2`}>{data?.xp} XP</Text>
           </View>
         </View>
       </View>
