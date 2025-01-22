@@ -10,7 +10,6 @@ import axios from "axios";
 import { BASE_URL } from "@/assets/utils/baseUrl";
 import Congrats from "@/assets/components/modals/congrats";
 import { useTest } from "@/hooks/useTest";
-import { useNavigation } from "@react-navigation/native";
 
 const Test1 = () => {
   const { user } = useStorage();

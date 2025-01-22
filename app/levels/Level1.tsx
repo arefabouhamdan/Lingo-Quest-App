@@ -29,7 +29,7 @@ const Level1 = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  const [stage, setStage] = useState(3);
+  const [stage, setStage] = useState(0);
   const [isFocused, setIsFocused] = useState(false);
   const [chatHistory, setChatHistory] = useState<any[]>([]);
   const [jsonResponse, setJsonResponse] = useState();
@@ -38,7 +38,7 @@ const Level1 = () => {
   const [hintModalVisible, setHintModalVisible] = useState(false);
   const updateMutation = useUpdate();
 
-  const numberOfStages = 5;
+  const numberOfStages = 4;
   const { user } = useStorage();
   const language = user?.language;
 
@@ -191,12 +191,12 @@ const Level1 = () => {
             </Text>
           </View>
         )}
-        <TouchableOpacity
+        {jsonResponse?.hint && <TouchableOpacity
           style={tw`flex items-center justify-center rounded absolute z-20 top-4 left-5`}
           onPress={() => setHintModalVisible(true)}
         >
           <Icon name="bulb" size={36} color="white" />
-        </TouchableOpacity>
+        </TouchableOpacity>}
         <View style={tw`absolute flex-row-reverse gap-2 top-5 right-5 z-20`}>
           {[...Array(3)].map((_, index) => (
             <Lives key={index} status={index < lives} />
