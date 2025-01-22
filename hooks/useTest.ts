@@ -8,6 +8,7 @@ interface TestData {
   language: string;
   responses: string[];
   corrected: boolean;
+  level: number;
 }
 
 const test = async (data: TestData) => {

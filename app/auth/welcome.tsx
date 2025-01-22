@@ -11,9 +11,10 @@ const Welcome = () => {
   const { themeTextStyle, themeViewStyle } = useTheme();
   const navigation = useNavigation();
   const { user } = useStorage();
+  console.log("user", user?.type)
 
   useEffect(() => {
-    if (user?.type == "student") {
+    if (user?.type == "user") {
       navigation.navigate("MainHome" as never);
     }
     if (user?.type == "tutor") {

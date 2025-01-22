@@ -1,6 +1,6 @@
 export const levelsData = [
     { level: "1",  type: "level" },
-    { level: "2", type: "level" },
+    { level: "1", type: "test" },
     
     { level: "3",  type: "level" },
     { level: "4", type: "level" },

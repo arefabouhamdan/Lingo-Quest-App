@@ -46,17 +46,22 @@ const Test1 = () => {
     index == 0 ? null : setIndex(index - 1);
   };
 
+  console.log(question.data[2].content);
+  
+
   const handleSubmit = () => {
-    testMutation.mutate({
+    const data = {
       student: user?.name,
       language: user?.language,
+      level: 1,
       responses: {
         questions: question?.data.map((q) => q.content),
         answers,
         correct: question?.data.map((q, i) => q.choices.indexOf(answers[i]) === 0),
       },
       corrected: false,
-    });
+    }
+    testMutation.mutate(data);
     setModalVisible(true);
   };
 
